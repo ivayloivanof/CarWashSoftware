@@ -1,6 +1,6 @@
 package bg.car_wash.entities;
 
-import bg.car_wash.enumerations.CarType;
+import bg.car_wash.entities.enumerations.CarType;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
