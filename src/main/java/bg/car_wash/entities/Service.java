@@ -7,26 +7,25 @@ import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "tariffs")
-public class Tariff {
+@Table(name = "services")
+public class Service {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "tariff_name", nullable = false)
+	@Column(name = "service_name", nullable = false)
 	@Size(min = 3, max = 50)
-	private String tariffName;
+	private String serviceName;
 
-	@Column(name = "tariff_price", nullable = false)
-	private BigDecimal tariffPrice;
+	@Column(name = "service_price", nullable = false)
+	private BigDecimal servicePrice;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "car_type")
-	@Size(min = 3, max = 15)
 	private CarType carType;
 
-	public Tariff() {
+	public Service() {
 	}
 
 	public Long getId() {
@@ -37,20 +36,20 @@ public class Tariff {
 		this.id = id;
 	}
 
-	public String getTariffName() {
-		return tariffName;
+	public String getServiceName() {
+		return serviceName;
 	}
 
-	public void setTariffName(String tariffName) {
-		this.tariffName = tariffName;
+	public void setServiceName(String serviceName) {
+		this.serviceName = serviceName;
 	}
 
-	public BigDecimal getTariffPrice() {
-		return tariffPrice;
+	public BigDecimal getServicePrice() {
+		return servicePrice;
 	}
 
-	public void setTariffPrice(BigDecimal tariffPrice) {
-		this.tariffPrice = tariffPrice;
+	public void setServicePrice(BigDecimal servicePrice) {
+		this.servicePrice = servicePrice;
 	}
 
 	public CarType getCarType() {

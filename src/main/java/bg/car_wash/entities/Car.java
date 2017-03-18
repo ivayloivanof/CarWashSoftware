@@ -1,5 +1,7 @@
 package bg.car_wash.entities;
 
+import bg.car_wash.entities.enumerations.CarType;
+
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
@@ -25,6 +27,10 @@ public class Car {
 	@Column(name = "car_make", nullable = false)
 	@Size(min = 3, max = 25)
 	private String carMake;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "car_type")
+	private CarType carType;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Customer owner;
@@ -62,5 +68,21 @@ public class Car {
 
 	public void setCarMake(String carMake) {
 		this.carMake = carMake;
+	}
+
+	public CarType getCarType() {
+		return carType;
+	}
+
+	public void setCarType(CarType carType) {
+		this.carType = carType;
+	}
+
+	public Customer getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Customer owner) {
+		this.owner = owner;
 	}
 }
