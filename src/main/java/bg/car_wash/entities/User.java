@@ -1,5 +1,7 @@
 package bg.car_wash.entities;
 
+import bg.car_wash.entities.enumerations.UserType;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
@@ -26,6 +28,10 @@ public class User {
 
 	@Basic
 	private BigDecimal remuneration;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "user_type")
+	private UserType userType;
 
 	public User() {
 	}
@@ -68,5 +74,13 @@ public class User {
 
 	public void setRemuneration(BigDecimal remuneration) {
 		this.remuneration = remuneration;
+	}
+
+	public UserType getUserType() {
+		return userType;
+	}
+
+	public void setUserType(UserType userType) {
+		this.userType = userType;
 	}
 }

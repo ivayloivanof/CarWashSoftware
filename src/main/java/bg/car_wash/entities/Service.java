@@ -1,10 +1,12 @@
 package bg.car_wash.entities;
 
 import bg.car_wash.entities.enumerations.CarType;
+import bg.car_wash.entities.enumerations.UserType;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "services")
@@ -24,6 +26,10 @@ public class Service {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "car_type")
 	private CarType carType;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "user_type")
+	private UserType userType;
 
 	public Service() {
 	}
