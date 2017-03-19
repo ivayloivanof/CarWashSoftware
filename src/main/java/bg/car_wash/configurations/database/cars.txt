@@ -1,0 +1,97 @@
+AC-Cobra
+Acura-1.6 EL,1.7 EL,2.2 CL,2.3 CL,2.5 TL,3.0 CL,3.2 CL,3.2 TL,3.5 RL,CL,CSX EL,Integra,Legend,MDX,NSX,NSX-T,RDX,RL,RSX,SLX,TL,TSX,Vigor
+Alfa Romeo-145,146,147,155,156,159,164,166,33,75,Alfetta,GT,GTV,GTV-6,Guiletta,Milano,Spider
+AMC-Ambassador,AMX,Concord,Eagle,Gremlin,Hornet,Javelin,Marlin,Matador,Pacer,Rambler,Rebel,Spirit
+Audi-100,100 C4 Series,100 V6,200,4000,5000,80 Cabriolet,90,A3,A4,A4 Cabriolet,A6,A8,Allroad,Cabriolet,Compact,Coupé,Coupé 20V,Fox,Q7,Quattro,R8,RS 4,RS 6,S4,S4 Cabriolet,S6,S8,TT,TT Roadster,V8
+Aston Martin-AMV8 Vantage,Bulldog,DB AR1,DB2,DB3 Spyder,DB3S,DB4,DB5,DB6,DB7,DB9,DB9 Sports Pack,DBR1,DBR4,DBR9,DBRS9,DBS,DP212,Lagonda,Le Mans,MK II Ulster Le Mans,Prodrive,Rapide,Type C Speed Model,Ulster,V12 Vanquish,V8,V8 Coupe,V8 Vantage,V8 Volante,Vanquish Roadster,Vanquish S,Vantage,Virage,Zagato DB4 GT
+Bentley-Arnage,Azure,Brooklands,Continental,Continental Flying Spur,Continental GT,Continental GTC,Continental R,Eight,Mulsanne,Turbo R
+BMW-1 Series,2002,2800,3 Series,3.0,318,320,323,325,328,330,335,5 Series,525,528,530,533,535,540,545,550,6 Series,630,633,635,645,650,7 Series,733,735,740,745,750,760,8 Series,840,850,Bavaria,Isetta,L6,L7,M Coupe,M Roadster,M3,M5,M6,Mini Cooper,X3,X5,Z1,Z3,Z4,Z8
+Bricklin-SV-1
+Bugatti-EB110,EB112,Royale,Veyron
+Buick-Allure,Apollo,Centurion,Century,Electra,Enclave,Estate wagon,Gran Sport,Grand National,Invicta,Lacrosse,LeSabre,Lucerne,Park Avenue,Rainier,Reatta,Regal,Rendezvous,Riviera,Roadmaster,Skyhawk,Skylark,Somerset,Super,Terraza,Wildcat
+Cadillac-Allanté,Biarritz,Brougham,Calais,Catera,Cimarron,Concours,Coupe de Ville,CTS,Custom,Deluxe,DeVille,DHS,DTS,Eldorado,Escalade,ETC,Fleetwood,Fleetwood Brougham,Sedan de Ville,Seventy-Five,Seville,Sixty Special,SLS,SRX,STS,XLR
+Checker-Marathon
+Chevrolet-Alero,Astro,Avalanche,Aveo,Aveo 5,Beauville,Bel Air,Beretta,Biscayne,Blazer,C/K 1500,C/K 2500,C/K 3500,C1500,C2500,C3500,Camaro,Camionnette,Caprice,Cavalier,Celebrity,Chevelle,Chevette,Chevy II,Chevy Van,Citation,Cobalt,Colorado,Corsica,Corvair,Corvette,Deluxe,El Camino,Envoy,Epica,Equinox,Express,G1500,G2500,HHR,Impala,Impala SS,K1500,K2500,K3500,Kalos,Lacetti,Lumina,Lumina APV,Malibu,Malibu Maxx,Metro,Monte Carlo,Nomad,Nova,Optra,Optra 5,Optra Wagon,Pick-up,Prizm,Rezzo,S-10,Silverado,Sprint,SSR,Styleline,Stylemaster,Suburban,Tacuma,Tahoe,Tracker,Trailblazer,Trailblazer EXT,Uplander,Vega,Venture,X11,Z24,Z28,Z34
+Chrysler-300,300C,300M,Aspen,Cirrus,Concorde,Cordoba,Crossfire,Daytona,Dynasty,E-Class,Fifth Avenue,Imperial,Intrepid,Laser,LeBaron,LHS,Neon,New Yorker,Newport,Pacifica,Prowler,PT Cruiser,Saratoga,Sebring,Stratus,SRT6,SRT8,TC,Town &amp; Country,Vision,Voyager,Windsor
+Citroën-2CV,AX,Berlingo,Berlingo 2,BX,C1,C2,C25,C3,C3 II,C4,C5,C5 II,C8,CX,Dispatch,DS,Evasion,ID,Jumper,Jumpy,Jumpy II,Pluriel,Relay,Saxo,SM,Synergie,Van (C25),Xantia,Xantia II,XM,Xsara,Xsara Picasso,ZX
+Dacia-1310,1410,Camionnette,Dacia
+Daewoo-Cielo,Espero,Evanda,Kalos,Korando,Lacetti,Lanos,Leganza,Matiz,Musso,Nexia,Nubira,Rezzo,Tacuma
+Daihatsu-Charade,Cuore,Grand Move,Max,Move,Rocky,Sirion,Terios,YRV
+Daimler-4.0,Double-Six
+Datsun-1200,200SX,210,240Z,260Z,280Z,280ZX,310,510,610,620,710,810,B210,F10,Maxima,Micra,Pickup,PL720,Pulsar,Sentra,Stanza
+De Lorean-De Lorean
+Detomaso-Deauville,Pantera
+Dodge-2000 GTX,600,Aries,Arrow,Aspen,Avenger,Caliber,Caravan,Caravan C/V,Challenger,Charger,Colt,Coronet,Dakota,Dart,Daytona,Diplomat,Durango,Fargo,Grand Caravan,Intrepid,Lancer,Magnum,Mini RamVan,Neon,Nitro,Omni,Omni 024,Pace Arrow,Pick-up,Polara,Power Ram,Power Ram 50,Raider,Ram,Ram 1500,Ram 2500,Ram 3500,Ram 50,Ram Van,Ram Wagon,RamCharger,Rampage,Royal,Saratoga,Shadow,Spirit,Sprinter,SRT4,St-Regis,Stealth,Stratus,Super Bee,SX 2.0,Van 250,Van 2500,Viper
+Eagle-2000 GTX,Medaillon,Premier,Summit,Summit Wagon,Talon,Vision,Vista,Vista Wagon
+Ferrari-125,159,166,195,196,208,212,225,246,250,268,286,288,290,308,315,328,330,335,340,348,355,360,365,375,400,410,412,430,456,500,512,550,575,599,612,625,712,735,860,BB512,Daytona,Enzo,F 333 SP,F355,F360,F40,F430,F50,F550,GTB,GTO,GTS,Mondial,Spider,Superamerica,Testa Rossa
+Fiat-125,130,131,500,Barchetta,Brava/Bravo,Cinquecento,Coupé,Croma,Dino,Doblò,Ducato,Idea,Marea,Multipla,Palio,Panda,Punto,Punto Grande,Ritmo,Scudo,Seicento,Siena,Spider,Stilo,Strada,Tempra,Tipo,Tipo (Digital),Ulysse,Ulysse II,Uno,X1/9
+Ford-Aerostar,Anglia,Aspire,Bronco II,Bronco,Capri,Club Wagon,Cobra,Contour,Cortina,Cougar,Country Squire,Crown Victoria,Curier,Custom,Cutaway,E-150,E-250,E-350,E-450,Econoline,Econovan,Edge,Elite,Escape Hybrid,Escape,Escort,Excursion,EXP,Expedition,Explorer Sport Trac,Explorer,F-100,F-150,F-250,F-350,F-450,F-550,F-650,F-750,Fairlane,Fairmont,Falcon,Festiva,Fiesta,Five Hundred,Focus,Forte,Freestar,Freestyle,Fusion,Futura XR,Galaxie,Gran Torino,Granada,Grand Marquis,GT40,GT,Ka,Laser,Lightning,LTD,Marauder,Maverick,Model A,Model T,Mondeo,Mustang,Orion,Pinto,Probe,Puma,Ranchero,Ranger,Scorpio,Shelby,Sierra,Skyliner,Sport Track,Sunliner,Super Duty,SVT,T-Bucket,Taurus,Tempo,Territory,Thunderbird,Torino,Transit,Tudor,Ute,Villager,Windstar,Zephyr,ZX2
+Freightliner-Argosy,Business Class,Business Class M2,Century Class S/T,Classic,Classic XL,Columbia,Coronado,Sprinter
+Galloper-Exceed
+Geo-Metro,Prizm,Storm,Tracker
+GMC-Acadia,Blazer Fullsize,Caballero,Canyon,Cyclone,Envoy,Envoy XL,Envoy XUV,Jimmy,Pickup,Rally,S-15,Safari,Savana,Sierra,Sonoma,Sprint,Suburban,Topkick,Tracker,Typhoon,Van,Vandura,Yukon,Yukon XL
+Holden-Astra,Barina,Calais,Combo,Commodore VS,Commodore VT,Commodore VX,Commodore VY,Cruze,Executive,Frontera,Jackaroo,Rodeo,Statesman,Suburban,Vectra,Vectra C,Zafira
+Honda-Accord,Accord Coupé,Civic,Civic DelSol,Civic Hybrid,Civic Sedan,Civic Si,Concerto,CR-V,CRX,Element,Fit,FR-V,HR-V,Insight,Integra,Jazz,Legend,Logo,MDX,N600,Odyssey,Passport,Pilot,Prelude,Ridgeline,S2000,S600,S800,Shuttle,Stream
+Hummer-H1,H2,H3
+Hyundai-Accent,Amica,Atos,Azera,Coupé,Elantra,Entourage,Excel,Getz,Grandeur XG,H 100,H1,Matrix,Pony,Santa Fe,Scoupe,Sonata,Starex,Stellar,Terracan,Tiburon,Trajet,Tucson,Veracruz,XG,XG300,XG350
+Infiniti-FX35,FX45,G20,G35,I30,I35,J30,M35,M45,Q45,QX4,QX56
+Innocenti-Minitre,Turbo
+Isuzu-Amigo,Ascender,Axiom,Camionnette,Campo,D-Max,Hombre,I-Mark,Impulse,Oasis,Pickup,Pup,Rodeo,Rodeo Sport,Space Cab SLX 2500,Space Cab SLX 2800,Stylus,Trooper,Van/Midi,Vehicrosse
+Iveco-Daily,Euro Cargo,New Daily
+Jaguar-E-type,MK,S-Type,Sovereign,Super V8,Vanden Plas,X-Type,X300,XJ,XJ Series,XJ-S,XJ-SC,XJ12,XJ40,XJ6,XJ6 Serie 2,XJ6 Serie 3,XJ8,XJ8 Vanden Plas,XJR,XJS,XK,XK Series,XK8,XKE,XKR,XR8
+Jeep-Cherokee,CJ,Comanche,Commander,Compass,Grand Cherokee,Grand Wagoneer,Liberty,Patriot,Renegade,Sahara,Scrambler,TJ,TJ Unlimited,Wagoneer,Wrangler,Wrangler Unlimited,YJ
+Jensen-541,C-V8,Early Interceptor,FF,Healey,Interceptor
+Kenworth-T2000,T300,T600,T800,W900
+Kia-Amanti,Besta,Carens,Carens II,Carnival,Carstar,Cerato,Clarus,Credos,Joice,Magentis,Mentor,Opirus,Optima,Picanto,Pride,Rio,Rio 5,Rio RX-V,Rondo,Sedona,Sephia,Sephia II,Sephia Sedan,Shuma,Shuma II,Sorento,Spectra,Spectra 5,Spectra EX,Spectra SX,Sportage,Visto
+Lada-Dennis,Niva,Samara,Signet
+Lamborghini-350 GT,Cheetah,Countach,Diablo,Espada,Gallardo,Islero,Jalpa,Jarama,LM,Miura,Murciélago,Silhouette,Urraco
+Lancia-Dedra,Delta,Kappa,Lybra,Phedra,Thema,Y,Zeta
+Land Rover-Defender,Discovery,Discovery II,Discovery 3,Freelander,LR2,LR3,Range Rover,Range Rover Sport
+LDV-Maxus
+Lexus-ES 250,ES 300,ES 330,ES 350,GS 300,GS 350,GS 400,GS 430,GS 450h,GX 470,Harrier 4x4,IS 220,IS 250,IS 300,IS 350,LS 400,LS 430,LS 460,LS 600h L,LX 450,LX 470,RX 300,RX 330,RX 350,RX 400h,SC 300,SC 400,SC 430
+Lincoln-Aviator,Blackwood,Continental,LS,Mark,Mark IV,Mark LT,Mark VII,Mark VIII,MKX,MKZ,Navigator,Town Car,Versailles,Zephyr
+Lotus-Elan,Elise,Elite,Esprit,Europa,Exige,Super 7
+MAN-Cab-type K Evolution,Cab-type N Evolution,TG-series
+Maserati-420,430,3200 GT,3500 GT,5000 GT,Biturbo,Bora,Coupé,Ghibli,GranSport,GranSport Spyder,Khamsin,MC12,Merak,Quattroporte,Shamal,Spyder
+Mazda-121,2,3,3 Sport,323 F (BA),323 F (BJ),323 F,323,5,6,6 Sport,6 Sport Wagon,616,626,626 Avant,626 Break,626 Cronos,929,929 Serenia,B2000,B2200,B2300,B2500,B2600,B3000,B4000,Bravo 2600,B-series,Cosmo,CX-7,CX-9,Demio,E-series,Familia,GLC,Mazdaspeed,Metro,Miata,Millenia,Mizer,MPV,MX 3,MX-3 Precidia,MX-5,MX-6,Navajo,Precidia,Premacy,Protegé,Protegé5,RX-3,RX-4,RX-7,RX-8,Tribute,Truck (B-series),Van,Xedos 9
+Mercedes Benz-100 Van,103,107,123,124,126,190,207,260,280,300,380,420,450,500,560,A-Class,Actros,Atego,B-Class,B200,B200 Turbo,C-Class,C220,C230 Coupe,C230,C240,C280,C32,C320,C350,C36,C43,C55,CL-Class,CL500,CL55,CL600,CL63,CL65,CLK-Class,CLS,CLS-Class,E-Class,E320,E430,E500,E55,E63,G-Class,G500,G55,Geländewagen,M-Class,ML320,ML350,ML430,ML500,ML55,ML63,R-Class,R350,R500,R63,S-Class,S320,S420,S430,S500,S55,S600,SK-Serie (Truck),SL320,SL500,SL55,SL600,SL65,SL-Class,SLK230,SLK280,SLK320,SLK350,SLK55,SLK-Class,SLR McLaren,Sprinter,Unimog,Vaneo,V-Class,Vito,Viano
+Mercury-Bobcat,Capri,Colony Park,Comet,Cougar,Cyclone,Grand Marquis,LN7,Lynx,Marauder,Mariner,Marquis,Meteor,Milan,Monarch,Monclair,Montego,Monterey,Mountaineer,Mystique,Park Lane,Sable,Topaz,Tracer,Turnpike,Villager,Zephyr
+Merkur-Scorpio,XR4ti
+MG-F,Metro,MGA,MGB,MGC,MGF,MGT,MGTD,Midget,RV8,TA,TB,TC,TD,TF,X80,ZF,ZR,ZS,ZT
+Mini-Cooper,Cooper Convertible
+Mitsubishi-3000GT,Canter,Carisma,Challenger,Colt,Conquest,Cosmos,Diamante,Eclipse,Eclipse Spyder,Endeavor,Evolution,Expo,Express,Galant,Grandis,L200/Pick Up,L300,L400,Lancer,Lancer Evolution,Lancer Ralliart,Lancer Sportback,Magna,Mighty Max,Mirage,Montero,Montero Sport,Outlander,Pajero /Wagon,Pajero i0,Pajero Pinin,Pajero Sport,Precis,Raider,Shogun,Shogun Pinin,Shogun Sport,Sigma,Space Gear,Space Runner,Space Star,Space Van,Space Wagon,Starion,Triton,Trojan,Verada
+Morris-J,Minor
+Nash-Ambassador,Metropolitan
+Nissan-100NX,200SX,240SX,240Z,260Z,280Z,280ZX,300ZX,350Z,Almera Tino,Almera,Altima,Armada,Axxess,Bluebird Sedan,Camionnette,Cargo,Cefiro 2000/3000,Costaud,Diesel MK/LK (Truck),Frontier,Hustler,Interstar,King Cab,King Van,Kubistar,L35,L50,L60,Maxima,Micra,Multi,Murano,Navara,Note,NX,Pathfinder Armada,Pathfinder,Patrol,Pickup,Primastar,Primera,Pulsar NX,Pulsar,Quest,Roadster,Sentra Classic,Sentra,Serena,Skyline,Stanza,Sunny Combi,Sunny Sedan,Sunny Van,Sunny,Terrano II,Terrano,Titan,Vanette,Versa,Xterra,X-Trail
+Oldsmobile-442,Achieva,Alero,Aurora,Bravada,Cabrio,Calais,Custom Cruiser,Cutlass,Cutlass Calais,Cutlass Ciera,Cutlass Cruiser,Cutlass Sedan,Cutlass Supreme,Delta 88,Eighty-eight (88),Firenza,Intrigue,Ninety-eight (98),Omega,Regency 98,Silhouette,Silhuette,Starfire,Toronado
+Opel-Agila,Ascona,Astra,Calibra,Campo,Combo,Commodore,Corsa,Frontera,Kadett,Meriva,Monterey,Movano,Omega,Rekord,Senator,Signum,Sintra,Tigra,Vectra,Vectra B,Vectra C,Vivaro,Zafira
+Packard-120,300,Caribbean,Clipper,Convertible,Eight,Pan American,Patrician,Predictor,Series 250,Series 400,Twelve,Victoria
+Panoz-AIV Roadster,Esperante
+Peterbilt-Model 330,Model 357,Model 378,Model 379,Model 385,Model 387
+Peugeot-1007,106,107,205,206,306,307,307 SW,309,405,406,407,504,505,604,605,607,806,807,Boxer,Expert,J5,Partner
+Plymouth-Acclaim,Arrow,Barracuda,Breeze,Caravelle,Colt,Coupe,Duster,Expo,Fury,Grand Fury,Grand Voyager,Horizon,Laser,Le Baron,Neon,Prowler,Reliant,Sapporo,Saratoga,Satellite,Stratus,Sundance,TC3,Turismo,Volare,Voyager
+Pontiac-1000,6000,Acadian,Astre,Aztek,Bonneville,Catalina,Fiero,Firebird,Firefly,Fleetleader,Formula,G5,G6,Grand Am,Grand LeMans,Grand Prix,GTO,J2000,LeMans,Montana,Montana SV6,Parisienne,Phoenix,Pursuit,Safari,Scooter,Solstice,Sunbird,Sunburst,Sunfire,Sunrunner,Tempest,Torrent,Trans Am,Trans Sport,Ventura,Vibe,Wave
+Porsche-356,550,901,911,911 Turbo,912,914,924,928,944,959,968,996,Boxster,Carrera,Carrera 911S,Carrera GT,Cayenne,Cayman,Speedster,Spyder
+Puch-G 4X4
+Renault-12,17,18,19,21,25,30,5,Alliance,Avantime,Clio,Encore,Espace,Express,Fuego,Kangoo,Laguna,LeCar,Magnum,Mascot,Master,Medaillon,Mégane,Midlum,Modus,Premium,RX4,Safrane,Scénic,Sportwagon,Traffic,Twingo,VelSatis
+Rolls Royce-Corniche,Flying Spur,Park Ward,Phantom,Silver Cloud,Silver Dawn,Silver Ghost,Silver Seraph,Silver Shadow,Silver Spirit,Silver Spur,Silver Wraith,Spirit,Spur,Wraith
+Rover-200/25,400/45,600,75,800,City Rover,SD,Street Wise
+Saab-900,9000,9-2x,9-3,9-5,9-6x,9-7x
+Saturn-Aura,Ion,Ion Quad Coupe,L,LS,LW,Outlook,Relay,S,SC,Sky,SL,SW,Vue
+Scania-3-series,4-series,R-series
+Scion-tC,xA,xB
+Seat-Alhambra,Altea,Arosa,Cordoba,Ibiza,Inca,Leon,Toledo,Vario
+Skoda-120,130,Fabia,Favorit,Felicia,Octavia,Octavia Ambiente,Octavia Classic,Octavia Elegance,Octavia GLX,Octavia LX,Octavia RS,Octavia SLX,Pickup,Rapid,Superb
+Smart-fortwo,forfour,Roadster
+Ssang Yong-Korando,Musso,Rexton
+Studebaker-Avanti,Champ,Champion,Erskine,Golden Hawk,Hawk,Lark,M-Series,President,Speedster,Starlight,Transtar
+Subaru-4x4 Turbo,B9 Tribeca,Baja,Brat,DL,Forester,G3X Justy,GL,Impreza,Justy,Legacy,Leone,Liberty,Loyale,Outback,Outback Sport,Pic-Up,STi,Super Station,SVX,WRX,WRX STi,XT
+Sunbeam-Tiger
+Suzuki-Aerio,Alto,Baleno,Esteem,Forsa,Grand Vitara,Ignis,Jimny,Liana,Reno,Samurai,Sidekick,SJ410,Swift,Swift+,SX4,Verona,Vitara,Wagon,X-90,XL7
+Tata-Safari
+Toyota-4Runner,Amazon,Avalon,Avensis,Avensis Verso,AYGO,Camionnette,Camry,Camry Solara,Carina,Celica,Celica Supra,Colorado,Corolla,Corolla Verso,Corona,Cressida,Echo,FJ Cruiser,Fourgonnette,HiAce,Highlander,HiLux,HiLux Tundra,Kluger,Land Cruiser,LandCruiser,LandCruiser 100,LandCruiser 70,LandCruiser 90,LandCruiser Amazon,LandCruiser Hg 80,Lite Ace,Mark II,Matrix,MR2,MR2 Spyder,Paseo,Pickup,Picnic,Prado,Prerunner,Previa,Prius,RAV4,Scion,Sequoia,Sienna,Solara,SportsVan,Starlet,Station Wagon,Supra,T100,T1000,Tacoma,Tarago,Tercel,Town Ace,Traveler,Tundra,Van,Yaris,Yaris Verso
+Triumph-GT6,Spitfire,TR4,TR6,TR7,TR8
+Vauxhall-Agila,Ascona,Astra,Calibra,Carlton,Cavallier,Combo,Corsa,Frontera,Meriva,Monterey,Movano,Nova,Omega,Signum,Sintra,Tigra,Vectra,Vectra B,Vectra C,Vivaro,Zafira
+Volkswagen-Beetle,Bora,Bus,Cabriolet,Caddy,Caddy Pickup,Caddy Van,Caravelle,Carrier,City Golf,City Jetta,Colorado,Combi,Corrado,Dasher,Eos,Eurovan,Fox,Golf,Golf Cabriolet,Golf I,Golf II,Golf III,Golf III Cabrio,Golf III Variant,Golf IV,Golf IV Variant,Golf Plus,Golf V,GTI,Jetta,Jetta Wagon,Karmann Ghia,LT28/LT31/LT35/LT46,Lupo,Multivan,New Beetle,New Beetle Cabrio,Passat,Phaeton,Polo,Polo Classic,Polo Sedan,Polo Variant,Quantum,Rabbit,Scirocco,Sharan,Shuttle,T4 Pickup,T4 Transporter,T5 Pickup,T5 Transporter,Taro,Thing,Touareg,Touran,Transporter,Truck Bus,Type II,Type III,Vanagon,Vento
+Volvo-160,240,242,244,245,260,340,360,440,460,480 ES,740,760,780,850,940,960,Bertone,C30,C70,Cross Country,F10,F12,FH,FL10,FL6,FL7,FM,FS7,NH,P1800,R,S40,S60,S60 R,S70,S80,S90,V40,V50,V70,V70 R,V90,VHD,VN420,VN610,VN630,VN660,VN670,VN770,VN780,VNL,VNM Day Cab,XC70,XC90
+Yugo-55,Cabrio,GV
