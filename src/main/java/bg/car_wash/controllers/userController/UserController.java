@@ -4,9 +4,9 @@ import bg.car_wash.configurations.SiteTitleNames;
 import bg.car_wash.configurations.UserConfiguration;
 import bg.car_wash.entities.User;
 import bg.car_wash.entities.enumerations.UserType;
-import bg.car_wash.models.bindingModels.UserLoginBindingModel;
-import bg.car_wash.models.bindingModels.UserRegisterBindingModel;
-import bg.car_wash.models.viewModels.UserSessionViewModel;
+import bg.car_wash.models.bindingModels.user.UserLoginBindingModel;
+import bg.car_wash.models.bindingModels.user.UserRegisterBindingModel;
+import bg.car_wash.models.viewModels.user.UserSessionViewModel;
 import bg.car_wash.services.UserService;
 import bg.car_wash.utils.parser.interfaces.ModelParser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.math.BigDecimal;
@@ -32,15 +35,17 @@ public class UserController {
 
 	@Autowired
 	private ModelParser modelParser;
-//
-//	@GetMapping("/status")
-//	public String getUserStatusPage(HttpSession httpSession) {
-//		if(httpSession.getAttribute("username") != null) {
-//			return "user-status";
-//		}
-//
-//		return "redirect:/login";
-//	}
+
+	@GetMapping("/status")
+	public String getUserStatusPage(HttpSession httpSession, HttpServletRequest httpServletRequest) {
+		if(httpSession.getAttribute("username") != null) {
+			return "user-status";
+		}
+
+		Cookie[] cookies = httpServletRequest.getCookies();
+
+		return "redirect:/login";
+	}
 
 	@GetMapping("/login")
 	public String getLoginPage(Model model, @ModelAttribute UserLoginBindingModel userLoginBindingModel) {
@@ -49,21 +54,24 @@ public class UserController {
 	}
 
 	@PostMapping("/login")
-	public String loginUser(@Valid @ModelAttribute UserLoginBindingModel userLoginBindingModel, BindingResult bindingResult, HttpSession httpSession) {
+	public String loginUser(@Valid @ModelAttribute UserLoginBindingModel userLoginBindingModel,
+							BindingResult bindingResult,
+							HttpSession httpSession,
+							HttpServletResponse httpServletResponse) {
 		if(bindingResult.hasErrors()) {
 			return "user/user-login";
 		}
 
 		UserSessionViewModel user = this.userService.getUserByFullNameAndPassword(userLoginBindingModel);
-		if(user != null) {
-			httpSession.setAttribute("user-email", user.getEmail());
-			httpSession.setAttribute("user-full-name", user.getFullName());
-
-			return "redirect:/status";
+		if(user == null) {
+			return "user/user-login";
 		}
 
-		//if not get user from database
-		return "user/user-login";
+		httpSession.setAttribute("user-email", user.getEmail());
+		httpSession.setAttribute("user-full-name", user.getFullName());
+		httpServletResponse.addCookie(new Cookie("user", user.getFullName()));
+
+		return "redirect:/user/status";
 	}
 
 	@GetMapping("/register")
