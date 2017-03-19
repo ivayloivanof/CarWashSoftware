@@ -1,4 +1,4 @@
-package bg.car_wash.models.viewModels;
+package bg.car_wash.models.viewModels.user;
 
 public class UserSessionViewModel {
 
@@ -23,5 +23,12 @@ public class UserSessionViewModel {
 
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(String.format("name: %s | email: %s", this.getFullName(), this.getEmail()));
+		return stringBuilder.toString();
 	}
 }
