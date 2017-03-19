@@ -1,8 +1,8 @@
 package bg.car_wash.services;
 
 import bg.car_wash.entities.User;
-import bg.car_wash.models.bindingModels.UserLoginBindingModel;
-import bg.car_wash.models.viewModels.UserSessionViewModel;
+import bg.car_wash.models.bindingModels.user.UserLoginBindingModel;
+import bg.car_wash.models.viewModels.user.UserSessionViewModel;
 
 import java.util.List;
 
