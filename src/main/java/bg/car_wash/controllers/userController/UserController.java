@@ -9,6 +9,7 @@ import bg.car_wash.models.bindingModels.user.UserRegisterBindingModel;
 import bg.car_wash.models.viewModels.user.UserSessionViewModel;
 import bg.car_wash.services.UserService;
 import bg.car_wash.utils.parser.interfaces.ModelParser;
+import bg.car_wash.utils.user.UserCreateCookie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,14 +38,20 @@ public class UserController {
 	private ModelParser modelParser;
 
 	@GetMapping("/status")
-	public String getUserStatusPage(HttpSession httpSession, HttpServletRequest httpServletRequest) {
-		if(httpSession.getAttribute("username") != null) {
-			return "user-status";
-		}
+	public String getUserStatusPage(HttpServletRequest httpServletRequest, Model model) {
+		model.addAttribute("pageTitle", SiteTitleNames.USER_STATUS_PAGE);
 
 		Cookie[] cookies = httpServletRequest.getCookies();
+		for (Cookie cookie : cookies) {
+			model.addAttribute(cookie.getName(), cookie.getValue());
+		}
 
-		return "redirect:/login";
+		//TODO check for user is active
+		if(cookies.length > 0) {
+			return "user/user-status";
+		}
+
+		return "redirect:/user/login";
 	}
 
 	@GetMapping("/login")
@@ -56,7 +63,6 @@ public class UserController {
 	@PostMapping("/login")
 	public String loginUser(@Valid @ModelAttribute UserLoginBindingModel userLoginBindingModel,
 							BindingResult bindingResult,
-							HttpSession httpSession,
 							HttpServletResponse httpServletResponse) {
 		if(bindingResult.hasErrors()) {
 			return "user/user-login";
@@ -67,9 +73,11 @@ public class UserController {
 			return "user/user-login";
 		}
 
-		httpSession.setAttribute("user-email", user.getEmail());
-		httpSession.setAttribute("user-full-name", user.getFullName());
-		httpServletResponse.addCookie(new Cookie("user", user.getFullName()));
+		UserCreateCookie userCreateCookie = new UserCreateCookie(user);
+
+		for (Cookie cookie : userCreateCookie.getCookies()) {
+			httpServletResponse.addCookie(cookie);
+		}
 
 		return "redirect:/user/status";
 	}
@@ -104,4 +112,20 @@ public class UserController {
 
 		return "redirect:/user/login";
 	}
+
+	@GetMapping("/logout")
+	public String logoutUser(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+		Cookie[] cookies = httpServletRequest.getCookies();
+		if (cookies.length > 1) {
+			for (Cookie cookie : cookies) {
+				cookie.setMaxAge(0);
+				httpServletResponse.addCookie(cookie);
+			}
+		}
+
+		return "redirect:/";
+	}
+
+
+
 }
