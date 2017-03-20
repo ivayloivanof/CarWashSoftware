@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
 
-<form method="post" th:fragment="login-form" th:object="${userLoginBindingModel}" class="col-4">
+<form method="post" th:fragment="login-form" th:object="${userLoginBindingModel}" class="col-5">
     <div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-danger'">
         <label for="emailLogin">Email</label>
         <input type="email" class="form-control" id="emailLogin" aria-describedby="emailLoginHelp" name="email"  th:field="*{email}"/>
@@ -18,7 +18,7 @@
     <button type="submit" class="btn btn-secondary">Login</button>
 </form>
 
-<form method="post" th:fragment="register-form" th:object="${userRegisterBindingModel}" class="col-4">
+<form method="post" th:fragment="register-form" th:object="${userRegisterBindingModel}" class="col-5">
     <div class="form-group" th:classappend="${#fields.hasErrors('fullName')}? 'has-danger'">
         <label for="fullNameRegister">Full Name</label>
         <input type="text" class="form-control" id="fullNameRegister" aria-describedby="fullNameRegisterHelp" name="fullName"  th:field="*{fullName}"/>
