@@ -1,10 +1,14 @@
 package bg.car_wash.models.viewModels.user;
 
+import bg.car_wash.entities.enumerations.UserType;
+
 public class UserSessionViewModel {
 
 	private String email;
 
 	private String fullName;
+
+	private UserType userType;
 
 	public UserSessionViewModel() {
 	}
@@ -25,10 +29,11 @@ public class UserSessionViewModel {
 		this.fullName = fullName;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(String.format("name: %s | email: %s", this.getFullName(), this.getEmail()));
-		return stringBuilder.toString();
+	public UserType getUserType() {
+		return userType;
+	}
+
+	public void setUserType(UserType userType) {
+		this.userType = userType;
 	}
 }
