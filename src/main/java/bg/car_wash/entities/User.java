@@ -1,14 +1,17 @@
 package bg.car_wash.entities;
 
 import bg.car_wash.entities.enumerations.UserType;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.util.Collection;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements UserDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +20,10 @@ public class User {
 	@Column(name = "full_name", nullable = false)
 	@Size(min = 7, max = 65)
 	private String fullName;
+
+	@Column(name = "username", nullable = false)
+	@Size(min = 3, max = 25)
+	private String username;
 
 	@Column(name = "email", nullable = true)
 	@Size(min = 7, max = 100)
@@ -36,6 +43,40 @@ public class User {
 	public User() {
 	}
 
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return null;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	@Override
+	public String getUsername() {
+		return this.username;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return false;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return false;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return false;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return false;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -52,16 +93,16 @@ public class User {
 		this.fullName = fullName;
 	}
 
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
 	}
 
 	public void setPassword(String password) {
