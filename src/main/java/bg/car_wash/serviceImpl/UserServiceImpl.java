@@ -1,7 +1,7 @@
 package bg.car_wash.serviceImpl;
 
 import bg.car_wash.configurations.Errors;
-import bg.car_wash.entities.User;
+import bg.car_wash.areas.user.entity.User;
 import bg.car_wash.models.bindingModels.user.UserLoginBindingModel;
 import bg.car_wash.models.viewModels.user.UserSessionViewModel;
 import bg.car_wash.repositories.UserRepository;

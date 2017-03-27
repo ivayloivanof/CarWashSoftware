@@ -1,6 +1,6 @@
 package bg.car_wash.models.viewModels.user;
 
-import bg.car_wash.entities.enumerations.UserType;
+import bg.car_wash.areas.user.entity.UserType;
 
 public class UserSessionViewModel {
 

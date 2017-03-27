@@ -1,6 +1,6 @@
 package bg.car_wash.repositories;
 
-import bg.car_wash.entities.User;
+import bg.car_wash.areas.user.entity.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;

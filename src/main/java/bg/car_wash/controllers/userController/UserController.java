@@ -2,8 +2,8 @@ package bg.car_wash.controllers.userController;
 
 import bg.car_wash.configurations.SiteTitleNames;
 import bg.car_wash.configurations.UserConfiguration;
-import bg.car_wash.entities.User;
-import bg.car_wash.entities.enumerations.UserType;
+import bg.car_wash.areas.user.entity.User;
+import bg.car_wash.areas.user.entity.UserType;
 import bg.car_wash.models.bindingModels.user.UserLoginBindingModel;
 import bg.car_wash.models.bindingModels.user.UserRegisterBindingModel;
 import bg.car_wash.models.viewModels.user.UserSessionViewModel;
@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
