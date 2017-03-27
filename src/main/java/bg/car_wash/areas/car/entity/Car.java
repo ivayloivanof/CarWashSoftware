@@ -1,12 +1,9 @@
-package bg.car_wash.entities;
+package bg.car_wash.areas.car.entity;
 
-import bg.car_wash.entities.enumerations.CarType;
+import bg.car_wash.areas.customer.entity.Customer;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Date;
 
 @Entity
 @Table(name = "cars")

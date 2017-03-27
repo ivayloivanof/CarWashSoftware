@@ -1,12 +1,11 @@
-package bg.car_wash.entities;
+package bg.car_wash.areas.service.entity;
 
-import bg.car_wash.entities.enumerations.CarType;
-import bg.car_wash.entities.enumerations.UserType;
+import bg.car_wash.areas.car.entity.CarType;
+import bg.car_wash.areas.user.entity.UserType;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
-import java.util.List;
 
 @Entity
 @Table(name = "services")

@@ -1,4 +1,4 @@
-package bg.car_wash.entities;
+package bg.car_wash.areas.role.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 

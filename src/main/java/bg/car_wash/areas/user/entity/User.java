@@ -1,6 +1,5 @@
-package bg.car_wash.entities;
+package bg.car_wash.areas.user.entity;
 
-import bg.car_wash.entities.enumerations.UserType;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

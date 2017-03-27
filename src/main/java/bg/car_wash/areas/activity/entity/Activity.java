@@ -1,4 +1,7 @@
-package bg.car_wash.entities;
+package bg.car_wash.areas.activity.entity;
+
+import bg.car_wash.areas.car.entity.Car;
+import bg.car_wash.areas.service.entity.Service;
 
 import javax.persistence.*;
 import java.util.List;
