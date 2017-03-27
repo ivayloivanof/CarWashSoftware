@@ -1,4 +1,4 @@
-package bg.car_wash.models.bindingModels.user;
+package bg.car_wash.areas.user.models.bindingModels.user;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

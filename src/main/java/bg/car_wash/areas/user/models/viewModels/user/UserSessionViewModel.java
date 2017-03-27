@@ -1,4 +1,4 @@
-package bg.car_wash.models.viewModels.user;
+package bg.car_wash.areas.user.models.viewModels.user;
 
 import bg.car_wash.areas.user.entity.UserType;
 

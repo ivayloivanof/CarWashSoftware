@@ -1,13 +1,13 @@
-package bg.car_wash.controllers.userController;
+package bg.car_wash.areas.user.userController;
 
 import bg.car_wash.configurations.SiteTitleNames;
 import bg.car_wash.configurations.UserConfiguration;
 import bg.car_wash.areas.user.entity.User;
 import bg.car_wash.areas.user.entity.UserType;
-import bg.car_wash.models.bindingModels.user.UserLoginBindingModel;
-import bg.car_wash.models.bindingModels.user.UserRegisterBindingModel;
-import bg.car_wash.models.viewModels.user.UserSessionViewModel;
-import bg.car_wash.services.UserService;
+import bg.car_wash.areas.user.models.bindingModels.user.UserLoginBindingModel;
+import bg.car_wash.areas.user.models.bindingModels.user.UserRegisterBindingModel;
+import bg.car_wash.areas.user.models.viewModels.user.UserSessionViewModel;
+import bg.car_wash.areas.user.services.UserService;
 import bg.car_wash.utils.parser.interfaces.ModelParser;
 import bg.car_wash.utils.user.UserCreateCookie;
 import org.springframework.beans.factory.annotation.Autowired;

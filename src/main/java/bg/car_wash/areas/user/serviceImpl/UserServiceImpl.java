@@ -1,11 +1,11 @@
-package bg.car_wash.serviceImpl;
+package bg.car_wash.areas.user.serviceImpl;
 
 import bg.car_wash.configurations.Errors;
 import bg.car_wash.areas.user.entity.User;
-import bg.car_wash.models.bindingModels.user.UserLoginBindingModel;
-import bg.car_wash.models.viewModels.user.UserSessionViewModel;
-import bg.car_wash.repositories.UserRepository;
-import bg.car_wash.services.UserService;
+import bg.car_wash.areas.user.models.bindingModels.user.UserLoginBindingModel;
+import bg.car_wash.areas.user.models.viewModels.user.UserSessionViewModel;
+import bg.car_wash.areas.user.repositories.UserRepository;
+import bg.car_wash.areas.user.services.UserService;
 import bg.car_wash.utils.parser.interfaces.ModelParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

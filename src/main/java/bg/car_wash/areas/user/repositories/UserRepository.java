@@ -1,4 +1,4 @@
-package bg.car_wash.repositories;
+package bg.car_wash.areas.user.repositories;
 
 import bg.car_wash.areas.user.entity.User;
 import org.springframework.data.repository.CrudRepository;
