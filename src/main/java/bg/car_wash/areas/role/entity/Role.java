@@ -3,6 +3,7 @@ package bg.car_wash.areas.role.entity;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "roles")
@@ -12,7 +13,8 @@ public class Role implements GrantedAuthority {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Basic
+    @Size(min = 5, max = 25)
+    @Column(name = "authority", nullable = false)
     private String authority;
 
     @Override

@@ -1,6 +1,6 @@
 package bg.car_wash.utils.user;
 
-import bg.car_wash.models.viewModels.user.UserSessionViewModel;
+import bg.car_wash.areas.user.models.viewModels.user.UserSessionViewModel;
 
 import javax.servlet.http.Cookie;
 import java.security.MessageDigest;

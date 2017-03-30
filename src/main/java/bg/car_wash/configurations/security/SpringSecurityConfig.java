@@ -1,6 +1,6 @@
 package bg.car_wash.configurations.security;
 
-import bg.car_wash.services.UserService;
+import bg.car_wash.areas.user.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
