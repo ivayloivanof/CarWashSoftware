@@ -1,5 +1,6 @@
 package bg.car_wash.areas.user.userController;
 
+import bg.car_wash.areas.user.exception.UserNotFoundException;
 import bg.car_wash.configurations.SiteTitleNames;
 import bg.car_wash.configurations.UserConfiguration;
 import bg.car_wash.areas.user.entity.User;
@@ -14,10 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -125,6 +123,11 @@ public class UserController {
 		return "redirect:/";
 	}
 
+	@ExceptionHandler(UserNotFoundException.class)
+	public String catchUserNotFoundException() {
 
+		//TODO create and return error page from not found user
+		return "";
+	}
 
 }

@@ -1,5 +1,6 @@
 package bg.car_wash.areas.user.serviceImpl;
 
+import bg.car_wash.areas.user.exception.UserNotFoundException;
 import bg.car_wash.configurations.Errors;
 import bg.car_wash.areas.user.entity.User;
 import bg.car_wash.areas.user.models.bindingModels.user.UserLoginBindingModel;
@@ -48,7 +49,8 @@ public class UserServiceImpl implements UserService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = this.userRepository.findOneByUsername(username);
 		if (user == null) {
-			throw new UsernameNotFoundException(Errors.INVALID_CREDENTIALS);
+			throw  new UserNotFoundException();
+//			throw new UsernameNotFoundException(Errors.INVALID_CREDENTIALS);
 		}
 
 		return user;
