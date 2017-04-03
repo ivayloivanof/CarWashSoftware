@@ -1,5 +1,6 @@
 package bg.car_wash.areas.user.entity;
 
+import bg.car_wash.areas.role.entity.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -7,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -20,16 +22,12 @@ public class User implements UserDetails {
 	@Size(min = 7, max = 65)
 	private String fullName;
 
-	@Column(name = "username", nullable = false)
-	@Size(min = 3, max = 25)
-	private String username;
-
 	@Column(name = "email", nullable = true)
 	@Size(min = 7, max = 100)
 	private String email;
 
 	@Column(name = "password", nullable = false)
-	@Size(min = 4, max = 15)
+	@Size(min = 6, max = 80)
 	private String password;
 
 	@Basic
@@ -39,12 +37,34 @@ public class User implements UserDetails {
 	@Column(name = "user_type")
 	private UserType userType;
 
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "users_roles",
+	joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+	inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+	private Set<Role> authorities;
+
+	@Column(name = "is_account_non_expired")
+	private boolean isAccountNonExpired;
+
+	@Column(name = "is_account_non_locked")
+	private boolean isAccountNonLocked;
+
+	@Column(name = "is_credentials_non_expired")
+	private boolean isCredentialsNonExpired;
+
+	@Column(name = "is_enabled")
+	private boolean isEnabled;
+
 	public User() {
 	}
 
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return null;
+	public Set<Role> getAuthorities() {
+		return this.authorities;
+	}
+
+	public void setAuthorities(Set<Role> authorities) {
+		this.authorities = authorities;
 	}
 
 	public String getPassword() {
@@ -53,27 +73,27 @@ public class User implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		return this.username;
+		return this.email;
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-		return false;
+		return this.isAccountNonExpired;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return false;
+		return this.isAccountNonLocked;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		return false;
+		return this.isCredentialsNonExpired;
 	}
 
 	@Override
 	public boolean isEnabled() {
-		return false;
+		return this.isEnabled;
 	}
 
 	public Long getId() {
@@ -90,10 +110,6 @@ public class User implements UserDetails {
 
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getEmail() {
@@ -122,5 +138,21 @@ public class User implements UserDetails {
 
 	public void setUserType(UserType userType) {
 		this.userType = userType;
+	}
+
+	public void setAccountNonExpired(boolean accountNonExpired) {
+		isAccountNonExpired = accountNonExpired;
+	}
+
+	public void setAccountNonLocked(boolean accountNonLocked) {
+		isAccountNonLocked = accountNonLocked;
+	}
+
+	public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+		isCredentialsNonExpired = credentialsNonExpired;
+	}
+
+	public void setEnabled(boolean enabled) {
+		isEnabled = enabled;
 	}
 }
