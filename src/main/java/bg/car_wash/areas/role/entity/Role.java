@@ -26,7 +26,7 @@ public class Role implements GrantedAuthority {
         return id;
     }
 
-    public void setId(long id) {
+    private void setId(long id) {
         this.id = id;
     }
 

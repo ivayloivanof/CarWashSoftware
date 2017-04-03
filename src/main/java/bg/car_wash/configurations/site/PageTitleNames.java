@@ -1,6 +1,6 @@
-package bg.car_wash.configurations;
+package bg.car_wash.configurations.site;
 
-public final class  SiteTitleNames {
+public final class PageTitleNames {
 
 	public static final String HOME_PAGE = "Home page";
 	public static final String LOGIN_PAGE = "Login page";
