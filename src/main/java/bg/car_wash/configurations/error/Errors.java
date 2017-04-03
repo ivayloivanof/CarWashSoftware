@@ -1,4 +1,4 @@
-package bg.car_wash.configurations;
+package bg.car_wash.configurations.error;
 
 public class Errors {
 

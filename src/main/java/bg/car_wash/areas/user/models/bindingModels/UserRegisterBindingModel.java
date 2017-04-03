@@ -1,4 +1,4 @@
-package bg.car_wash.areas.user.models.bindingModels.user;
+package bg.car_wash.areas.user.models.bindingModels;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -18,7 +18,7 @@ public class UserRegisterBindingModel {
 	private String password;
 
 	//TODO validation with password are equals
-	@NotNull(message = "Passwor not be empty!")
+	@NotNull(message = "Password not be empty!")
 	private String passwordRepeat;
 
 	public UserRegisterBindingModel() {
