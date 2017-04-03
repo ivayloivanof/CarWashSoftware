@@ -8,21 +8,37 @@
         </button>
         <a class="navbar-brand" href="#">Car Wash</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
-                </li>
+            <ul class="nav nav-tabs justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="/user/login">Login</a>
+                    <a class="nav-link"
+                       th:href="${T(bg.car_wash.configurations.site.PageUrl).HOME_PAGE}"
+                       th:text="${T(bg.car_wash.configurations.site.PageTitle).HOME_PAGE}"><span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/user/register">Register</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">User</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item"
+                           th:href="${T(bg.car_wash.configurations.site.PageUrl).LOGIN_PAGE}"
+                           th:text="${T(bg.car_wash.configurations.site.PageTitle).HOME_PAGE}"></a>
+                        <a class="dropdown-item"
+                           th:href="${T(bg.car_wash.configurations.site.PageUrl).REGISTER_PAGE}"
+                           th:text="${T(bg.car_wash.configurations.site.PageTitle).REGISTER_PAGE}"></a>
+                        <a class="dropdown-item"
+                           th:href="${T(bg.car_wash.configurations.site.PageUrl).LOGOUT_PAGE}"
+                           th:text="${T(bg.car_wash.configurations.site.PageTitle).LOGOUT_PAGE}"></a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item"
+                           th:href="${T(bg.car_wash.configurations.site.PageUrl).USER_STATUS_PAGE}"
+                           th:text="${T(bg.car_wash.configurations.site.PageTitle).USER_STATUS_PAGE}"></a>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/user/logout">Logout</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="/user/status">User Status</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Car</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/car/add" >Add Car</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/car/all" >All Cars</a>
+                    </div>
                 </li>
             </ul>
             <!--<form class="form-inline my-2 my-lg-0">-->
