@@ -11,9 +11,9 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<User, Long> {
 
 //	@Query("SELECT u FROM User AS u WHERE u.email = :email AND u.password = :password")
-	User findUserByEmailAndPassword(@Param("email") String email, @Param("password") String password);
+//	User findUserByEmailAndPassword(@Param("email") String email, @Param("password") String password);
 
 	List<User> findAll();
 
-	User findOneByUsername(String username);
+	User findOneByEmail(String email);
 }
