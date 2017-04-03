@@ -1,6 +1,6 @@
 package bg.car_wash.controllers;
 
-import bg.car_wash.configurations.site.PageTitleNames;
+import bg.car_wash.configurations.site.PageTitle;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +10,7 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String getHomePage(Model model) {
-		model.addAttribute("pageTitle", PageTitleNames.HOME_PAGE);
+		model.addAttribute("pageTitle", PageTitle.HOME_PAGE);
 		return "home";
 	}
 
