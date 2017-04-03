@@ -1,8 +1,8 @@
-package bg.car_wash.areas.user.userController;
+package bg.car_wash.areas.user.controller;
 
 import bg.car_wash.areas.user.exception.UserNotFoundException;
 import bg.car_wash.configurations.error.Errors;
-import bg.car_wash.configurations.site.PageTitleNames;
+import bg.car_wash.configurations.site.PageTitle;
 import bg.car_wash.configurations.user.UserConfiguration;
 import bg.car_wash.areas.user.entity.User;
 import bg.car_wash.areas.user.entity.UserType;
@@ -38,7 +38,7 @@ public class UserController {
 
 	@GetMapping("/status")
 	public String getUserStatusPage(HttpServletRequest httpServletRequest, Model model) {
-		model.addAttribute("pageTitle", PageTitleNames.USER_STATUS_PAGE);
+		model.addAttribute("pageTitle", PageTitle.USER_STATUS_PAGE);
 
 		Cookie[] cookies = httpServletRequest.getCookies();
 		for (Cookie cookie : cookies) {
@@ -58,7 +58,7 @@ public class UserController {
 			Model model,
 			@ModelAttribute UserLoginBindingModel userLoginBindingModel,
 			@RequestParam(required = false) String error) {
-		model.addAttribute("pageTitle", PageTitleNames.LOGIN_PAGE);
+		model.addAttribute("pageTitle", PageTitle.LOGIN_PAGE);
 
 		if(error != null) {
 			model.addAttribute("error", Errors.INVALID_CREDENTIALS);
@@ -91,7 +91,7 @@ public class UserController {
 
 	@GetMapping("/register")
 	public String getRegisterPage(Model model, @ModelAttribute UserRegisterBindingModel userRegisterBindingModel) {
-		model.addAttribute("pageTitle", PageTitleNames.REGISTER_PAGE);
+		model.addAttribute("pageTitle", PageTitle.REGISTER_PAGE);
 		return "user/user-register";
 	}
 
