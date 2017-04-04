@@ -7,6 +7,8 @@ public class PageUrl {
 	public static final String REGISTER_PAGE = "/user/register";
 	public static final String USER_STATUS_PAGE = "/user/status";
 	public static final String CAR_ALL_PAGE = "/car/all";
-	public static final String CAR_ADD_FOR_WORK_PAGE = "/car/add";
+	public static final String CAR_ADD_PAGE = "/car/add";
+	public static final String CAR_EDIT_PAGE = "/car/edit";
+	public static final String CAR_DELETE_PAGE = "/car/delete";
 
 }
