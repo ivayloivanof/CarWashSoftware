@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<form method="post" th:fragment="car-add-form" th:object="${carBindingModel}" class="col-5">
+    <div th:if="${error} != null" th:text="${error}"></div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('carRegistrationNumber')}? 'has-danger'">
+        <label for="carRegistrationNumber">Car Registration Number</label>
+        <input
+                type="text"
+                class="form-control"
+                id="carRegistrationNumber"
+                aria-describedby="carRegistrationNumberHelp"
+                name="carRegistrationNumber"
+                th:field="*{carRegistrationNumber}"/>
+        <small
+                id="carRegistrationNumberHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('carRegistrationNumber')}" th:text="${error}">Error</small>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('carModel')}? 'has-danger'">
+        <label for="carModel">Car Model</label>
+        <input
+                type="text"
+                class="form-control"
+                id="carModel"
+                aria-describedby="carModelHelp"
+                name="carModel"
+                th:field="*{carModel}"/>
+        <small
+                id="carModelHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('carModel')}" th:text="${error}">Error</small>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('carMake')}? 'has-danger'">
+        <label for="carMake">Car Make</label>
+        <input
+                type="text"
+                class="form-control"
+                id="carMake"
+                aria-describedby="carMakeHelp"
+                name="carMake"
+                th:field="*{carMake}"/>
+        <small
+                id="carMakeHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('carMake')}" th:text="${error}">Error</small>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('carType')}? 'has-danger'">
+        <label for="carType">Car Type</label>
+        <select
+                id="carType"
+                class="form-control"
+                aria-describedby="carTypeHelp"
+                name="carType"
+                th:field="*{carType}">
+            <option
+                    th:value="${T(bg.car_wash.areas.car.entity.CarType).BUS}"
+                    th:text="${T(bg.car_wash.areas.car.entity.CarType).BUS}"></option>
+            <option
+                    th:value="${T(bg.car_wash.areas.car.entity.CarType).CAR}"
+                    th:text="${T(bg.car_wash.areas.car.entity.CarType).CAR}"></option>
+            <option
+                    th:value="${T(bg.car_wash.areas.car.entity.CarType).JEEP}"
+                    th:text="${T(bg.car_wash.areas.car.entity.CarType).JEEP}"></option>
+            <option
+                    th:value="${T(bg.car_wash.areas.car.entity.CarType).PICAP}"
+                    th:text="${T(bg.car_wash.areas.car.entity.CarType).PICAP}"></option>
+            <option
+                    th:value="${T(bg.car_wash.areas.car.entity.CarType).VAN}"
+                    th:text="${T(bg.car_wash.areas.car.entity.CarType).VAN}"></option>
+        </select>
+        <small
+                id="carTypeHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('carType')}" th:text="${error}">Error</small>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-secondary">Add car</button>
+</form>
+
+</body>
+</html>
