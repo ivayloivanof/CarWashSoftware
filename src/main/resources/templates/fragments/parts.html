@@ -19,7 +19,7 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item"
                            th:href="${T(bg.car_wash.configurations.site.PageUrl).LOGIN_PAGE}"
-                           th:text="${T(bg.car_wash.configurations.site.PageTitle).HOME_PAGE}"></a>
+                           th:text="${T(bg.car_wash.configurations.site.PageTitle).LOGIN_PAGE}"></a>
                         <a class="dropdown-item"
                            th:href="${T(bg.car_wash.configurations.site.PageUrl).REGISTER_PAGE}"
                            th:text="${T(bg.car_wash.configurations.site.PageTitle).REGISTER_PAGE}"></a>
@@ -35,9 +35,16 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Car</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/car/add" >Add Car</a>
+                        <a class="dropdown-item"
+                           th:href="${T(bg.car_wash.configurations.site.PageUrl).CAR_ADD_PAGE}"
+                           th:text="${T(bg.car_wash.configurations.site.PageTitle).CAR_ADD_PAGE}"></a>
+                        <a class="dropdown-item"
+                           th:href="${T(bg.car_wash.configurations.site.PageUrl).CAR_EDIT_PAGE}"
+                           th:text="${T(bg.car_wash.configurations.site.PageTitle).CAR_EDIT_PAGE}"></a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/car/all" >All Cars</a>
+                        <a class="dropdown-item"
+                           th:href="${T(bg.car_wash.configurations.site.PageUrl).CAR_ALL_PAGE}"
+                           th:text="${T(bg.car_wash.configurations.site.PageTitle).CAR_ALL_PAGE}"></a>
                     </div>
                 </li>
             </ul>
