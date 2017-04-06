@@ -18,11 +18,11 @@ public class Car {
 	private String carRegistrationNumber;
 
 	@Column(name = "car_model_name", nullable = false)
-	@Size(min = 3, max = 25)
+	@Size(min = 2, max = 25)
 	private String carModelName;
 
 	@Column(name = "car_make", nullable = false)
-	@Size(min = 3, max = 25)
+	@Size(min = 2, max = 25)
 	private String carMake;
 
 	@Enumerated(EnumType.STRING)

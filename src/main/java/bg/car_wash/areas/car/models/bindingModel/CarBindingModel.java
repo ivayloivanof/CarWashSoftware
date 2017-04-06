@@ -10,10 +10,10 @@ public class CarBindingModel {
 	@Size(min = 8, max = 10, message = "Error Car registration Number")
 	private String carRegistrationNumber;
 
-	@Size(min = 3, max = 25, message = "Error car model name")
+	@Size(min = 2, max = 25, message = "Error car model name")
 	private String carModel;
 
-	@Size(min = 3, max = 25, message = "Error car make")
+	@Size(min = 2, max = 25, message = "Error car make")
 	private String carMake;
 
 	private CarType carType;
