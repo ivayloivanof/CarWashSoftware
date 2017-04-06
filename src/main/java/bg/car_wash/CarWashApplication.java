@@ -1,14 +1,11 @@
 package bg.car_wash;
 
-import bg.car_wash.areas.user.entity.User;
-import bg.car_wash.areas.user.services.UserService;
-import bg.car_wash.configurations.database.UserDefault;
+import bg.car_wash.areas.user.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import javax.annotation.PostConstruct;
-import java.util.List;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class CarWashApplication {
@@ -27,5 +24,10 @@ public class CarWashApplication {
 //			this.userService.createUser(user);
 //		}
 //	}
+
+	@Bean
+	public ModelMapper getModelMapper() {
+		return new ModelMapper();
+	}
 
 }
