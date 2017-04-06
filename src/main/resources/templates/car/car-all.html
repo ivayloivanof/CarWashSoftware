@@ -11,7 +11,30 @@
 </header>
 <main>
     <div class="container">
-        <p>Car ALL </p>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Registration Number</th>
+                <th>Model</th>
+                <th>Make</th>
+                <th>Type</th>
+                <th>Edit</th>
+                <th>Owner</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="car : ${carViewModel}">
+                <th scope="row" th:text="${car.getId()}"></th>
+                <td th:text="${car.getCarRegistrationNumber()}"></td>
+                <td th:text="${car.getCarModel()}"></td>
+                <td th:text="${car.getCarMake()}"></td>
+                <td th:text="${car.getCarType()}"></td>
+                <td><a th:href="${car.getId()}" th:text="Edit"></a></td>
+                <td th:if="${car.owner != null}" th:href="${car.owner.getID()}" th:text="${car.owner.getName()}"></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </main>
 <script th:src="@{../jquery/jquery.min.js}"></script>
