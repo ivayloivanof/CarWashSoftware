@@ -1,8 +1,6 @@
-package bg.car_wash.areas.user.services;
+package bg.car_wash.areas.user.service;
 
 import bg.car_wash.areas.user.entity.User;
-import bg.car_wash.areas.user.models.bindingModels.UserLoginBindingModel;
-import bg.car_wash.areas.user.models.viewModels.UserSessionViewModel;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
