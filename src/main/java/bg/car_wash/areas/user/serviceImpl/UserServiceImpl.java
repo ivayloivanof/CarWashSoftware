@@ -1,10 +1,10 @@
 package bg.car_wash.areas.user.serviceImpl;
 
 import bg.car_wash.areas.user.entity.User;
-import bg.car_wash.areas.user.repositories.UserRepository;
-import bg.car_wash.areas.user.services.UserService;
+import bg.car_wash.areas.user.repository.UserRepository;
+import bg.car_wash.areas.user.service.UserService;
 import bg.car_wash.configurations.error.Errors;
-import bg.car_wash.utils.parser.interfaces.ModelParser;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 	private UserRepository userRepository;
 
 	@Autowired
-	private ModelParser modelParser;
+	private ModelMapper modelMapper;
 
 	@Override
 	public void createUser(User user) {

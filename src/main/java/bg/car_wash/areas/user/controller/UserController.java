@@ -8,8 +8,8 @@ import bg.car_wash.areas.user.entity.User;
 import bg.car_wash.areas.user.entity.UserType;
 import bg.car_wash.areas.user.models.bindingModels.UserLoginBindingModel;
 import bg.car_wash.areas.user.models.bindingModels.UserRegisterBindingModel;
-import bg.car_wash.areas.user.services.UserService;
-import bg.car_wash.utils.parser.interfaces.ModelParser;
+import bg.car_wash.areas.user.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -34,7 +34,7 @@ public class UserController {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Autowired
-	private ModelParser modelParser;
+	private ModelMapper modelMapper;
 
 	@GetMapping("/status")
 	public String getUserStatusPage(HttpServletRequest httpServletRequest, Model model) {
@@ -101,7 +101,7 @@ public class UserController {
 			return "user/user-register";
 		}
 
-		User user = this.modelParser.convert(userRegisterBindingModel, User.class);
+		User user = this.modelMapper.map(userRegisterBindingModel, User.class);
 		user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setUserType(UserType.WORKER);
 		user.setRemuneration(new BigDecimal(UserConfiguration.WORKER_REMUNERATION));
