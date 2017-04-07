@@ -2,6 +2,7 @@ package bg.car_wash.areas.car.serviceImpl;
 
 import bg.car_wash.areas.car.entity.Car;
 import bg.car_wash.areas.car.exception.CarDBEmptyException;
+import bg.car_wash.areas.car.exception.CarNotFoundException;
 import bg.car_wash.areas.car.repository.CarRepository;
 import bg.car_wash.areas.car.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,11 @@ public class CarServiceImpl implements CarService {
 		}
 
 		return cars;
+	}
+
+	@Override
+	public void deleteCarById(Long id) throws CarNotFoundException {
+		//TODO throw new CarNotFoundExcception after not success delete car
+		this.carRepository.deleteCarById(id);
 	}
 }
