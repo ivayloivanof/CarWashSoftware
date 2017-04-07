@@ -1,6 +1,7 @@
 package bg.car_wash.areas.car.models.bindingModel;
 
 import bg.car_wash.areas.car.entity.CarType;
+import bg.car_wash.areas.customer.entity.Customer;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -17,6 +18,8 @@ public class CarBindingModel {
 	private String carMake;
 
 	private CarType carType;
+
+	private Customer owner;
 
 	public CarBindingModel() {
 	}
@@ -51,5 +54,13 @@ public class CarBindingModel {
 
 	public void setCarType(CarType carType) {
 		this.carType = carType;
+	}
+
+	public Customer getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Customer owner) {
+		this.owner = owner;
 	}
 }
