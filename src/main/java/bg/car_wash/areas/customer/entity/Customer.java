@@ -29,7 +29,7 @@ public class Customer {
 	@Basic
 	private int discount;
 
-	@OneToMany(targetEntity = Car.class, cascade = CascadeType.ALL)
+	@OneToMany(targetEntity = Car.class, cascade = CascadeType.ALL, mappedBy = "owner")
 	private List<Car> cars;
 
 	public Customer() {
