@@ -30,8 +30,8 @@
                 <td th:text="${car.getCarModel()}"></td>
                 <td th:text="${car.getCarMake()}"></td>
                 <td th:text="${car.getCarType()}"></td>
-                <td><a th:href="${car.getId()}" th:text="Edit"></a></td>
-                <td th:if="${car.owner != null}" th:href="${car.owner.getID()}" th:text="${car.owner.getName()}"></td>
+                <td><a th:href="@{edit/{id}(id=${car.getId()})}" th:text="Edit"></a></td>
+                <td th:if="${car.owner != null}"><a th:href="@{/customer/{id}(id=${car.owner.getId()})}" th:text="${car.owner.getName()}"></a></td>
             </tr>
             </tbody>
         </table>
