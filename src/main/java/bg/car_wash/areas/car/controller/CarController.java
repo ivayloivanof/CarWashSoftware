@@ -4,16 +4,16 @@ import bg.car_wash.areas.car.entity.Car;
 import bg.car_wash.areas.car.models.bindingModel.CarBindingModel;
 import bg.car_wash.areas.car.models.viewModel.CarViewModel;
 import bg.car_wash.areas.car.service.CarService;
+import bg.car_wash.areas.customer.entity.Customer;
+import bg.car_wash.areas.customer.service.CustomerService;
 import bg.car_wash.configurations.site.PageTitle;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.LinkedList;
@@ -25,6 +25,9 @@ public class CarController {
 
 	@Autowired
 	private CarService carService;
+
+	@Autowired
+	private CustomerService customerService;
 
 	@Autowired
 	private ModelMapper modelMapper;
@@ -45,10 +48,7 @@ public class CarController {
 	}
 
 	@GetMapping("/add")
-	public String addCarForWorkPage(
-			Model model,
-			@Valid @ModelAttribute CarBindingModel carBindingModel,
-			BindingResult bindingResult) {
+	public String addCarForWorkPage(Model model) {
 		model.addAttribute("pageTitle", PageTitle.CAR_ADD_PAGE);
 		return "car/car-add";
 	}
@@ -65,6 +65,9 @@ public class CarController {
 		}
 
 		//TODO get customer from DB
+//		Customer customer = this.customerService.findCustomerByName(carBindingModel.getOwner().getName());
+
+
 		Car car = this.modelMapper.map(carBindingModel, Car.class);
 		car.setCarModelName(carBindingModel.getCarModel());
 
@@ -75,13 +78,16 @@ public class CarController {
 
 	@GetMapping("/edit")
 	public String editCarForWorkPage(Model model) {
+		//TODO
 		model.addAttribute("pageTitle", PageTitle.CAR_EDIT_PAGE);
 		return "car/car-edit";
 	}
 
-	@GetMapping("/delete")
-	public String deleteCarForWorkPage(Model model) {
-		model.addAttribute("pageTitle", PageTitle.CAR_DELETE_PAGE);
-		return "car/car-edit";
+	@PostMapping("/delete/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public String deleteCar(@PathVariable("id") Long id) {
+		this.carService.deleteCarById(id);
+
+		return "redirect: car/all";
 	}
 }
