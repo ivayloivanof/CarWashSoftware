@@ -29,7 +29,7 @@ public class Car {
 	@Column(name = "car_type")
 	private CarType carType;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Customer.class)
 	private Customer owner;
 
 	public Car() {
