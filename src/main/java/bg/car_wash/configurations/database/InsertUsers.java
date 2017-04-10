@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
 
-public class UserDefault {
+public class InsertUsers {
 
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -17,7 +17,7 @@ public class UserDefault {
 
 	private List<User> users;
 
-	public UserDefault() {
+	public InsertUsers() {
 		this.users = new LinkedList<>();
 		this.bCryptPasswordEncoder = new BCryptPasswordEncoder();
 		this.password = this.bCryptPasswordEncoder.encode("123456");
@@ -26,8 +26,8 @@ public class UserDefault {
 
 	public void initUsers() {
 		User u1 = new User();
-		u1.setEmail("ivan@abv.bg");
-		u1.setFullName("Ivan Ivanov");
+		u1.setEmail("ivaylo.ivanof@gmail.com");
+		u1.setFullName("Ivaylo Ivanov");
 		u1.setPassword(this.password);
 		u1.setUserType(UserType.ADMIN);
 		u1.setRemuneration(new BigDecimal(UserConfiguration.ADMIN_REMUNERATION));
