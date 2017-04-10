@@ -36,4 +36,14 @@ public class CarServiceImpl implements CarService {
 		//TODO throw new CarNotFoundExcception after not success delete car
 		this.carRepository.deleteCarById(id);
 	}
+
+	@Override
+	public Car findCarById(Long id) throws CarNotFoundException {
+		Car car = this.carRepository.findCarById(id);
+		if (car == null) {
+			throw new CarNotFoundException(String.format("Car with id:$d - not found!", id), 404);
+		}
+
+		return car;
+	}
 }
