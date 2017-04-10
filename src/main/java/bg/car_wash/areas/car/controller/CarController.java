@@ -2,6 +2,7 @@ package bg.car_wash.areas.car.controller;
 
 import bg.car_wash.areas.car.entity.Car;
 import bg.car_wash.areas.car.models.bindingModel.CarBindingModel;
+import bg.car_wash.areas.car.models.bindingModel.CarSearchBindingModel;
 import bg.car_wash.areas.car.models.viewModel.CarViewModel;
 import bg.car_wash.areas.car.service.CarService;
 import bg.car_wash.areas.customer.entity.Customer;
@@ -48,8 +49,11 @@ public class CarController {
 	}
 
 	@GetMapping("/add")
-	public String addCarForWorkPage(Model model) {
+	public String addCarForWorkPage(Model model,
+			@Valid @ModelAttribute CarBindingModel carBindingModel,
+									BindingResult bindingResult) {
 		model.addAttribute("pageTitle", PageTitle.CAR_ADD_PAGE);
+		//TODO add customer form
 		return "car/car-add";
 	}
 
@@ -64,9 +68,8 @@ public class CarController {
 			return "car/car-add";
 		}
 
-		//TODO get customer from DB
+		//TODO get customer from DB and load in form
 //		Customer customer = this.customerService.findCustomerByName(carBindingModel.getOwner().getName());
-
 
 		Car car = this.modelMapper.map(carBindingModel, Car.class);
 		car.setCarModelName(carBindingModel.getCarModel());
@@ -77,15 +80,53 @@ public class CarController {
 	}
 
 	@GetMapping("/edit")
-	public String editCarForWorkPage(Model model) {
-		//TODO
+	public String getEditCarPage(
+			Model model,
+			@Valid @ModelAttribute CarSearchBindingModel carSearchBindingModel,
+			BindingResult bindingResult) {
+		model.addAttribute("pageTitle", PageTitle.CAR_EDIT_PAGE);
+		return "car/car-edit-search";
+	}
+
+	@PostMapping("/edit")
+	public String editCarPage(
+			Model model,
+			@Valid @ModelAttribute CarSearchBindingModel carSearchBindingModel,
+			BindingResult bindingResult) {
+		model.addAttribute("pageTitle", PageTitle.CAR_EDIT_PAGE);
+
+
+		return "car/car-edit-search";
+	}
+
+	@GetMapping("/edit/{id}")
+	public String getEditCarByIdPage(
+			@RequestParam("id") Long id,
+			Model model) {
+		//TODO get car from db and load in form
+		Car car = this.carService.findCarById(id);
+
+
 		model.addAttribute("pageTitle", PageTitle.CAR_EDIT_PAGE);
 		return "car/car-edit";
 	}
 
+	@PostMapping("/edit/{id}")
+	public String editCarById(
+			@RequestParam("id") Long id,
+			@Valid @ModelAttribute CarBindingModel carBindingModel,
+			BindingResult bindingResult) {
+
+		if(bindingResult.hasErrors()) {
+			return "car/car-edit";
+		}
+
+		return null;
+	}
+
 	@PostMapping("/delete/{id}")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public String deleteCar(@PathVariable("id") Long id) {
+	public String deleteCar(@RequestParam("id") Long id) {
 		this.carService.deleteCarById(id);
 
 		return "redirect: car/all";
