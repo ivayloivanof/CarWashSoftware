@@ -81,5 +81,25 @@
     <button type="submit" class="btn btn-secondary">Add car</button>
 </form>
 
+<form method="post" th:fragment="car-search-form" th:object="${carSearchBindingModel}" class="col-5">
+    <div th:if="${error} != null" th:text="${error}"></div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('carRegistrationNumber')}? 'has-danger'">
+        <label for="carSearch">Search car</label>
+        <input
+                type="text"
+                class="form-control"
+                id="carSearch"
+                aria-describedby="carSearchHelp"
+                name="carRegistrationNumber"
+                th:field="*{carRegistrationNumber}"/>
+        <small
+                id="carSearchHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('carRegistrationNumber')}" th:text="${error}">Error</small>
+    </div>
+
+    <button type="submit" class="btn btn-secondary">Search car</button>
+</form>
+
 </body>
 </html>
