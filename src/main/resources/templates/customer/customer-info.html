@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${pageTitle}">User Login</title>
+    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css"
+          th:href="@{../../bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<header th:replace="fragments/parts::menu">
+</header>
+<main>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Customer name</th>
+                <th>Phone number</th>
+                <th>Registration date</th>
+                <th>Discount</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row" th:text="${customerViewModel.getId()}"></th>
+                <td th:text="${customerViewModel.getName()}"></td>
+                <td th:text="${customerViewModel.getPhoneNumber()}"></td>
+                <td th:text="${customerViewModel.getDate()}"></td>
+                <td th:text="${customerViewModel.getDiscount()}"></td>
+                <td><a th:href="@{/customer/edit/{id}(id=${customerViewModel.getId()})}" th:text="Edit"></a></td>
+                <td><a th:href="@{/customer/delete/{id}(id=${customerViewModel.getId()})}" th:text="Delete"></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<script th:src="@{../../jquery/jquery.min.js}"></script>
+<script th:src="@{../../bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
