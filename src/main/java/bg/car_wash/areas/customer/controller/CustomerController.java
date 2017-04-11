@@ -1,6 +1,8 @@
 package bg.car_wash.areas.customer.controller;
 
+import bg.car_wash.areas.customer.entity.Customer;
 import bg.car_wash.areas.customer.models.bindingModel.CustomerBindingModel;
+import bg.car_wash.areas.customer.models.viewModels.CustomerViewModel;
 import bg.car_wash.areas.customer.service.CustomerService;
 import bg.car_wash.configurations.site.PageTitle;
 import org.modelmapper.ModelMapper;
@@ -10,9 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/customer")
@@ -25,12 +31,46 @@ public class CustomerController {
 	private ModelMapper modelMapper;
 
 	@GetMapping("/add")
-	public String addCarForWorkPage(
+	public String getAddCustomerPage(
 			Model model,
 			@Valid @ModelAttribute CustomerBindingModel customerBindingModel,
 			BindingResult bindingResult) {
 		model.addAttribute("pageTitle", PageTitle.CUSTOMER_ADD_PAGE);
 
 		return "customer/customer-add";
+	}
+
+	@PostMapping("/add")
+	public String addCustomerPage(
+			Model model,
+			@Valid @ModelAttribute CustomerBindingModel customerBindingModel,
+			BindingResult bindingResult) {
+
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("pageTitle", PageTitle.CUSTOMER_ADD_PAGE);
+			return "customer/customer-add";
+		}
+
+		customerBindingModel.setDate(new Date());
+
+		Customer customer = this.modelMapper.map(customerBindingModel, Customer.class);
+
+		this.customerService.createCustomer(customer);
+
+		return "customer/customer-all";
+	}
+
+	@GetMapping("/all")
+	public String getAllCustomerPage(Model model) {
+		List<CustomerViewModel> customersViewModels = new LinkedList<>();
+		List<Customer> customers = this.customerService.findAllCustomers();
+		for (Customer customer : customers) {
+			customersViewModels.add(this.modelMapper.map(customer, CustomerViewModel.class));
+		}
+
+		model.addAttribute("pageTitle", PageTitle.CUSTOMER_ALL_PAGE);
+		model.addAttribute("customersViewModel", customersViewModels);
+
+		return "customer/customer-all";
 	}
 }
