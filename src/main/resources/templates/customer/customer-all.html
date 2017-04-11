@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${pageTitle}">User Login</title>
+    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css"
+          th:href="@{../bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<header th:replace="fragments/parts::menu">
+</header>
+<main>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Customer name</th>
+                <th>Phone number</th>
+                <th>Registration date</th>
+                <th>Discount</th>
+                <th>Edit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="customer : ${customersViewModel}">
+                <th scope="row" th:text="${customer.getId()}"></th>
+                <td th:text="${customer.getName()}"></td>
+                <td th:text="${customer.getPhoneNumber()}"></td>
+                <td th:text="${customer.getDate()}"></td>
+                <td th:text="${customer.getDiscount()}"></td>
+                <td><a th:href="@{edit/{id}(id=${customer.getId()})}" th:text="Edit"></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<script th:src="@{../jquery/jquery.min.js}"></script>
+<script th:src="@{../bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
