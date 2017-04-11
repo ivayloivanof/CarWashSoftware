@@ -5,7 +5,7 @@
 <form method="post" th:fragment="customer-add-form" th:object="${customerBindingModel}" class="col-5">
     <div th:if="${error} != null" th:text="${error}"></div>
     <div class="form-group" th:classappend="${#fields.hasErrors('name')}? 'has-danger'">
-        <label for="customerName">Customer Number</label>
+        <label for="customerName">Customer Name</label>
         <input
                 type="text"
                 class="form-control"
@@ -47,7 +47,7 @@
                 th:each="error : ${#fields.errors('discount')}" th:text="${error}">Error</small>
     </div>
 
-    <button type="submit" class="btn btn-secondary">Add car</button>
+    <button type="submit" class="btn btn-secondary">Add customer</button>
 </form>
 
 </body>
