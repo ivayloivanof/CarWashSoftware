@@ -18,7 +18,6 @@
                 <th>Customer name</th>
                 <th>Phone number</th>
                 <th>Registration date</th>
-                <th>Discount</th>
                 <th>Edit</th>
             </tr>
             </thead>
@@ -28,8 +27,7 @@
                 <td th:text="${customer.getName()}"></td>
                 <td th:text="${customer.getPhoneNumber()}"></td>
                 <td th:text="${customer.getDate()}"></td>
-                <td th:text="${customer.getDiscount()}"></td>
-                <td><a th:href="@{edit/{id}(id=${customer.getId()})}" th:text="Edit"></a></td>
+                <td><a th:href="@{info/{id}(id=${customer.getId()})}" th:text="Info"></a></td>
             </tr>
             </tbody>
         </table>
