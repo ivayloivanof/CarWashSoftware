@@ -10,7 +10,7 @@ public final class PageTitle {
 	public static final String USER_STATUS_PAGE = "User status";
 
 	public static final String CAR_ALL_PAGE = "All cars";
-	public static final String CAR_INFO_PAGE = "User info";
+	public static final String CAR_INFO_PAGE = "Car info";
 	public static final String CAR_ADD_PAGE = "Add car";
 	public static final String CAR_EDIT_PAGE = "Edit car";
 	public static final String CAR_DELETE_PAGE = "Delete car";
