@@ -13,4 +13,6 @@ public interface CustomerService {
 	List<Customer> findAllCustomers() throws CustomerDBEmptyException;
 
 	Customer findCustomerByName(String name) throws CustomerNotFoundException;
+
+	Customer findCustomerById(Long id) throws CustomerNotFoundException;
 }

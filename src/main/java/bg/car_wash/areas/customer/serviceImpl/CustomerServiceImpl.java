@@ -45,4 +45,14 @@ public class CustomerServiceImpl implements CustomerService {
 
 		return customer;
 	}
+
+	@Override
+	public Customer findCustomerById(Long id) throws CustomerNotFoundException {
+		Customer customer = this.customerRepository.findCustomerById(id);
+		if (customer == null) {
+			throw new CustomerNotFoundException(String.format("Customer with id:%d - not found!", id), 404);
+		}
+
+		return customer;
+	}
 }
