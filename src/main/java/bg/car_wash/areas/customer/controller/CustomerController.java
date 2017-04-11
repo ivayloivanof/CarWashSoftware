@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Date;
@@ -72,5 +69,16 @@ public class CustomerController {
 		model.addAttribute("customersViewModel", customersViewModels);
 
 		return "customer/customer-all";
+	}
+
+	@GetMapping("/info/{id}")
+	public String getCustomerInfoPage(@PathVariable(value = "id") Long id, Model model) {
+		Customer customer = this.customerService.findCustomerById(id);
+		CustomerViewModel customerViewModel = this.modelMapper.map(customer, CustomerViewModel.class);
+
+		model.addAttribute("pageTitle", PageTitle.CUSTOMER_INFO_PAGE);
+		model.addAttribute("customerViewModel", customerViewModel);
+
+		return "customer/customer-info";
 	}
 }
