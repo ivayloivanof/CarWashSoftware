@@ -1,6 +1,7 @@
 package bg.car_wash.areas.user.controller;
 
 import bg.car_wash.areas.user.exception.UserNotFoundException;
+import bg.car_wash.areas.user.models.viewModels.UserViewModel;
 import bg.car_wash.configurations.error.Errors;
 import bg.car_wash.configurations.site.PageTitle;
 import bg.car_wash.configurations.user.UserConfiguration;
@@ -11,6 +12,8 @@ import bg.car_wash.areas.user.models.bindingModels.UserRegisterBindingModel;
 import bg.car_wash.areas.user.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,19 +41,15 @@ public class UserController {
 
 	@GetMapping("/status")
 	public String getUserStatusPage(HttpServletRequest httpServletRequest, Model model) {
+
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		UserViewModel userViewModel = this.modelMapper.map(user, UserViewModel.class);
+
 		model.addAttribute("pageTitle", PageTitle.USER_STATUS_PAGE);
+		model.addAttribute("userViewModel", userViewModel);
 
-		Cookie[] cookies = httpServletRequest.getCookies();
-		for (Cookie cookie : cookies) {
-			model.addAttribute(cookie.getName(), cookie.getValue());
-		}
-
-		//TODO check for user is active
-		if(cookies.length > 0) {
-			return "user/user-status";
-		}
-
-		return "redirect:/user/login";
+		return "user/user-status";
 	}
 
 	@GetMapping("/login")
