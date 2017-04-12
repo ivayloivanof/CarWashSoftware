@@ -54,7 +54,7 @@ public class CustomerController {
 
 		this.customerService.createCustomer(customer);
 
-		return "customer/customer-all";
+		return "redirect:all";
 	}
 
 	@GetMapping("/all")
