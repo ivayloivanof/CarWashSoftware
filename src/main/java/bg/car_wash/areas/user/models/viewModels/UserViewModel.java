@@ -2,7 +2,7 @@ package bg.car_wash.areas.user.models.viewModels;
 
 import bg.car_wash.areas.user.entity.UserType;
 
-public class UserSessionViewModel {
+public class UserViewModel {
 
 	private String email;
 
@@ -10,7 +10,7 @@ public class UserSessionViewModel {
 
 	private UserType userType;
 
-	public UserSessionViewModel() {
+	public UserViewModel() {
 	}
 
 	public String getEmail() {
