@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8"/>
     <title th:text="${pageTitle}">User Login</title>
@@ -30,8 +32,8 @@
                 <td th:text="${customerViewModel.getPhoneNumber()}"></td>
                 <td th:text="${customerViewModel.getDate()}"></td>
                 <td th:text="${customerViewModel.getDiscount()}"></td>
-                <td><a th:href="@{/customer/edit/{id}(id=${customerViewModel.getId()})}" th:text="Edit"></a></td>
-                <td><a th:href="@{/customer/delete/{id}(id=${customerViewModel.getId()})}" th:text="Delete"></a></td>
+                <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/customer/edit/{id}(id=${customerViewModel.getId()})}" th:text="Edit"></a></td>
+                <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/customer/delete/{id}(id=${customerViewModel.getId()})}" th:text="Delete"></a></td>
             </tr>
             </tbody>
         </table>
