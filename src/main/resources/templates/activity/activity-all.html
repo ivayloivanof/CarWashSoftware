@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${pageTitle}"></title>
+    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css"
+          th:href="@{../bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<header th:replace="fragments/parts::menu">
+</header>
+<main>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Activity name</th>
+                <th>Activity price</th>
+                <th>Edit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="activity : ${activitiesViewModel}">
+                <th scope="row" th:text="${activity.getId()}"></th>
+                <td th:text="${activity.getActivityName()}"></td>
+                <td th:text="${activity.getActivityPrice()}"></td>
+                <td>
+                    <button type="button" class="btn btn-warning">
+                        <a th:href="@{/activity/edit/{id}(id=${activity.getId()})}" th:text="Edit"></a>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<script th:src="@{../jquery/jquery.min.js}"></script>
+<script th:src="@{../bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
