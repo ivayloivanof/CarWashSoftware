@@ -13,10 +13,11 @@
 </header>
 <main>
     <div class="container">
+        <br />
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>#</th>
+                <th>ID</th>
                 <th>Customer name</th>
                 <th>Phone number</th>
                 <th>Registration date</th>
@@ -32,8 +33,16 @@
                 <td th:text="${customerViewModel.getPhoneNumber()}"></td>
                 <td th:text="${customerViewModel.getDate()}"></td>
                 <td th:text="${customerViewModel.getDiscount()}"></td>
-                <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/customer/edit/{id}(id=${customerViewModel.getId()})}" th:text="Edit"></a></td>
-                <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/customer/delete/{id}(id=${customerViewModel.getId()})}" th:text="Delete"></a></td>
+                <td sec:authorize="hasRole('ROLE_ADMIN')">
+                    <button type="button" class="btn btn-warning">
+                        <a th:href="@{/customer/edit/{id}(id=${customerViewModel.getId()})}" th:text="Edit"></a>
+                    </button>
+                </td>
+                <td sec:authorize="hasRole('ROLE_ADMIN')">
+                    <button type="button" class="btn btn-danger">
+                        <a th:href="@{/customer/delete/{id}(id=${customerViewModel.getId()})}" th:text="Delete"></a>
+                    </button>
+                </td>
             </tr>
             </tbody>
         </table>
