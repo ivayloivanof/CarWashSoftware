@@ -4,6 +4,8 @@ import bg.car_wash.areas.user.entity.UserType;
 
 public class UserViewModel {
 
+	private Long id;
+
 	private String email;
 
 	private String fullName;
@@ -11,6 +13,14 @@ public class UserViewModel {
 	private UserType userType;
 
 	public UserViewModel() {
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getEmail() {
