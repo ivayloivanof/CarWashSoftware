@@ -4,6 +4,7 @@ import bg.car_wash.areas.car.entity.Car;
 import bg.car_wash.areas.service.entity.Service;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -14,14 +15,17 @@ public class Activity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "service_name", nullable = false)
-	private String serviceName;
+	@Column(name = "activity_name", nullable = false)
+	private String activityName;
+
+	@Column(name = "activity_price", nullable = false)
+	private BigDecimal activityPrice;
 
 	@ManyToMany(cascade = CascadeType.ALL, targetEntity = Service.class)
 	private List<Service> services;
 
 	@ManyToMany
-	private List<Car> car;
+	private List<Car> cars;
 
 	public Activity() {
 	}
@@ -34,12 +38,20 @@ public class Activity {
 		this.id = id;
 	}
 
-	public String getServiceName() {
-		return serviceName;
+	public String getActivityName() {
+		return activityName;
 	}
 
-	public void setServiceName(String serviceName) {
-		this.serviceName = serviceName;
+	public void setActivityName(String activityName) {
+		this.activityName = activityName;
+	}
+
+	public BigDecimal getActivityPrice() {
+		return activityPrice;
+	}
+
+	public void setActivityPrice(BigDecimal activityPrice) {
+		this.activityPrice = activityPrice;
 	}
 
 	public List<Service> getServices() {
@@ -51,10 +63,10 @@ public class Activity {
 	}
 
 	public List<Car> getCar() {
-		return car;
+		return cars;
 	}
 
 	public void setCar(List<Car> car) {
-		this.car = car;
+		this.cars = car;
 	}
 }
