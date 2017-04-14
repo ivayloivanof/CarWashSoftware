@@ -64,4 +64,12 @@ public class Service {
 	public void setCarType(CarType carType) {
 		this.carType = carType;
 	}
+
+	public UserType getUserType() {
+		return userType;
+	}
+
+	public void setUserType(UserType userType) {
+		this.userType = userType;
+	}
 }
