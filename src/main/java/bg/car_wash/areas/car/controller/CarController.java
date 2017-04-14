@@ -24,14 +24,16 @@ import java.util.List;
 @RequestMapping("/car")
 public class CarController {
 
-	@Autowired
 	private CarService carService;
-
-	@Autowired
 	private CustomerService customerService;
+	private ModelMapper modelMapper;
 
 	@Autowired
-	private ModelMapper modelMapper;
+	public CarController(CarService carService, CustomerService customerService, ModelMapper modelMapper) {
+		this.carService = carService;
+		this.customerService = customerService;
+		this.modelMapper = modelMapper;
+	}
 
 	@GetMapping("/all")
 	public String getAllCarsPage(Model model) {

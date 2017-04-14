@@ -21,11 +21,14 @@ import java.util.List;
 @RequestMapping("/customer")
 public class CustomerController {
 
-	@Autowired
 	private CustomerService customerService;
+	private ModelMapper modelMapper;
 
 	@Autowired
-	private ModelMapper modelMapper;
+	public CustomerController(CustomerService customerService, ModelMapper modelMapper) {
+		this.customerService = customerService;
+		this.modelMapper = modelMapper;
+	}
 
 	@GetMapping("/add")
 	public String getAddCustomerPage(

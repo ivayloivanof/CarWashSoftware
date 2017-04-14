@@ -30,14 +30,16 @@ import java.math.BigDecimal;
 @RequestMapping("/user")
 public class UserController {
 
-	@Autowired
 	private UserService userService;
-
-	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	private ModelMapper modelMapper;
 
 	@Autowired
-	private ModelMapper modelMapper;
+	public UserController(UserService userService, BCryptPasswordEncoder bCryptPasswordEncoder, ModelMapper modelMapper) {
+		this.userService = userService;
+		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+		this.modelMapper = modelMapper;
+	}
 
 	@GetMapping("/status")
 	public String getUserStatusPage(HttpServletRequest httpServletRequest, Model model) {
