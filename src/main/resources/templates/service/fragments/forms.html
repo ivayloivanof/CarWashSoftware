@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<form method="post" th:fragment="service-add-form" th:object="${serviceBindingModel}" class="col-5">
+    <div th:if="${error} != null" th:text="${error}"></div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('serviceName')}? 'has-danger'">
+        <label for="serviceName">Service Name</label>
+        <input
+                type="text"
+                class="form-control"
+                id="serviceName"
+                aria-describedby="serviceNameHelp"
+                name="serviceName"
+                th:field="*{serviceName}"/>
+        <small
+                id="serviceNameHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('serviceName')}" th:text="${error}">Error</small>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('servicePrice')}? 'has-danger'">
+        <label for="servicePrice">Service Price</label>
+        <input
+                type="number"
+                class="form-control"
+                id="servicePrice"
+                aria-describedby="servicePriceHelp"
+                name="servicePrice"
+                th:field="*{servicePrice}"/>
+        <small
+                id="servicePriceHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('servicePrice')}" th:text="${error}">Error</small>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('carType')}? 'has-danger'">
+        <label for="carType">Car Type</label>
+        <select
+                id="carType"
+                class="form-control"
+                aria-describedby="carTypeHelp"
+                name="carType"
+                th:field="*{carType}">
+            <option
+                    th:value="${T(bg.car_wash.areas.car.entity.CarType).BUS}"
+                    th:text="${T(bg.car_wash.areas.car.entity.CarType).BUS}"></option>
+            <option
+                    th:value="${T(bg.car_wash.areas.car.entity.CarType).CAR}"
+                    th:text="${T(bg.car_wash.areas.car.entity.CarType).CAR}"></option>
+            <option
+                    th:value="${T(bg.car_wash.areas.car.entity.CarType).JEEP}"
+                    th:text="${T(bg.car_wash.areas.car.entity.CarType).JEEP}"></option>
+            <option
+                    th:value="${T(bg.car_wash.areas.car.entity.CarType).PICAP}"
+                    th:text="${T(bg.car_wash.areas.car.entity.CarType).PICAP}"></option>
+            <option
+                    th:value="${T(bg.car_wash.areas.car.entity.CarType).VAN}"
+                    th:text="${T(bg.car_wash.areas.car.entity.CarType).VAN}"></option>
+        </select>
+        <small
+                id="carTypeHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('carType')}" th:text="${error}">Error</small>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('userType')}? 'has-danger'">
+        <label for="userType">Worker Type</label>
+        <select
+                id="userType"
+                class="form-control"
+                aria-describedby="userTypeHelp"
+                name="userType"
+                th:field="*{userType}">
+            <option
+                    th:value="${T(bg.car_wash.areas.user.entity.UserType).WORKER}"
+                    th:text="${T(bg.car_wash.areas.user.entity.UserType).WORKER}"></option>
+            <option
+                    th:value="${T(bg.car_wash.areas.user.entity.UserType).WASHER}"
+                    th:text="${T(bg.car_wash.areas.user.entity.UserType).WASHER}"></option>
+            <option
+                    th:value="${T(bg.car_wash.areas.user.entity.UserType).LAUNDERER}"
+                    th:text="${T(bg.car_wash.areas.user.entity.UserType).LAUNDERER}"></option>
+        </select>
+        <small
+                id="userTypeHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('userType')}" th:text="${error}">Error</small>
+    </div>
+
+    <button type="submit" class="btn btn-secondary">Add service</button>
+</form>
+
+</body>
+</html>
