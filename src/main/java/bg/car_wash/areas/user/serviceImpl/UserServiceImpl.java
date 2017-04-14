@@ -16,11 +16,14 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-	@Autowired
 	private UserRepository userRepository;
+	private ModelMapper modelMapper;
 
 	@Autowired
-	private ModelMapper modelMapper;
+	public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper) {
+		this.userRepository = userRepository;
+		this.modelMapper = modelMapper;
+	}
 
 	@Override
 	public void createUser(User user) {
@@ -39,7 +42,6 @@ public class UserServiceImpl implements UserService {
 		User user = this.userRepository.findOneByEmail(email);
 
 		if (user == null) {
-//			throw  new UserNotFoundException();
 			throw new UsernameNotFoundException(Errors.NOT_FOUND_USER);
 		}
 

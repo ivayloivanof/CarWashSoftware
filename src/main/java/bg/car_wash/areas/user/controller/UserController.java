@@ -45,7 +45,6 @@ public class UserController {
 	public String getUserStatusPage(HttpServletRequest httpServletRequest, Model model) {
 
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
 		UserViewModel userViewModel = this.modelMapper.map(user, UserViewModel.class);
 
 		model.addAttribute("pageTitle", PageTitle.USER_STATUS_PAGE);
@@ -117,8 +116,14 @@ public class UserController {
 	}
 
 	@GetMapping("/logout")
-	public String logoutUser(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+	public String logoutUser(
+			HttpServletRequest httpServletRequest,
+			HttpServletResponse httpServletResponse,
+			Authentication authentication) {
 		Cookie[] cookies = httpServletRequest.getCookies();
+
+		//TODO session invalidate
+		authentication.setAuthenticated(false);
 
 		for (Cookie cookie : cookies) {
 			cookie.setMaxAge(0);
