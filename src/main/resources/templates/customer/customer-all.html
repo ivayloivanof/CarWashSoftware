@@ -14,7 +14,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>#</th>
+                <th>ID</th>
                 <th>Customer name</th>
                 <th>Phone number</th>
                 <th>Registration date</th>
@@ -27,7 +27,11 @@
                 <td th:text="${customer.getName()}"></td>
                 <td th:text="${customer.getPhoneNumber()}"></td>
                 <td th:text="${customer.getDate()}"></td>
-                <td><a th:href="@{info/{id}(id=${customer.getId()})}" th:text="Info"></a></td>
+                <td>
+                    <button type="button" class="btn btn-info">
+                        <a th:href="@{/customer/info/{id}(id=${customer.getId()})}" th:text="Info"></a>
+                    </button>
+                </td>
             </tr>
             </tbody>
         </table>
