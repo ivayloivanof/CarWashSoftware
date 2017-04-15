@@ -7,6 +7,7 @@ import bg.car_wash.areas.customer.exception.CustomerNotFoundException;
 import bg.car_wash.areas.customer.repository.CustomerRepository;
 import bg.car_wash.areas.customer.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public List<Customer> findAllCustomers() throws CustomerDBEmptyException {
-		List<Customer> customers = this.customerRepository.findAll();
+		List<Customer> customers = this.customerRepository.findAll(new Sort(Sort.Direction.ASC, "name", "phoneNumber"));
 		if (customers.isEmpty()) {
 			throw new CustomerDBEmptyException("Not found users in DB", 404);
 		}

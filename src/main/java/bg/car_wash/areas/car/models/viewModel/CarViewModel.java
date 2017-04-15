@@ -30,7 +30,7 @@ public class CarViewModel {
 	}
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -38,7 +38,7 @@ public class CarViewModel {
 	}
 
 	public String getCarModel() {
-		return carModel;
+		return this.carModel;
 	}
 
 	public void setCarModel(String carModel) {
@@ -46,7 +46,7 @@ public class CarViewModel {
 	}
 
 	public String getCarMake() {
-		return carMake;
+		return this.carMake;
 	}
 
 	public void setCarMake(String carMake) {
@@ -54,7 +54,7 @@ public class CarViewModel {
 	}
 
 	public CarType getCarType() {
-		return carType;
+		return this.carType;
 	}
 
 	public void setCarType(CarType carType) {
@@ -62,7 +62,7 @@ public class CarViewModel {
 	}
 
 	public CustomerViewModel getOwner() {
-		return owner;
+		return this.owner;
 	}
 
 	public void setOwner(CustomerViewModel owner) {
