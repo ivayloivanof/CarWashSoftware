@@ -50,5 +50,58 @@
     <button type="submit" class="btn btn-secondary">Add customer</button>
 </form>
 
+<form method="post" th:fragment="customer-edit-form" th:object="${customerBindingModel}" class="col-5">
+    <div th:if="${error} != null" th:text="${error}"></div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('name')}? 'has-danger'">
+        <label for="customerName">Customer Name</label>
+        <input
+                type="text"
+                class="form-control"
+                id="customerName"
+                aria-describedby="customerNameHelp"
+                name="name"
+                th:value="${customerViewModel.getName()}"/>
+        <small
+                id="customerNameHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('name')}" th:text="${error}">Error</small>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('phoneNumber')}? 'has-danger'">
+        <label for="phoneNumber">Phone number</label>
+        <input
+                type="text"
+                class="form-control"
+                id="phoneNumber"
+                aria-describedby="phoneNumberHelp"
+                name="phoneNumber"
+                th:value="${customerViewModel.getPhoneNumber()}"/>
+        <small
+                id="phoneNumberHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('phoneNumber')}" th:text="${error}">Error</small>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('discount')}? 'has-danger'">
+        <label for="Discount">Discount (%)</label>
+        <input
+                type="number"
+                class="form-control"
+                id="Discount"
+                aria-describedby="discountHelp"
+                name="discount"
+                th:value="${customerViewModel.getDiscount()}"/>
+        <small
+                id="discountHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('discount')}" th:text="${error}">Error</small>
+    </div>
+    <input
+            type="hidden"
+            class="form-control"
+            id="id"
+            name="id"
+            th:value="${customerViewModel.getId()}"/>
+
+    <button type="submit" class="btn btn-secondary">Edit customer</button>
+</form>
 </body>
 </html>
