@@ -116,6 +116,8 @@ public class UserController {
 		return "redirect:/user/login";
 	}
 
+	//TODO edit user
+
 	@GetMapping("/logout")
 	public String logoutUser(
 			HttpServletRequest httpServletRequest,
