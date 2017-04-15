@@ -14,25 +14,34 @@
 <main>
     <div class="container">
         <br />
-        <div class="card align-self-center" style="width: 20rem;">
-            <!--<img class="card-img-top" src="..." alt="Card image cap" />-->
-            <div class="card-block">
-                <h4 class="card-title" th:text="${userViewModel.getFullName()}"></h4>
-                <p class="card-text">Text</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item" th:text="${userViewModel.getEmail()}"></li>
-                <li class="list-group-item" th:text="${userViewModel.getUserType()}"></li>
-            </ul>
-            <div class="card-block">
-                <button type="button" class="btn btn-warning">
-                    <a th:href="@{/user/edit/{id}(id=${userViewModel.getId()})}" th:text="Edit" class="card-link"></a>
-                </button>
-                <button type="button" class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')">
-                    <a th:href="@{/user/delete/{id}(id=${userViewModel.getId()})}" th:text="Delete" class="card-link"></a>
-                </button>
-            </div>
-        </div>
+        <p class="h2 text-center">User info</p>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full name</th>
+                <th>Email</th>
+                <th>User type</th>
+                <th>Edit/Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row" th:text="${userViewModel.getId()}"></th>
+                <td th:text="${userViewModel.getFullName()}"></td>
+                <td th:text="${userViewModel.getEmail()}"></td>
+                <td th:text="${userViewModel.getUserType()}"></td>
+                <td>
+                    <button type="button" class="btn btn-warning">
+                        <a th:href="@{/user/edit/{id}(id=${userViewModel.getId()})}" th:text="Edit" class="card-link"></a>
+                    </button>
+                    <button type="button" class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a th:href="@{/user/delete/{id}(id=${userViewModel.getId()})}" th:text="Delete" class="card-link"></a>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </main>
 <script th:src="@{../jquery/jquery.min.js}"></script>

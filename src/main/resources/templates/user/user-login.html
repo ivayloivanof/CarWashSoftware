@@ -10,8 +10,10 @@
 <header th:replace="fragments/parts::menu">
 </header>
 <main>
-    <div class="container justify-content-center">
-            <th:block th:replace="user/fragments/forms::login-form"></th:block>
+    <div class="container">
+        <br />
+        <p class="h2 text-center">User login</p>
+        <th:block th:replace="user/fragments/forms::login-form"></th:block>
     </div>
 </main>
 <script th:src="@{../jquery/jquery.min.js}"></script>
