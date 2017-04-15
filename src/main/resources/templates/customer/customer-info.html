@@ -22,8 +22,8 @@
                 <th>Phone number</th>
                 <th>Registration date</th>
                 <th>Discount</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Cars</th>
+                <th>Edit/Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -33,12 +33,15 @@
                 <td th:text="${customerViewModel.getPhoneNumber()}"></td>
                 <td th:text="${customerViewModel.getDate()}"></td>
                 <td th:text="${customerViewModel.getDiscount()}"></td>
+                <td>
+                   <p th:each="car : ${customerViewModel.getCars()}">
+                       <a th:text="${car.getCarRegistrationNumber()}" th:href="@{/car/edit/{id}(id=${car.getId()})}"></a>
+                   </p>
+                </td>
                 <td sec:authorize="hasRole('ROLE_ADMIN')">
                     <button type="button" class="btn btn-warning">
                         <a th:href="@{/customer/edit/{id}(id=${customerViewModel.getId()})}" th:text="Edit"></a>
                     </button>
-                </td>
-                <td sec:authorize="hasRole('ROLE_ADMIN')">
                     <button type="button" class="btn btn-danger">
                         <a th:href="@{/customer/delete/{id}(id=${customerViewModel.getId()})}" th:text="Delete"></a>
                     </button>
