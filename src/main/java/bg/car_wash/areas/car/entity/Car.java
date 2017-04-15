@@ -14,7 +14,7 @@ public class Car {
 	private Long id;
 
 	@Column(name = "car_registration_number", nullable = false)
-	@Size(min = 8, max = 10)
+	@Size(min = 7, max = 10)
 	private String carRegistrationNumber;
 
 	@Column(name = "car_model_name", nullable = false)
