@@ -1,19 +1,18 @@
 package bg.car_wash.areas.activity.controller;
 
 import bg.car_wash.areas.activity.entity.Activity;
+import bg.car_wash.areas.activity.exception.ActivityNotUpdateException;
 import bg.car_wash.areas.activity.models.bindingModel.ActivityBindingModel;
 import bg.car_wash.areas.activity.models.viewModel.ActivityViewModel;
 import bg.car_wash.areas.activity.service.ActivityService;
 import bg.car_wash.configurations.site.PageTitle;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.LinkedList;
@@ -74,5 +73,53 @@ public class ActivityController {
 		model.addAttribute("activitiesViewModel", activityViewModelList);
 
 		return "activity/activity-all";
+	}
+
+	@GetMapping("/edit/{id}")
+	public String getEditCustomerByIdPage(
+			@PathVariable(value = "id") Long id,
+			Model model,
+			@Valid @ModelAttribute ActivityBindingModel activityBindingModel,
+			BindingResult bindingResult) {
+
+		model.addAttribute("pageTitle", PageTitle.CAR_EDIT_PAGE);
+		model.addAttribute("activityViewModel", getActivityViewModel(id));
+
+		return "activity/activity-edit";
+	}
+
+	@PostMapping("/edit/{id}")
+	public String editCustomerByIdPage(
+			@PathVariable(value = "id") Long id,
+			Model model,
+			@Valid @ModelAttribute ActivityBindingModel activityBindingModel,
+			BindingResult bindingResult) throws ActivityNotUpdateException {
+
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("pageTitle", PageTitle.CAR_EDIT_PAGE);
+			model.addAttribute("customerViewModel", getActivityViewModel(id));
+
+			return "activity/activity-edit";
+		}
+
+		Activity activity = this.modelMapper.map(activityBindingModel, Activity.class);
+		this.activityService.updateActivity(activity);
+
+		return "redirect:/activity/all";
+	}
+
+	@GetMapping("/delete/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
+	public String deleteActivity(@PathVariable(value = "id") Long id) {
+		this.activityService.deleteActivityById(id);
+
+		return "redirect:/activity/all";
+	}
+
+	private ActivityViewModel getActivityViewModel(Long id) {
+		Activity activity = this.activityService.findActivityById(id);
+		ActivityViewModel activityViewModel = this.modelMapper.map(activity, ActivityViewModel.class);
+
+		return activityViewModel;
 	}
 }
