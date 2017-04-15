@@ -6,6 +6,9 @@ import bg.car_wash.areas.car.models.bindingModel.CarSearchBindingModel;
 import bg.car_wash.areas.car.models.viewModel.CarViewModel;
 import bg.car_wash.areas.car.service.CarService;
 import bg.car_wash.areas.customer.entity.Customer;
+import bg.car_wash.areas.customer.models.bindingModel.CustomerAddFormBindingModel;
+import bg.car_wash.areas.customer.models.bindingModel.CustomerBindingModel;
+import bg.car_wash.areas.customer.models.viewModels.CustomerViewModel;
 import bg.car_wash.areas.customer.service.CustomerService;
 import bg.car_wash.configurations.site.PageTitle;
 import org.modelmapper.ModelMapper;
@@ -46,16 +49,20 @@ public class CarController {
 		}
 
 		model.addAttribute("carViewModel", carsViewModel);
+		model.addAttribute("customersViewModel", this.getAllCustomers());
 
 		return "car/car-all";
 	}
 
 	@GetMapping("/add")
-	public String addCarForWorkPage(Model model,
+	public String addCarForWorkPage(
+			Model model,
 			@Valid @ModelAttribute CarBindingModel carBindingModel,
-									BindingResult bindingResult) {
+			BindingResult bindingResult) {
+
 		model.addAttribute("pageTitle", PageTitle.CAR_ADD_PAGE);
-		//TODO add customer form
+		model.addAttribute("customersViewModel", this.getAllCustomers());
+
 		return "car/car-add";
 	}
 
@@ -64,17 +71,20 @@ public class CarController {
 			Model model,
 			@Valid @ModelAttribute CarBindingModel carBindingModel,
 			BindingResult bindingResult) {
-		model.addAttribute("pageTitle", PageTitle.CAR_ADD_PAGE);
 
 		if(bindingResult.hasErrors()) {
+			model.addAttribute("pageTitle", PageTitle.CAR_ADD_PAGE);
+			model.addAttribute("customersViewModel", this.getAllCustomers());
+
 			return "car/car-add";
 		}
 
-		//TODO get customer from DB and load in form
-//		Customer customer = this.customerService.findCustomerByName(carBindingModel.getOwner().getName());
-
+		Customer customer = this.customerService.findCustomerById(carBindingModel.getCustomerId());
 		Car car = this.modelMapper.map(carBindingModel, Car.class);
+
 		car.setCarModelName(carBindingModel.getCarModel());
+		car.setCarRegistrationNumber(car.getCarRegistrationNumber().toUpperCase());
+		car.setOwner(customer);
 
 		this.carService.createCar(car);
 
@@ -97,33 +107,54 @@ public class CarController {
 			BindingResult bindingResult) {
 		model.addAttribute("pageTitle", PageTitle.CAR_EDIT_PAGE);
 
+		//TODO return edit car page with AJAX
 
 		return "car/car-edit-search";
 	}
 
 	@GetMapping("/edit/{id}")
 	public String getEditCarByIdPage(
-			@RequestParam("id") Long id,
-			Model model) {
-		//TODO get car from db and load in form
-		Car car = this.carService.findCarById(id);
+			@PathVariable(value = "id") Long id,
+			Model model,
+			@Valid @ModelAttribute CarBindingModel carBindingModel,
+			BindingResult bindingResult) {
 
+		Car car = this.carService.findCarById(id);
+		CarViewModel carViewModel = this.modelMapper.map(car, CarViewModel.class);
 
 		model.addAttribute("pageTitle", PageTitle.CAR_EDIT_PAGE);
+		model.addAttribute("car", carViewModel);
+
 		return "car/car-edit";
 	}
 
 	@PostMapping("/edit/{id}")
 	public String editCarById(
-			@RequestParam("id") Long id,
+			@PathVariable(value = "id") Long id,
+			Model model,
 			@Valid @ModelAttribute CarBindingModel carBindingModel,
 			BindingResult bindingResult) {
 
 		if(bindingResult.hasErrors()) {
+			model.addAttribute("pageTitle", PageTitle.CAR_EDIT_PAGE);
 			return "car/car-edit";
 		}
+		Customer customer;
+		if (carBindingModel.getCustomerId() != null) {
+			customer = this.customerService.findCustomerById(carBindingModel.getCustomerId());
+		} else {
+			customer = this.customerService.findCustomerById(1L);
+		}
 
-		return null;
+		carBindingModel.setOwner(this.modelMapper.map(customer, CustomerViewModel.class));
+
+		Car car = this.modelMapper.map(carBindingModel, Car.class);
+		car.setCarModelName(carBindingModel.getCarModel());
+		car.setCarRegistrationNumber(car.getCarRegistrationNumber().toUpperCase());
+
+		this.carService.updateCar(car);
+
+		return "redirect:/car/all";
 	}
 
 	@PostMapping("/delete/{id}")
@@ -132,5 +163,15 @@ public class CarController {
 		this.carService.deleteCarById(id);
 
 		return "redirect: car/all";
+	}
+
+	private List<CustomerViewModel> getAllCustomers() {
+		List<Customer> customers = this.customerService.findAllCustomers();
+		List<CustomerViewModel> customerViewModels = new LinkedList<>();
+		for (Customer customer : customers) {
+			customerViewModels.add(this.modelMapper.map(customer, CustomerViewModel.class));
+		}
+
+		return customerViewModels;
 	}
 }
