@@ -18,7 +18,7 @@ public class CustomerViewModel {
 	}
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -26,7 +26,7 @@ public class CustomerViewModel {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -34,7 +34,7 @@ public class CustomerViewModel {
 	}
 
 	public String getPhoneNumber() {
-		return phoneNumber;
+		return this.phoneNumber;
 	}
 
 	public void setPhoneNumber(String phoneNumber) {
@@ -42,7 +42,7 @@ public class CustomerViewModel {
 	}
 
 	public Date getDate() {
-		return date;
+		return this.date;
 	}
 
 	public void setDate(Date date) {
@@ -50,7 +50,7 @@ public class CustomerViewModel {
 	}
 
 	public int getDiscount() {
-		return discount;
+		return this.discount;
 	}
 
 	public void setDiscount(int discount) {
