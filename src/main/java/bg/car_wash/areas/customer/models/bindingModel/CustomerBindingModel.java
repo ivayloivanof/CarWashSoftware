@@ -5,6 +5,8 @@ import java.util.Date;
 
 public class CustomerBindingModel {
 
+	private Long id;
+
 	@Size(min = 2, max = 50, message = "This customer name is not valid!")
 	private String name;
 
@@ -19,7 +21,7 @@ public class CustomerBindingModel {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -27,7 +29,7 @@ public class CustomerBindingModel {
 	}
 
 	public String getPhoneNumber() {
-		return phoneNumber;
+		return this.phoneNumber;
 	}
 
 	public void setPhoneNumber(String phoneNumber) {
@@ -35,7 +37,7 @@ public class CustomerBindingModel {
 	}
 
 	public Date getDate() {
-		return date;
+		return this.date;
 	}
 
 	public void setDate(Date date) {
@@ -43,10 +45,18 @@ public class CustomerBindingModel {
 	}
 
 	public int getDiscount() {
-		return discount;
+		return this.discount;
 	}
 
 	public void setDiscount(int discount) {
 		this.discount = discount;
+	}
+
+	public Long getId() {
+		return this.id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 }
