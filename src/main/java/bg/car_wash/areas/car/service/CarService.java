@@ -11,6 +11,8 @@ public interface CarService {
 
 	void createCar(Car car) throws CarNotCreateException;
 
+	void updateCar(Car car) throws CarNotFoundException;
+
 	List<Car> findAllCars() throws CarDBEmptyException;
 
 	void deleteCarById(Long id) throws CarNotFoundException;
