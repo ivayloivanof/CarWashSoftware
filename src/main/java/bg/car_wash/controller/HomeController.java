@@ -1,4 +1,4 @@
-package bg.car_wash.controllers;
+package bg.car_wash.controller;
 
 import bg.car_wash.configurations.site.PageTitle;
 import org.springframework.stereotype.Controller;
