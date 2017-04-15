@@ -4,6 +4,7 @@ import bg.car_wash.areas.activity.entity.Activity;
 import bg.car_wash.areas.activity.exception.ActivityDBEmptyException;
 import bg.car_wash.areas.activity.exception.ActivityNotCreateException;
 import bg.car_wash.areas.activity.exception.ActivityNotFoundException;
+import bg.car_wash.areas.activity.exception.ActivityNotUpdateException;
 import bg.car_wash.areas.activity.repository.ActivityRepository;
 import bg.car_wash.areas.activity.service.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,33 @@ public class ActivityServiceImpl implements ActivityService {
 		}
 
 		return activity;
+	}
+
+	@Override
+	public Activity findActivityById(Long id) throws ActivityNotFoundException {
+		Activity activity = this.activityRepository.findActivityById(id);
+		if (activity == null) {
+			throw new ActivityNotFoundException("This activity is not foud in database!", 404);
+		}
+
+		return activity;
+	}
+
+	@Override
+	public void updateActivity(Activity activity) throws ActivityNotUpdateException {
+		if (activity == null) {
+			throw new ActivityNotUpdateException("Activity can not be NULL", 404);
+		}
+
+		this.activityRepository.save(activity);
+	}
+
+	@Override
+	public void deleteActivityById(Long id) throws ActivityNotFoundException {
+		if(id == null) {
+			throw new ActivityNotFoundException("Activity id can not be NULL", 404);
+		}
+
+		this.activityRepository.deleteActivityById(id);
 	}
 }
