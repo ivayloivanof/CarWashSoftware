@@ -26,6 +26,11 @@ public class CarServiceImpl implements CarService {
 	}
 
 	@Override
+	public void updateCar(Car car) throws CarNotFoundException {
+		this.carRepository.save(car);
+	}
+
+	@Override
 	public List<Car> findAllCars() {
 		List<Car> cars = this.carRepository.findAll();
 		if (cars.isEmpty()) {
