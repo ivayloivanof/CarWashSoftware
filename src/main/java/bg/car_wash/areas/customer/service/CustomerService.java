@@ -4,11 +4,16 @@ import bg.car_wash.areas.customer.entity.Customer;
 import bg.car_wash.areas.customer.exception.CustomerDBEmptyException;
 import bg.car_wash.areas.customer.exception.CustomerNotCreateException;
 import bg.car_wash.areas.customer.exception.CustomerNotFoundException;
+import bg.car_wash.areas.customer.exception.CustomerNotUpdateException;
 
 import java.util.List;
 
 public interface CustomerService {
 	void createCustomer(Customer customer) throws CustomerNotCreateException;
+
+	void updateCustomer(Customer customer) throws CustomerNotUpdateException;
+
+	void deleteCustomerById(Long id) throws CustomerNotFoundException;
 
 	List<Customer> findAllCustomers() throws CustomerDBEmptyException;
 
