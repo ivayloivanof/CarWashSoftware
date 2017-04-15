@@ -4,7 +4,7 @@ import javax.validation.constraints.Size;
 
 public class CarSearchBindingModel {
 
-	@Size(min = 8, max = 10, message = "Error Car registration Number")
+	@Size(min = 7, max = 10, message = "Error Car registration Number")
 	private String carRegistrationNumber;
 
 	public CarSearchBindingModel() {
