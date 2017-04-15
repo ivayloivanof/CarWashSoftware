@@ -157,12 +157,12 @@ public class CarController {
 		return "redirect:/car/all";
 	}
 
-	@PostMapping("/delete/{id}")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public String deleteCar(@RequestParam("id") Long id) {
+	@GetMapping("/delete/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
+	public String deleteCar(@PathVariable(value = "id") Long id) {
 		this.carService.deleteCarById(id);
 
-		return "redirect: car/all";
+		return "redirect:/car/all";
 	}
 
 	private List<CustomerViewModel> getAllCustomers() {
