@@ -1,12 +1,15 @@
 package bg.car_wash.areas.customer.controller;
 
+import bg.car_wash.areas.car.models.viewModel.CarViewModel;
 import bg.car_wash.areas.customer.entity.Customer;
 import bg.car_wash.areas.customer.models.bindingModel.CustomerBindingModel;
 import bg.car_wash.areas.customer.models.viewModels.CustomerViewModel;
+import bg.car_wash.areas.customer.models.viewModels.CustomerWithCarsViewModel;
 import bg.car_wash.areas.customer.service.CustomerService;
 import bg.car_wash.configurations.site.PageTitle;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -77,11 +80,60 @@ public class CustomerController {
 	@GetMapping("/info/{id}")
 	public String getCustomerInfoPage(@PathVariable(value = "id") Long id, Model model) {
 		Customer customer = this.customerService.findCustomerById(id);
-		CustomerViewModel customerViewModel = this.modelMapper.map(customer, CustomerViewModel.class);
+		CustomerWithCarsViewModel customerViewModel = this.modelMapper.map(customer, CustomerWithCarsViewModel.class);
 
 		model.addAttribute("pageTitle", PageTitle.CUSTOMER_INFO_PAGE);
 		model.addAttribute("customerViewModel", customerViewModel);
 
 		return "customer/customer-info";
+	}
+
+	@GetMapping("/edit/{id}")
+	public String getEditCustomerByIdPage(
+			@PathVariable(value = "id") Long id,
+			Model model,
+			@Valid @ModelAttribute CustomerBindingModel customerBindingModel,
+			BindingResult bindingResult) {
+
+		model.addAttribute("pageTitle", PageTitle.CAR_EDIT_PAGE);
+		model.addAttribute("customerViewModel", getCustomerViewModel(id));
+
+		return "customer/customer-edit";
+	}
+
+	@PostMapping("/edit/{id}")
+	public String editCustomerByIdPage(
+			@PathVariable(value = "id") Long id,
+			Model model,
+			@Valid @ModelAttribute CustomerBindingModel customerBindingModel,
+			BindingResult bindingResult) {
+
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("pageTitle", PageTitle.CAR_EDIT_PAGE);
+			model.addAttribute("customerViewModel", getCustomerViewModel(id));
+
+			return "customer/customer-edit";
+		}
+
+		Customer customer = this.modelMapper.map(customerBindingModel, Customer.class);
+		customer.setDate(new Date());
+		this.customerService.updateCustomer(customer);
+
+		return "redirect:/customer/all";
+	}
+
+	@GetMapping("/delete/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
+	public String deleteCustomer(@PathVariable(value = "id") Long id) {
+		this.customerService.deleteCustomerById(id);
+
+		return "redirect:/customer/all";
+	}
+
+	private CustomerViewModel getCustomerViewModel(Long id) {
+		Customer customer = this.customerService.findCustomerById(id);
+		CustomerViewModel customerViewModel = this.modelMapper.map(customer, CustomerViewModel.class);
+
+		return customerViewModel;
 	}
 }
