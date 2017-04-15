@@ -2,19 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title th:text="${pageTitle}">User Login</title>
-    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css"
-          th:href="@{../bootstrap/css/bootstrap.min.css}"/>
+    <title th:text="${pageTitle}"></title>
+    <link rel="stylesheet" href="../../../static/bootstrap/css/bootstrap.min.css"
+          th:href="@{../../bootstrap/css/bootstrap.min.css}"/>
 </head>
 <body>
 <header th:replace="fragments/parts::menu">
 </header>
 <main>
-    <div class="container">
-        <p>Car EDIT </p>
+    <div class="container align-self-center">
+        <th:block th:replace="car/fragments/forms::car-edit-form"></th:block>
     </div>
 </main>
-<script th:src="@{../jquery/jquery.min.js}"></script>
-<script th:src="@{../bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{../../jquery/jquery.min.js}"></script>
+<script th:src="@{../../bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>
