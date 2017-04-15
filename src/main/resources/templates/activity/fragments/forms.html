@@ -35,5 +35,44 @@
     <button type="submit" class="btn btn-secondary">Add activity</button>
 </form>
 
+<form method="post" th:fragment="activity-edit-form" th:object="${activityBindingModel}" class="col-5">
+    <div class="form-group" th:classappend="${#fields.hasErrors('activityName')}? 'has-danger'">
+        <label for="activityName">Activity Name</label>
+        <input
+                type="text"
+                class="form-control"
+                id="activityName"
+                aria-describedby="activityNameHelp"
+                name="activityName"
+                th:value="${activityViewModel.getActivityName()}"/>
+        <small
+                id="activityNameHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('activityName')}" th:text="${error}">Error</small>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('activityPrice')}? 'has-danger'">
+        <label for="activityPrice">Activity Price</label>
+        <input
+                type="number"
+                class="form-control"
+                id="activityPrice"
+                aria-describedby="activityPriceHelp"
+                name="activityPrice"
+                th:value="${activityViewModel.getActivityPrice()}"/>
+        <small
+                id="activityPriceHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('activityPrice')}" th:text="${error}">Error</small>
+    </div>
+    <input
+            type="hidden"
+            class="form-control"
+            id="id"
+            name="id"
+            th:value="${activityViewModel.getId()}"/>
+
+    <button type="submit" class="btn btn-secondary">Edit activity</button>
+</form>
+
 </body>
 </html>
