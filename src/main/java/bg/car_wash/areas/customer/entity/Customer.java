@@ -74,4 +74,12 @@ public class Customer {
 	public void setDiscount(int discount) {
 		this.discount = discount;
 	}
+
+	public List<Car> getCars() {
+		return cars;
+	}
+
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
+	}
 }
