@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 
 public class ActivityBindingModel {
 
+	private Long id;
+
 	@Size(min = 3, max = 40, message = "Invalid Activity name. (Activity name between 3 and 40 characters!")
 	private String activityName;
 
@@ -15,6 +17,14 @@ public class ActivityBindingModel {
 	private BigDecimal activityPrice;
 
 	public ActivityBindingModel() {
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getActivityName() {
