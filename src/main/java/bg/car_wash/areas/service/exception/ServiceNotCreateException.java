@@ -1,8 +1,5 @@
 package bg.car_wash.areas.service.exception;
 
-/**
- * Created by ivanof on 14.04.17.
- */
 public class ServiceNotCreateException extends RuntimeException {
 	private String message;
 

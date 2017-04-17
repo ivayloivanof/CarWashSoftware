@@ -5,7 +5,8 @@ import javax.validation.constraints.Size;
 
 public class UserRegisterBindingModel {
 
-	@NotNull
+	private Long id;
+
 	@Size(min = 7, max = 65, message = "Invalid name!")
 	private String fullName;
 
@@ -13,15 +14,21 @@ public class UserRegisterBindingModel {
 	@Size(max = 100, message = "Invalid email address!")
 	private String email;
 
-	@NotNull
 	@Size(min = 4, max = 15, message = "Invalid Password!")
 	private String password;
 
 	//TODO validation with password are equals
-	@NotNull(message = "Password not be empty!")
 	private String passwordRepeat;
 
 	public UserRegisterBindingModel() {
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getFullName() {
