@@ -4,6 +4,7 @@ import bg.car_wash.areas.service.entity.Service;
 import bg.car_wash.areas.service.exception.ServiceDBEmptyException;
 import bg.car_wash.areas.service.exception.ServiceNotCreateException;
 import bg.car_wash.areas.service.exception.ServiceNotFoundException;
+import bg.car_wash.areas.service.exception.ServiceNotUpdateException;
 import bg.car_wash.areas.service.repository.ServiceRepository;
 import bg.car_wash.areas.service.service.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,5 +54,23 @@ public class ServiceServiceImpl implements ServiceService {
 		}
 
 		return service;
+	}
+
+	@Override
+	public void updateService(Service service) throws ServiceNotUpdateException {
+		if (service == null) {
+			throw new ServiceNotUpdateException("This service can not be null!", 409);
+		}
+
+		this.serviceRepository.save(service);
+	}
+
+	@Override
+	public void deleteServiceById(Long id) throws ServiceNotFoundException {
+		if (id == null || id < 1) {
+			throw new ServiceNotFoundException("This service can not be null!", 409);
+		}
+
+		this.serviceRepository.delete(id);
 	}
 }
