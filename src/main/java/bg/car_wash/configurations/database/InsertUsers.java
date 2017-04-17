@@ -26,26 +26,18 @@ public class InsertUsers {
 
 	public void initUsers() {
 		User u1 = new User();
-		u1.setEmail("ivaylo.ivanof@gmail.com");
+		u1.setEmail("ivanof@abv.bg");
 		u1.setFullName("Ivaylo Ivanov");
 		u1.setPassword(this.password);
 		u1.setUserType(UserType.ADMIN);
 		u1.setRemuneration(new BigDecimal(UserConfiguration.ADMIN_REMUNERATION));
-		u1.setAccountNonExpired(true);
-		u1.setAccountNonLocked(true);
-		u1.setCredentialsNonExpired(true);
-		u1.setEnabled(true);
 
 		User u2 = new User();
 		u2.setEmail("pesho@abv.bg");
-		u2.setFullName("Pesho Peshev");
+		u2.setFullName("Petar Petrov");
 		u2.setPassword(this.password);
 		u2.setUserType(UserType.DIRECTOR);
 		u2.setRemuneration(new BigDecimal(UserConfiguration.DIRECTOR_REMUNERATION));
-		u2.setAccountNonExpired(true);
-		u2.setAccountNonLocked(true);
-		u2.setCredentialsNonExpired(true);
-		u2.setEnabled(true);
 
 		User u3 = new User();
 		u3.setEmail("asen@abv.bg");
@@ -53,10 +45,6 @@ public class InsertUsers {
 		u3.setPassword(this.password);
 		u3.setUserType(UserType.WORKER);
 		u3.setRemuneration(new BigDecimal(UserConfiguration.WORKER_REMUNERATION));
-		u3.setAccountNonExpired(true);
-		u3.setAccountNonLocked(true);
-		u3.setCredentialsNonExpired(true);
-		u3.setEnabled(true);
 
 		User u4 = new User();
 		u4.setEmail("krum@abv.bg");
@@ -64,15 +52,34 @@ public class InsertUsers {
 		u4.setPassword(this.password);
 		u4.setUserType(UserType.PAYMASTER);
 		u4.setRemuneration(new BigDecimal(UserConfiguration.PAYMASTER_REMUNERATION));
-		u4.setAccountNonExpired(true);
-		u4.setAccountNonLocked(true);
-		u4.setCredentialsNonExpired(true);
-		u4.setEnabled(true);
+
+		User u5 = new User();
+		u5.setEmail("asen@abv.bg");
+		u5.setFullName("Asen Asenov");
+		u5.setPassword(this.password);
+		u5.setUserType(UserType.WORKER);
+		u5.setRemuneration(new BigDecimal(UserConfiguration.WASHER_REMUNERATION));
+
+		User u6 = new User();
+		u6.setEmail("pavel@abv.bg");
+		u6.setFullName("Pavel Pavlov");
+		u6.setPassword(this.password);
+		u6.setUserType(UserType.WORKER);
+		u6.setRemuneration(new BigDecimal(UserConfiguration.LAUNDERER_REMUNERATION));
 
 		this.users.add(u1);
 		this.users.add(u2);
 		this.users.add(u3);
 		this.users.add(u4);
+		this.users.add(u5);
+		this.users.add(u6);
+
+		for (User user : this.getUsers()) {
+			user.setAccountNonExpired(true);
+			user.setAccountNonLocked(true);
+			user.setCredentialsNonExpired(true);
+			user.setEnabled(true);
+		}
 	}
 
 	public List<User> getUsers() {
