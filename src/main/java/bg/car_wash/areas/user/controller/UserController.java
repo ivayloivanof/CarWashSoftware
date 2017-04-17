@@ -1,6 +1,7 @@
 package bg.car_wash.areas.user.controller;
 
 import bg.car_wash.areas.user.exception.UserNotFoundException;
+import bg.car_wash.areas.user.models.viewModels.UserEditViewModel;
 import bg.car_wash.areas.user.models.viewModels.UserViewModel;
 import bg.car_wash.configurations.error.Errors;
 import bg.car_wash.configurations.site.PageTitle;
@@ -12,6 +13,7 @@ import bg.car_wash.areas.user.models.bindingModels.UserRegisterBindingModel;
 import bg.car_wash.areas.user.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -116,7 +118,54 @@ public class UserController {
 		return "redirect:/user/login";
 	}
 
-	//TODO edit user
+	@GetMapping("/edit/{id}")
+	public String getEditServiceByIdPage(
+			@PathVariable(value = "id") Long id,
+			Model model,
+			@Valid @ModelAttribute UserRegisterBindingModel userRegisterBindingModel,
+			BindingResult bindingResult) {
+
+		model.addAttribute("pageTitle", PageTitle.USER_EDIT_PAGE);
+		model.addAttribute("userViewModel", getUserViewModel(id));
+
+		return "user/user-edit";
+	}
+
+	@PostMapping("/edit/{id}")
+	public String editServiceByIdPage(
+			@PathVariable(value = "id") Long id,
+			Model model,
+			@Valid @ModelAttribute UserRegisterBindingModel userRegisterBindingModel,
+			BindingResult bindingResult) {
+
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("pageTitle", PageTitle.USER_EDIT_PAGE);
+			model.addAttribute("userViewModel", getUserViewModel(id));
+
+			return "user/user-edit";
+		}
+
+		User user = this.modelMapper.map(userRegisterBindingModel, User.class);
+		user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
+		user.setUserType(UserType.WORKER);
+		user.setRemuneration(new BigDecimal(UserConfiguration.WORKER_REMUNERATION));
+		user.setAccountNonExpired(true);
+		user.setAccountNonLocked(true);
+		user.setCredentialsNonExpired(true);
+		user.setEnabled(true);
+
+		this.userService.updateUser(user);
+
+		return "redirect:/user/status";
+	}
+
+	@GetMapping("/delete/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
+	public String deleteUser(@PathVariable(value = "id") Long id) {
+		this.userService.deleteUserById(id);
+
+		return "redirect:/logout";
+	}
 
 	@GetMapping("/logout")
 	public String logoutUser(
@@ -139,6 +188,14 @@ public class UserController {
 		}
 
 		return "redirect:/user/login";
+	}
+
+
+	private UserEditViewModel getUserViewModel(Long id) {
+		User user = this.userService.findUserById(id);
+		UserEditViewModel userViewModel = this.modelMapper.map(user, UserEditViewModel.class);
+
+		return userViewModel;
 	}
 
 	@ExceptionHandler(UserNotFoundException.class)
