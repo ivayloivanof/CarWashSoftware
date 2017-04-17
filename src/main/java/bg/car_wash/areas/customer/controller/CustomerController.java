@@ -95,7 +95,7 @@ public class CustomerController {
 			@Valid @ModelAttribute CustomerBindingModel customerBindingModel,
 			BindingResult bindingResult) {
 
-		model.addAttribute("pageTitle", PageTitle.CAR_EDIT_PAGE);
+		model.addAttribute("pageTitle", PageTitle.CUSTOMER_EDIT_PAGE);
 		model.addAttribute("customerViewModel", getCustomerViewModel(id));
 
 		return "customer/customer-edit";
@@ -109,7 +109,7 @@ public class CustomerController {
 			BindingResult bindingResult) {
 
 		if(bindingResult.hasErrors()) {
-			model.addAttribute("pageTitle", PageTitle.CAR_EDIT_PAGE);
+			model.addAttribute("pageTitle", PageTitle.CUSTOMER_EDIT_PAGE);
 			model.addAttribute("customerViewModel", getCustomerViewModel(id));
 
 			return "customer/customer-edit";
