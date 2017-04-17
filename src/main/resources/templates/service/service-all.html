@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8"/>
     <title th:text="${pageTitle}"></title>
@@ -21,7 +23,7 @@
                 <th>Service price</th>
                 <th>Car type</th>
                 <th>User type</th>
-                <th>Edit</th>
+                <th>Edit/Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -34,6 +36,9 @@
                 <td>
                     <button type="button" class="btn btn-warning">
                         <a th:href="@{/service/edit/{id}(id=${service.getId()})}" th:text="Edit"></a>
+                    </button>
+                    <button type="button" class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a th:href="@{/service/delete/{id}(id=${service.getId()})}" th:text="Delete"></a>
                     </button>
                 </td>
             </tr>
