@@ -47,5 +47,75 @@
     <button type="submit" class="btn btn-secondary">Register</button>
 </form>
 
+<form method="post" th:fragment="user-edit-form" th:object="${userRegisterBindingModel}" class="col-5">
+    <div class="form-group" th:classappend="${#fields.hasErrors('fullName')}? 'has-danger'">
+        <label for="fullNameRegister">Full Name</label>
+        <input
+                type="text"
+                class="form-control"
+                id="fullNameRegister"
+                aria-describedby="fullNameRegisterHelp"
+                name="fullName"
+                th:value="${userViewModel.getFullName()}"/>
+        <small
+                id="fullNameRegisterHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('fullName')}" th:text="${error}">Error Message</small>
+    </div>
+
+    <div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-danger'">
+        <label for="emailRegister">Email</label>
+        <input
+                type="email"
+                class="form-control"
+                id="emailRegister"
+                aria-describedby="emailRegisterHelp"
+                name="email"
+                th:value="${userViewModel.getEmail()}"/>
+        <small
+                id="emailRegisterHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('email')}" th:text="${error}">Error Message</small>
+    </div>
+
+    <div class="form-group" th:classappend="${#fields.hasErrors('password')}? 'has-danger'">
+        <label for="passwordRegister">Password</label>
+        <input
+                type="password"
+                class="form-control"
+                id="passwordRegister"
+                aria-describedby="passwordRegisterHelp"
+                name="password"
+                th:value="${userViewModel.getPassword()}"/>
+        <small
+                id="passwordRegisterHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('password')}" th:text="${error}">Error Message</small>
+    </div>
+
+    <div class="form-group" th:classappend="${#fields.hasErrors('passwordRepeat')}? 'has-danger'">
+        <label for="passwordRepeatRegister">Password Repeat</label>
+        <input
+                type="password"
+                class="form-control"
+                id="passwordRepeatRegister"
+                aria-describedby="passwordRepeatRegisterHelp"
+                name="passwordRepeat"
+                th:value="${userViewModel.getPassword()}"/>
+        <small
+                id="passwordRepeatRegisterHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('passwordRepeat')}" th:text="${error}">Error Message</small>
+    </div>
+    <input
+            type="hidden"
+            class="form-control"
+            id="id"
+            name="id"
+            th:value="${userViewModel.getId()}"/>
+
+    <button type="submit" class="btn btn-secondary">Edit user</button>
+</form>
+
 </body>
 </html>
