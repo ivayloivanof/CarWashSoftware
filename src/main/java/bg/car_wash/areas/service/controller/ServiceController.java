@@ -7,13 +7,11 @@ import bg.car_wash.areas.service.service.ServiceService;
 import bg.car_wash.configurations.site.PageTitle;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.LinkedList;
@@ -72,6 +70,54 @@ public class ServiceController {
 		model.addAttribute("servicesViewModel", servicesViewModel);
 
 		return "service/service-all";
+	}
+
+	@GetMapping("/edit/{id}")
+	public String getEditServiceByIdPage(
+			@PathVariable(value = "id") Long id,
+			Model model,
+			@Valid @ModelAttribute ServiceBindingModel serviceBindingModel,
+			BindingResult bindingResult) {
+
+		model.addAttribute("pageTitle", PageTitle.SERVICE_EDIT_PAGE);
+		model.addAttribute("serviceViewModel", getServiceViewModel(id));
+
+		return "service/service-edit";
+	}
+
+	@PostMapping("/edit/{id}")
+	public String editServiceByIdPage(
+			@PathVariable(value = "id") Long id,
+			Model model,
+			@Valid @ModelAttribute ServiceBindingModel serviceBindingModel,
+			BindingResult bindingResult) {
+
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("pageTitle", PageTitle.SERVICE_EDIT_PAGE);
+			model.addAttribute("serviceViewModel", getServiceViewModel(id));
+
+			return "service/service-edit";
+		}
+
+		Service service = this.modelMapper.map(serviceBindingModel, Service.class);
+		this.serviceService.updateService(service);
+
+		return "redirect:/service/all";
+	}
+
+	@GetMapping("/delete/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
+	public String deleteService(@PathVariable(value = "id") Long id) {
+		this.serviceService.deleteServiceById(id);
+
+		return "redirect:/service/all";
+	}
+
+	private ServiceViewModel getServiceViewModel(Long id) {
+		Service service = this.serviceService.findServiceById(id);
+		ServiceViewModel serviceViewModel = this.modelMapper.map(service, ServiceViewModel.class);
+
+		return serviceViewModel;
 	}
 
 }
