@@ -24,6 +24,10 @@ public class ActivityServiceImpl implements ActivityService {
 
 	@Override
 	public void createActivity(Activity activity) throws ActivityNotCreateException {
+		if (activity == null) {
+			throw new ActivityNotCreateException("Activity can not create!");
+		}
+
 		this.activityRepository.save(activity);
 	}
 
@@ -31,7 +35,7 @@ public class ActivityServiceImpl implements ActivityService {
 	public List<Activity> findAllActivities() throws ActivityDBEmptyException {
 		List<Activity> activities = this.activityRepository.findAll();
 		if(activities.isEmpty()) {
-			throw  new ActivityDBEmptyException("Activity database is empty", 404);
+			throw  new ActivityDBEmptyException("Activity database is empty!");
 		}
 
 		return activities;
@@ -41,7 +45,7 @@ public class ActivityServiceImpl implements ActivityService {
 	public Activity findActivityByName(String name) throws ActivityNotFoundException {
 		Activity activity = this.activityRepository.findByActivityName(name);
 		if (activity == null) {
-			throw new ActivityNotFoundException("Activity with name is not found in database", 404);
+			throw new ActivityNotFoundException("Activity with name is not found in database");
 		}
 
 		return activity;
@@ -51,7 +55,7 @@ public class ActivityServiceImpl implements ActivityService {
 	public Activity findActivityById(Long id) throws ActivityNotFoundException {
 		Activity activity = this.activityRepository.findActivityById(id);
 		if (activity == null) {
-			throw new ActivityNotFoundException("This activity is not foud in database!", 404);
+			throw new ActivityNotFoundException("This activity is not found in database by id!");
 		}
 
 		return activity;
@@ -60,7 +64,7 @@ public class ActivityServiceImpl implements ActivityService {
 	@Override
 	public void updateActivity(Activity activity) throws ActivityNotUpdateException {
 		if (activity == null) {
-			throw new ActivityNotUpdateException("Activity can not be NULL", 404);
+			throw new ActivityNotUpdateException("Activity can not update");
 		}
 
 		this.activityRepository.save(activity);
@@ -69,7 +73,7 @@ public class ActivityServiceImpl implements ActivityService {
 	@Override
 	public void deleteActivityById(Long id) throws ActivityNotFoundException {
 		if(id == null) {
-			throw new ActivityNotFoundException("Activity id can not be NULL", 404);
+			throw new ActivityNotFoundException("Activity id can not delete");
 		}
 
 		this.activityRepository.deleteActivityById(id);

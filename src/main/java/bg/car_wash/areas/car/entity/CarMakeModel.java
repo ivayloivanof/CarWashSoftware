@@ -12,11 +12,11 @@ public class CarMakeModel {
 	private Long id;
 
 	@Column(name = "car_make", nullable = false)
-	@Size(min = 2, max = 40)
+	@Size(min = 2, max = 50)
 	private String make;
 
 	@Column(name = "car_model", nullable = false)
-	@Size(min = 1, max = 40)
+	@Size(min = 1, max = 50)
 	private String model;
 
 	public CarMakeModel() {

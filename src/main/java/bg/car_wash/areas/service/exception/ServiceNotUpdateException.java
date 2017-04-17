@@ -1,32 +1,12 @@
 package bg.car_wash.areas.service.exception;
 
-/**
- * Created by ivanof on 17.04.17.
- */
-public class ServiceNotUpdateException extends RuntimeException {
-	private String message;
+import bg.car_wash.exception.CarWashErrorException;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-	private int code;
-
-	public ServiceNotUpdateException(String message, int code) {
-		this.setMessage(message);
-		this.setCode(code);
-	}
-
-	@Override
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public int getCode() {
-		return code;
-	}
-
-	public void setCode(int code) {
-		this.code = code;
+@ResponseStatus(value= HttpStatus.NOT_FOUND, reason="Service can not update in database!")
+public class ServiceNotUpdateException extends CarWashErrorException {
+	public ServiceNotUpdateException(String message) {
+		super(message);
 	}
 }

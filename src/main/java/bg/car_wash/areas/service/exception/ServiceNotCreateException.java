@@ -1,29 +1,12 @@
 package bg.car_wash.areas.service.exception;
 
-public class ServiceNotCreateException extends RuntimeException {
-	private String message;
+import bg.car_wash.exception.CarWashErrorException;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-	private int code;
-
-	public ServiceNotCreateException(String message, int code) {
-		this.setMessage(message);
-		this.setCode(code);
-	}
-
-	@Override
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public int getCode() {
-		return code;
-	}
-
-	public void setCode(int code) {
-		this.code = code;
+@ResponseStatus(value= HttpStatus.CONFLICT, reason="Service not create!")
+public class ServiceNotCreateException extends CarWashErrorException {
+	public ServiceNotCreateException(String message) {
+		super(message);
 	}
 }

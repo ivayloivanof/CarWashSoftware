@@ -2,6 +2,7 @@ package bg.car_wash.areas.car.serviceImpl;
 
 import bg.car_wash.areas.car.entity.Car;
 import bg.car_wash.areas.car.exception.CarDBEmptyException;
+import bg.car_wash.areas.car.exception.CarNotCreateException;
 import bg.car_wash.areas.car.exception.CarNotFoundException;
 import bg.car_wash.areas.car.repository.CarRepository;
 import bg.car_wash.areas.car.service.CarService;
@@ -21,7 +22,10 @@ public class CarServiceImpl implements CarService {
 	}
 
 	@Override
-	public void createCar(Car car){
+	public void createCar(Car car) throws CarNotCreateException {
+		if (car == null) {
+			throw new CarNotCreateException("Car not create when Car object is null!");
+		}
 		this.carRepository.save(car);
 	}
 
@@ -34,7 +38,7 @@ public class CarServiceImpl implements CarService {
 	public List<Car> findAllCars() {
 		List<Car> cars = this.carRepository.findAll();
 		if (cars.isEmpty()) {
-			throw new CarDBEmptyException("Not found cars in DB", 404);
+			throw new CarDBEmptyException("Car database is empty!");
 		}
 
 		return cars;
@@ -42,7 +46,10 @@ public class CarServiceImpl implements CarService {
 
 	@Override
 	public void deleteCarById(Long id) throws CarNotFoundException {
-		//TODO throw new CarNotFoundExcception after not success delete car
+		if (id == null || id < 1) {
+			throw new CarNotFoundException("Car not found in database!");
+		}
+
 		this.carRepository.deleteCarById(id);
 	}
 
@@ -50,7 +57,7 @@ public class CarServiceImpl implements CarService {
 	public Car findCarById(Long id) throws CarNotFoundException {
 		Car car = this.carRepository.findCarById(id);
 		if (car == null) {
-			throw new CarNotFoundException(String.format("Car with id:$d - not found!", id), 404);
+			throw new CarNotFoundException("Car not found in database!");
 		}
 
 		return car;

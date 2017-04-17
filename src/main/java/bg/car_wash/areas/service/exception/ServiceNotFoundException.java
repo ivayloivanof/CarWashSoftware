@@ -1,32 +1,12 @@
 package bg.car_wash.areas.service.exception;
 
-/**
- * Created by ivanof on 14.04.17.
- */
-public class ServiceNotFoundException extends RuntimeException {
-	private String message;
+import bg.car_wash.exception.CarWashErrorException;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-	private int code;
-
-	public ServiceNotFoundException(String message, int code) {
-		this.setMessage(message);
-		this.setCode(code);
-	}
-
-	@Override
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public int getCode() {
-		return code;
-	}
-
-	public void setCode(int code) {
-		this.code = code;
+@ResponseStatus(value= HttpStatus.NOT_FOUND, reason="Service not found in database!")
+public class ServiceNotFoundException extends CarWashErrorException {
+	public ServiceNotFoundException(String message) {
+		super(message);
 	}
 }

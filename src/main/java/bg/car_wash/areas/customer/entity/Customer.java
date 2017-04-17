@@ -20,7 +20,7 @@ public class Customer {
 	private String name;
 
 	@Column(name = "phone_number", nullable = false)
-	@Size(min = 10, max = 15)
+	@Size(min = 10, max = 16)
 	private String phoneNumber;
 
 	@Basic
