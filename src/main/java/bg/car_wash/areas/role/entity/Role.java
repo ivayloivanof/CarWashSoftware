@@ -17,6 +17,9 @@ public class Role implements GrantedAuthority {
     @Column(name = "authority", nullable = false)
     private String authority;
 
+    public Role() {
+    }
+
     @Override
     public String getAuthority() {
         return authority;
