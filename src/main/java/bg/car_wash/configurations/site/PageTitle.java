@@ -8,6 +8,7 @@ public final class PageTitle {
 	public static final String LOGOUT_PAGE = "Logout";
 	public static final String REGISTER_PAGE = "Register";
 	public static final String USER_STATUS_PAGE = "User status";
+	public static final String USER_EDIT_PAGE = "User edit";
 
 	public static final String CAR_ALL_PAGE = "All cars";
 	public static final String CAR_INFO_PAGE = "Car info";
