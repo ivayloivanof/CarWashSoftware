@@ -2,10 +2,15 @@ package bg.car_wash;
 
 import bg.car_wash.areas.car.entity.CarMakeModel;
 import bg.car_wash.areas.car.service.CarMakeModelService;
+import bg.car_wash.areas.role.entity.Role;
+import bg.car_wash.areas.role.service.RoleService;
 import bg.car_wash.areas.user.entity.User;
 import bg.car_wash.areas.user.service.UserService;
 import bg.car_wash.configurations.database.InsertCars;
+import bg.car_wash.configurations.database.InsertRoles;
 import bg.car_wash.configurations.database.InsertUsers;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -24,6 +29,9 @@ public class CarWashApplication {
 
 	@Autowired
 	private CarMakeModelService carMakeModelService;
+
+	@Autowired
+	private RoleService roleService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CarWashApplication.class, args);
@@ -47,6 +55,24 @@ public class CarWashApplication {
 				this.carMakeModelService.createCar(carMakeModel);
 			}
 		}
+
+		//create all roles in db
+		if(checkRoleDbIsEmpty()) {
+			InsertRoles insertRoles = new InsertRoles();
+			List<Role> roles = insertRoles.getRoles();
+			for (Role role : roles) {
+				this.roleService.createRole(role);
+			}
+		}
+
+	}
+
+	private boolean checkRoleDbIsEmpty() {
+		if(this.roleService.findAllRole().isEmpty()) {
+			return true;
+		}
+
+		return false;
 	}
 
 	private boolean checkCarMakeModelDbIsEmpty() {
@@ -68,6 +94,14 @@ public class CarWashApplication {
 	@Bean
 	public ModelMapper getModelMapper() {
 		return new ModelMapper();
+	}
+
+	@Bean
+	public Gson getGson() {
+		return new GsonBuilder()
+				.excludeFieldsWithoutExposeAnnotation()
+				.setPrettyPrinting()
+				.create();
 	}
 
 }
