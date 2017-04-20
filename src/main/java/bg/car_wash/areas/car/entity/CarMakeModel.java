@@ -2,10 +2,11 @@ package bg.car_wash.areas.car.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "car_make_model")
-public class CarMakeModel {
+public class CarMakeModel implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
