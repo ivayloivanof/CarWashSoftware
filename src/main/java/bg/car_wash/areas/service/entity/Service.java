@@ -5,11 +5,12 @@ import bg.car_wash.areas.user.entity.UserType;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "services")
-public class Service {
+public class Service implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
