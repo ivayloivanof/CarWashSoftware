@@ -1,21 +1,27 @@
 package bg.car_wash.areas.car.models.viewModel;
 
 import bg.car_wash.areas.car.entity.CarType;
-import bg.car_wash.areas.customer.entity.Customer;
 import bg.car_wash.areas.customer.models.viewModels.CustomerViewModel;
+import com.google.gson.annotations.Expose;
 
 public class CarViewModel {
 
+	@Expose
 	private Long id;
 
+	@Expose
 	private String carRegistrationNumber;
 
+	@Expose
 	private String carModel;
 
+	@Expose
 	private String carMake;
 
+	@Expose
 	private CarType carType;
 
+	@Expose
 	private CustomerViewModel owner;
 
 	public CarViewModel() {
