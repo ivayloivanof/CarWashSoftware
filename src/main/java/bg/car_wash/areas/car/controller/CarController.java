@@ -6,8 +6,6 @@ import bg.car_wash.areas.car.models.bindingModel.CarSearchBindingModel;
 import bg.car_wash.areas.car.models.viewModel.CarViewModel;
 import bg.car_wash.areas.car.service.CarService;
 import bg.car_wash.areas.customer.entity.Customer;
-import bg.car_wash.areas.customer.models.bindingModel.CustomerAddFormBindingModel;
-import bg.car_wash.areas.customer.models.bindingModel.CustomerBindingModel;
 import bg.car_wash.areas.customer.models.viewModels.CustomerViewModel;
 import bg.car_wash.areas.customer.service.CustomerService;
 import bg.car_wash.configurations.site.PageTitle;
@@ -72,7 +70,7 @@ public class CarController {
 			@Valid @ModelAttribute CarBindingModel carBindingModel,
 			BindingResult bindingResult) {
 
-		if(bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors()) {
 			model.addAttribute("pageTitle", PageTitle.CAR_ADD_PAGE);
 			model.addAttribute("customersViewModel", this.getAllCustomers());
 
@@ -135,7 +133,7 @@ public class CarController {
 			@Valid @ModelAttribute CarBindingModel carBindingModel,
 			BindingResult bindingResult) {
 
-		if(bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors()) {
 			model.addAttribute("pageTitle", PageTitle.CAR_EDIT_PAGE);
 			return "car/car-edit";
 		}
