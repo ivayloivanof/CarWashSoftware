@@ -1,15 +1,20 @@
 package bg.car_wash.areas.user.models.viewModels;
 
 import bg.car_wash.areas.user.entity.UserType;
+import com.google.gson.annotations.Expose;
 
 public class UserViewModel {
 
+	@Expose
 	private Long id;
 
+	@Expose
 	private String email;
 
+	@Expose
 	private String fullName;
 
+	@Expose
 	private UserType userType;
 
 	public UserViewModel() {
