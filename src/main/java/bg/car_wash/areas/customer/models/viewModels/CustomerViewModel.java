@@ -1,17 +1,24 @@
 package bg.car_wash.areas.customer.models.viewModels;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.Date;
 
 public class CustomerViewModel {
 
+	@Expose
 	private Long id;
 
+	@Expose
 	private String name;
 
+	@Expose
 	private String phoneNumber;
 
+	@Expose
 	private Date date;
 
+	@Expose
 	private int discount;
 
 	public CustomerViewModel() {

@@ -1,24 +1,31 @@
 package bg.car_wash.areas.customer.models.viewModels;
 
-import bg.car_wash.areas.car.entity.Car;
 import bg.car_wash.areas.car.models.viewModel.CarViewModel;
+import bg.car_wash.areas.car.models.viewModel.CarWithoutOwnerViewModel;
+import com.google.gson.annotations.Expose;
 
 import java.util.Date;
 import java.util.List;
 
 public class CustomerWithCarsViewModel {
 
+	@Expose
 	private Long id;
 
+	@Expose
 	private String name;
 
+	@Expose
 	private String phoneNumber;
 
+	@Expose
 	private Date date;
 
+	@Expose
 	private int discount;
 
-	private List<CarViewModel> cars;
+	@Expose
+	private List<CarWithoutOwnerViewModel> cars;
 
 	public CustomerWithCarsViewModel() {
 	}
@@ -63,11 +70,11 @@ public class CustomerWithCarsViewModel {
 		this.discount = discount;
 	}
 
-	public List<CarViewModel> getCars() {
-		return this.cars;
+	public List<CarWithoutOwnerViewModel> getCars() {
+		return cars;
 	}
 
-	public void setCars(List<CarViewModel> cars) {
+	public void setCars(List<CarWithoutOwnerViewModel> cars) {
 		this.cars = cars;
 	}
 }
