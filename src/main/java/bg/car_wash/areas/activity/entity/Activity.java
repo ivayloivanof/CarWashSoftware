@@ -4,12 +4,13 @@ import bg.car_wash.areas.car.entity.Car;
 import bg.car_wash.areas.service.entity.Service;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
 @Table(name = "activities")
-public class Activity {
+public class Activity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

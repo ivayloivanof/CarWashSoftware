@@ -12,7 +12,7 @@ public class ActivityBindingModel {
 	@Size(min = 3, max = 40, message = "Invalid Activity name. (Activity name between 3 and 40 characters!")
 	private String activityName;
 
-	@Digits(integer = 2, fraction = 2)
+	@Digits(integer = 3, fraction = 2)
 	@DecimalMin(value = "0.00", message = "Activity price can not be negative number!")
 	private BigDecimal activityPrice;
 
