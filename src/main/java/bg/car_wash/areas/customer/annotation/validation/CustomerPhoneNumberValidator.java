@@ -9,9 +9,9 @@ import java.util.regex.Pattern;
 
 public class CustomerPhoneNumberValidator implements ConstraintValidator<ValidCustomerPhoneNumber, String> {
 
+	private static final String PHONE_NUMBER_PATTERN = "^(\\+{0,1}[0-9]{1,3}\\s{0,1}[0-9]{3}\\s{0,1}[0-9]{3}\\s{0,1}[0-9]{3})$";
 	private Pattern pattern;
 	private Matcher matcher;
-	private static final String PHONE_NUMBER_PATTERN = "^(\\+{0,1}[0-9]{1,3}\\s{0,1}[0-9]{3}\\s{0,1}[0-9]{3}\\s{0,1}[0-9]{3})$";
 
 	@Override
 	public void initialize(ValidCustomerPhoneNumber validCustomerPhoneNumber) {
@@ -19,9 +19,10 @@ public class CustomerPhoneNumberValidator implements ConstraintValidator<ValidCu
 	}
 
 	@Override
-	public boolean isValid(String phoneNumber, ConstraintValidatorContext context){
+	public boolean isValid(String phoneNumber, ConstraintValidatorContext context) {
 		return (validatePhoneNumber(phoneNumber));
 	}
+
 	private boolean validatePhoneNumber(String email) {
 		pattern = Pattern.compile(PHONE_NUMBER_PATTERN);
 		matcher = pattern.matcher(email);

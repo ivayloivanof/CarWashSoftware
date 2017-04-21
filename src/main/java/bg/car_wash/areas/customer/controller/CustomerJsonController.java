@@ -1,7 +1,6 @@
 package bg.car_wash.areas.customer.controller;
 
 import bg.car_wash.areas.customer.entity.Customer;
-import bg.car_wash.areas.customer.models.viewModels.CustomerViewModel;
 import bg.car_wash.areas.customer.models.viewModels.CustomerWithCarsViewModel;
 import bg.car_wash.areas.customer.service.CustomerService;
 import org.modelmapper.ModelMapper;
@@ -9,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -37,7 +39,7 @@ public class CustomerJsonController {
 			customersViewModels.add(this.modelMapper.map(customer, CustomerWithCarsViewModel.class));
 		}
 
-		if(customersViewModels.isEmpty()) {
+		if (customersViewModels.isEmpty()) {
 			return new ResponseEntity(HttpStatus.NOT_FOUND);
 		}
 
@@ -50,7 +52,7 @@ public class CustomerJsonController {
 		Customer customer = this.customerService.findCustomerById(id);
 		CustomerWithCarsViewModel customerViewModel = this.modelMapper.map(customer, CustomerWithCarsViewModel.class);
 
-		if(customerViewModel == null) {
+		if (customerViewModel == null) {
 			return new ResponseEntity(HttpStatus.NOT_FOUND);
 		}
 

@@ -3,13 +3,14 @@ package bg.car_wash.areas.service.controller;
 import bg.car_wash.areas.service.entity.Service;
 import bg.car_wash.areas.service.models.viewModel.ServiceViewModel;
 import bg.car_wash.areas.service.service.ServiceService;
-import com.google.gson.Gson;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -37,7 +38,7 @@ public class ServiceJsonController {
 			servicesViewModel.add(this.modelMapper.map(service, ServiceViewModel.class));
 		}
 
-		if(servicesViewModel.isEmpty()) {
+		if (servicesViewModel.isEmpty()) {
 			return new ResponseEntity(HttpStatus.NOT_FOUND);
 		}
 

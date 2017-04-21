@@ -1,6 +1,5 @@
 package bg.car_wash.areas.customer.controller;
 
-import bg.car_wash.areas.car.models.viewModel.CarViewModel;
 import bg.car_wash.areas.customer.entity.Customer;
 import bg.car_wash.areas.customer.models.bindingModel.CustomerBindingModel;
 import bg.car_wash.areas.customer.models.viewModels.CustomerViewModel;
@@ -49,7 +48,7 @@ public class CustomerController {
 			@Valid @ModelAttribute CustomerBindingModel customerBindingModel,
 			BindingResult bindingResult) {
 
-		if(bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors()) {
 			model.addAttribute("pageTitle", PageTitle.CUSTOMER_ADD_PAGE);
 			return "customer/customer-add";
 		}
@@ -108,7 +107,7 @@ public class CustomerController {
 			@Valid @ModelAttribute CustomerBindingModel customerBindingModel,
 			BindingResult bindingResult) {
 
-		if(bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors()) {
 			model.addAttribute("pageTitle", PageTitle.CUSTOMER_EDIT_PAGE);
 			model.addAttribute("customerViewModel", getCustomerViewModel(id));
 

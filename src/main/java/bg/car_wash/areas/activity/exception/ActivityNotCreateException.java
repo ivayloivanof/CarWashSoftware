@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 
-@ResponseStatus(value= HttpStatus.CONFLICT, reason="Activity is not create!")
+@ResponseStatus(value = HttpStatus.CONFLICT, reason = "Activity is not create!")
 public class ActivityNotCreateException extends CarWashErrorException {
 
 	public ActivityNotCreateException(String message) {

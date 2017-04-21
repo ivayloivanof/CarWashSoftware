@@ -1,16 +1,16 @@
 package bg.car_wash.areas.user.controller;
 
+import bg.car_wash.areas.user.entity.User;
+import bg.car_wash.areas.user.entity.UserType;
 import bg.car_wash.areas.user.exception.UserNotFoundException;
+import bg.car_wash.areas.user.models.bindingModels.UserLoginBindingModel;
+import bg.car_wash.areas.user.models.bindingModels.UserRegisterBindingModel;
 import bg.car_wash.areas.user.models.viewModels.UserEditViewModel;
 import bg.car_wash.areas.user.models.viewModels.UserViewModel;
+import bg.car_wash.areas.user.service.UserService;
 import bg.car_wash.configurations.error.Errors;
 import bg.car_wash.configurations.site.PageTitle;
 import bg.car_wash.configurations.user.UserConfiguration;
-import bg.car_wash.areas.user.entity.User;
-import bg.car_wash.areas.user.entity.UserType;
-import bg.car_wash.areas.user.models.bindingModels.UserLoginBindingModel;
-import bg.car_wash.areas.user.models.bindingModels.UserRegisterBindingModel;
-import bg.car_wash.areas.user.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -63,7 +63,7 @@ public class UserController {
 			@RequestParam(required = false) String error) {
 		model.addAttribute("pageTitle", PageTitle.LOGIN_PAGE);
 
-		if(error != null) {
+		if (error != null) {
 			model.addAttribute("error", Errors.INVALID_CREDENTIALS);
 		}
 
@@ -100,7 +100,7 @@ public class UserController {
 
 	@PostMapping("/register")
 	public String registerUser(@Valid @ModelAttribute UserRegisterBindingModel userRegisterBindingModel, BindingResult bindingResult) {
-		if(bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors()) {
 			return "user/user-register";
 		}
 
@@ -138,7 +138,7 @@ public class UserController {
 			@Valid @ModelAttribute UserRegisterBindingModel userRegisterBindingModel,
 			BindingResult bindingResult) {
 
-		if(bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors()) {
 			model.addAttribute("pageTitle", PageTitle.USER_EDIT_PAGE);
 			model.addAttribute("userViewModel", getUserViewModel(id));
 
@@ -183,7 +183,7 @@ public class UserController {
 		}
 
 		HttpSession session = httpServletRequest.getSession(false);
-		if(session != null) {
+		if (session != null) {
 			session.invalidate();
 		}
 

@@ -1,10 +1,8 @@
 package bg.car_wash.areas.car.models.bindingModel;
 
 import bg.car_wash.areas.car.entity.CarType;
-import bg.car_wash.areas.customer.entity.Customer;
 import bg.car_wash.areas.customer.models.viewModels.CustomerViewModel;
 
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class CarBindingModel {

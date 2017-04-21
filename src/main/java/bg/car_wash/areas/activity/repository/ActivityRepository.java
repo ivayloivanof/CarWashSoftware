@@ -9,7 +9,9 @@ import javax.transaction.Transactional;
 @Repository
 public interface ActivityRepository extends JpaRepository<Activity, Long> {
 	Activity findByActivityName(String name);
+
 	Activity findActivityById(Long id);
+
 	@Transactional
 	void deleteActivityById(Long id);
 }

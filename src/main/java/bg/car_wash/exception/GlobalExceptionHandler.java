@@ -16,7 +16,6 @@ import bg.car_wash.areas.service.exception.ServiceNotCreateException;
 import bg.car_wash.areas.service.exception.ServiceNotFoundException;
 import bg.car_wash.areas.service.exception.ServiceNotUpdateException;
 import bg.car_wash.areas.user.exception.UserNotFoundException;
-import groovy.util.ResourceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;

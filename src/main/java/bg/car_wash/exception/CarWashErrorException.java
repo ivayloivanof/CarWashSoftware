@@ -1,6 +1,6 @@
 package bg.car_wash.exception;
 
-public class CarWashErrorException extends  RuntimeException {
+public class CarWashErrorException extends RuntimeException {
 
 	private String message;
 

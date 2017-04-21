@@ -48,7 +48,7 @@ public class CarWashApplication {
 		}
 
 		//create all cars with models and makes in DB
-		if(checkCarMakeModelDbIsEmpty()) {
+		if (checkCarMakeModelDbIsEmpty()) {
 			InsertCars insertCars = new InsertCars();
 			List<CarMakeModel> carMakeModels = insertCars.readJsonFile();
 			for (CarMakeModel carMakeModel : carMakeModels) {
@@ -57,7 +57,7 @@ public class CarWashApplication {
 		}
 
 		//create all roles in db
-		if(checkRoleDbIsEmpty()) {
+		if (checkRoleDbIsEmpty()) {
 			InsertRoles insertRoles = new InsertRoles();
 			List<Role> roles = insertRoles.getRoles();
 			for (Role role : roles) {
@@ -68,7 +68,7 @@ public class CarWashApplication {
 	}
 
 	private boolean checkRoleDbIsEmpty() {
-		if(this.roleService.findAllRole().isEmpty()) {
+		if (this.roleService.findAllRole().isEmpty()) {
 			return true;
 		}
 
@@ -76,7 +76,7 @@ public class CarWashApplication {
 	}
 
 	private boolean checkCarMakeModelDbIsEmpty() {
-		if(this.carMakeModelService.findAllCarMakeModel().isEmpty()) {
+		if (this.carMakeModelService.findAllCarMakeModel().isEmpty()) {
 			return true;
 		}
 

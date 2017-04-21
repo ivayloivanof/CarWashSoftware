@@ -1,7 +1,5 @@
 package bg.car_wash.areas.customer.models.bindingModel;
 
-import bg.car_wash.areas.customer.annotation.ValidCustomerPhoneNumber;
-
 import javax.validation.constraints.Size;
 import java.util.Date;
 

@@ -23,7 +23,7 @@ public class ServiceServiceImpl implements ServiceService {
 
 	@Override
 	public void createService(Service service) throws ServiceNotCreateException {
-		if(service == null) {
+		if (service == null) {
 			throw new ServiceNotCreateException("Service can not create in database!");
 		}
 

@@ -92,7 +92,7 @@ public class ServiceController {
 			@Valid @ModelAttribute ServiceBindingModel serviceBindingModel,
 			BindingResult bindingResult) {
 
-		if(bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors()) {
 			model.addAttribute("pageTitle", PageTitle.SERVICE_EDIT_PAGE);
 			model.addAttribute("serviceViewModel", getServiceViewModel(id));
 

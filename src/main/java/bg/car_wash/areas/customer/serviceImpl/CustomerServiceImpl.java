@@ -25,7 +25,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public void createCustomer(Customer customer) throws CustomerNotCreateException {
-		if(customer == null) {
+		if (customer == null) {
 			throw new CustomerNotCreateException("Customer can not create in database!");
 		}
 		this.customerRepository.save(customer);
@@ -42,7 +42,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public void deleteCustomerById(Long id) throws CustomerNotFoundException {
-		if(id == null || id < 1) {
+		if (id == null || id < 1) {
 			throw new CustomerNotFoundException("Customer can not delete from database!");
 		}
 

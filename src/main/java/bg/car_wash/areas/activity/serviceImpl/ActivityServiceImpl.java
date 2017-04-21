@@ -34,8 +34,8 @@ public class ActivityServiceImpl implements ActivityService {
 	@Override
 	public List<Activity> findAllActivities() throws ActivityDBEmptyException {
 		List<Activity> activities = this.activityRepository.findAll();
-		if(activities.isEmpty()) {
-			throw  new ActivityDBEmptyException("Activity database is empty!");
+		if (activities.isEmpty()) {
+			throw new ActivityDBEmptyException("Activity database is empty!");
 		}
 
 		return activities;
@@ -72,7 +72,7 @@ public class ActivityServiceImpl implements ActivityService {
 
 	@Override
 	public void deleteActivityById(Long id) throws ActivityNotFoundException {
-		if(id == null) {
+		if (id == null) {
 			throw new ActivityNotFoundException("Activity id can not delete");
 		}
 

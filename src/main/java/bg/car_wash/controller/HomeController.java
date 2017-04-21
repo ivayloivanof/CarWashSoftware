@@ -11,9 +11,9 @@ public class HomeController {
 	@GetMapping("/")
 	public String getHomePage(Model model) {
 		model.addAttribute("pageTitle", PageTitle.HOME_PAGE);
-//		return "home";
 
 		return "redirect:/car/all";
 	}
+
 
 }

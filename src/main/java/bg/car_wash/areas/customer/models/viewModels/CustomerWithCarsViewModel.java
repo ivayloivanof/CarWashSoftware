@@ -1,6 +1,5 @@
 package bg.car_wash.areas.customer.models.viewModels;
 
-import bg.car_wash.areas.car.models.viewModel.CarViewModel;
 import bg.car_wash.areas.car.models.viewModel.CarWithoutOwnerViewModel;
 import com.google.gson.annotations.Expose;
 

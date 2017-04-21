@@ -8,7 +8,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -37,11 +40,11 @@ public class CarJsonController {
 			carViewModels.add(this.modelMapper.map(car, CarViewModel.class));
 		}
 
-		if(carViewModels.isEmpty()) {
+		if (carViewModels.isEmpty()) {
 			return new ResponseEntity(HttpStatus.NOT_FOUND);
 		}
 
-		ResponseEntity<List<CarViewModel>> responseEntityCar = new ResponseEntity<>(carViewModels, HttpStatus.OK);
+		ResponseEntity<List<CarViewModel>> responseEntityCar = new ResponseEntity(carViewModels, HttpStatus.OK);
 		return responseEntityCar;
 	}
 

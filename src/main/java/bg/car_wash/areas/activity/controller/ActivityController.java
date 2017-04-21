@@ -48,7 +48,7 @@ public class ActivityController {
 			@Valid @ModelAttribute ActivityBindingModel activityBindingModel,
 			BindingResult bindingResult) {
 
-		if(bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors()) {
 			model.addAttribute("pageTitle", PageTitle.ACTIVITY_ADD_PAGE);
 			return "activity/activity-add";
 		}
@@ -95,7 +95,7 @@ public class ActivityController {
 			@Valid @ModelAttribute ActivityBindingModel activityBindingModel,
 			BindingResult bindingResult) throws ActivityNotUpdateException {
 
-		if(bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors()) {
 			model.addAttribute("pageTitle", PageTitle.ACTIVITY_EDIT_PAGE);
 			model.addAttribute("customerViewModel", getActivityViewModel(id));
 

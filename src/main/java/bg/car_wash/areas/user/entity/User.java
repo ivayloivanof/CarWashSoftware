@@ -1,14 +1,12 @@
 package bg.car_wash.areas.user.entity;
 
 import bg.car_wash.areas.role.entity.Role;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
 import java.util.Set;
 
 @Entity
@@ -40,8 +38,8 @@ public class User implements UserDetails, Serializable {
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "users_roles",
-	joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-	inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+			joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
 	private Set<Role> authorities;
 
 	@Column(name = "is_account_non_expired")
@@ -72,6 +70,10 @@ public class User implements UserDetails, Serializable {
 		return this.password;
 	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public String getUsername() {
 		return this.email;
@@ -82,9 +84,17 @@ public class User implements UserDetails, Serializable {
 		return this.isAccountNonExpired;
 	}
 
+	public void setAccountNonExpired(boolean accountNonExpired) {
+		isAccountNonExpired = accountNonExpired;
+	}
+
 	@Override
 	public boolean isAccountNonLocked() {
 		return this.isAccountNonLocked;
+	}
+
+	public void setAccountNonLocked(boolean accountNonLocked) {
+		isAccountNonLocked = accountNonLocked;
 	}
 
 	@Override
@@ -92,9 +102,17 @@ public class User implements UserDetails, Serializable {
 		return this.isCredentialsNonExpired;
 	}
 
+	public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+		isCredentialsNonExpired = credentialsNonExpired;
+	}
+
 	@Override
 	public boolean isEnabled() {
 		return this.isEnabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		isEnabled = enabled;
 	}
 
 	public Long getId() {
@@ -121,10 +139,6 @@ public class User implements UserDetails, Serializable {
 		this.email = email;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public BigDecimal getRemuneration() {
 		return remuneration;
 	}
@@ -139,21 +153,5 @@ public class User implements UserDetails, Serializable {
 
 	public void setUserType(UserType userType) {
 		this.userType = userType;
-	}
-
-	public void setAccountNonExpired(boolean accountNonExpired) {
-		isAccountNonExpired = accountNonExpired;
-	}
-
-	public void setAccountNonLocked(boolean accountNonLocked) {
-		isAccountNonLocked = accountNonLocked;
-	}
-
-	public void setCredentialsNonExpired(boolean credentialsNonExpired) {
-		isCredentialsNonExpired = credentialsNonExpired;
-	}
-
-	public void setEnabled(boolean enabled) {
-		isEnabled = enabled;
 	}
 }
