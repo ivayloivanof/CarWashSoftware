@@ -2,19 +2,25 @@ package bg.car_wash.areas.service.models.viewModel;
 
 import bg.car_wash.areas.car.entity.CarType;
 import bg.car_wash.areas.user.entity.UserType;
+import com.google.gson.annotations.Expose;
 
 import java.math.BigDecimal;
 
 public class ServiceViewModel {
 
+	@Expose
 	private Long id;
 
+	@Expose
 	private String serviceName;
 
+	@Expose
 	private BigDecimal servicePrice;
 
+	@Expose
 	private CarType carType;
 
+	@Expose
 	private UserType userType;
 
 	public ServiceViewModel() {
