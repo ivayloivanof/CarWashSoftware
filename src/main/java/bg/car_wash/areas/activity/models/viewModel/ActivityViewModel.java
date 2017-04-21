@@ -1,13 +1,18 @@
 package bg.car_wash.areas.activity.models.viewModel;
 
+import com.google.gson.annotations.Expose;
+
 import java.math.BigDecimal;
 
 public class ActivityViewModel {
 
+	@Expose
 	private Long id;
 
+	@Expose
 	private String activityName;
 
+	@Expose
 	private BigDecimal activityPrice;
 
 	public ActivityViewModel() {
