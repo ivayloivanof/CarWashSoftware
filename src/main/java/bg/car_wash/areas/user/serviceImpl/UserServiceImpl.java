@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
 		User user = this.userRepository.findOneByEmail(email);
 
 		if (user == null) {
-			throw new UserNotFoundException(Errors.NOT_FOUND_USER);
+			throw new UsernameNotFoundException(Errors.NOT_FOUND_USER);
 		}
 
 		return user;

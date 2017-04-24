@@ -70,28 +70,6 @@ public class UserController {
 		return "user/user-login";
 	}
 
-//	@PostMapping("/login")
-//	public String loginUser(@Valid @ModelAttribute UserLoginBindingModel userLoginBindingModel,
-//							BindingResult bindingResult,
-//							HttpServletResponse httpServletResponse) {
-//		if(bindingResult.hasErrors()) {
-//			return "user/user-login";
-//		}
-//
-//		UserSessionViewModel user = this.userService.getUserByFullNameAndPassword(userLoginBindingModel);
-//		if(user == null) {
-//			return "user/user-login";
-//		}
-//
-//		UserCreateCookie userCreateCookie = new UserCreateCookie(user);
-//
-//		for (Cookie cookie : userCreateCookie.getCookies()) {
-//			httpServletResponse.addCookie(cookie);
-//		}
-//
-//		return "redirect:/user/status";
-//	}
-
 	@GetMapping("/register")
 	public String getRegisterPage(Model model, @ModelAttribute UserRegisterBindingModel userRegisterBindingModel) {
 		model.addAttribute("pageTitle", PageTitle.REGISTER_PAGE);
@@ -156,7 +134,7 @@ public class UserController {
 
 		this.userService.updateUser(user);
 
-		return "redirect:/user/status";
+		return "redirect:/car/all";
 	}
 
 	@GetMapping("/delete/{id}")
