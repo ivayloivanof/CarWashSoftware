@@ -29,7 +29,6 @@ public class ActivityJsonController {
 	}
 
 	@GetMapping("/all")
-	@ResponseBody
 	public ResponseEntity getAllActivities() {
 
 		List<ActivityViewModel> activityViewModelList = new LinkedList<>();

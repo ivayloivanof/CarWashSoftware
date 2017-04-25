@@ -32,7 +32,6 @@ public class CarJsonController {
 	}
 
 	@GetMapping("/all")
-	@ResponseBody
 	public ResponseEntity<List<CarViewModel>> getAllCars() {
 		List<CarViewModel> carViewModels = new LinkedList<>();
 		List<Car> cars = this.carService.findAllCars();

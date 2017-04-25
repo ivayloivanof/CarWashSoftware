@@ -29,7 +29,6 @@ public class ServiceJsonController {
 	}
 
 	@GetMapping("/all")
-	@ResponseBody
 	public ResponseEntity getAllServices() {
 
 		List<ServiceViewModel> servicesViewModel = new LinkedList<>();

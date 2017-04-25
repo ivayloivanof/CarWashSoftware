@@ -31,7 +31,6 @@ public class CustomerJsonController {
 	}
 
 	@GetMapping("/all")
-	@ResponseBody
 	public ResponseEntity getAllCustomers() {
 		List<CustomerWithCarsViewModel> customersViewModels = new LinkedList<>();
 		List<Customer> customers = this.customerService.findAllCustomers();
