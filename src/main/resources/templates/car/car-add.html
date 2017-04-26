@@ -13,7 +13,14 @@
     <div class="container">
         <br />
         <p class="h2 text-center">Add car</p>
-        <th:block th:replace="car/fragments/forms::car-add-form"></th:block>
+        <div class="row">
+            <div class="col-sm-6">
+                <th:block th:replace="car/fragments/forms::car-add-form"></th:block>
+            </div>
+            <div class="col-sm-2" ></div>
+            <div class="col-sm-2" id="carMakes"></div>
+            <div class="col-sm-2" id="carModels"></div>
+        </div>
     </div>
 </main>
 <script th:src="@{../jquery/jquery.min.js}"></script>

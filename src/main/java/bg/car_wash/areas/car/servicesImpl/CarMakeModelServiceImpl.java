@@ -29,4 +29,16 @@ public class CarMakeModelServiceImpl implements CarMakeModelService {
 
 		return carMakeModels;
 	}
+
+	@Override
+	public List<CarMakeModel> findAllCarMakeModelByModel(String model, String make) {
+		List<CarMakeModel> carMakeModels = this.carMakeModelRepository.findCarMakeModelByModelStartingWithAndMakeOrderByModel(model, make);
+		return carMakeModels;
+	}
+
+	@Override
+	public List<CarMakeModel> findAllCarMakeModelByMake(String make) {
+		List<CarMakeModel> carMakeModels = this.carMakeModelRepository.findCarMakeModelByMakeStartingWithOrderByMake(make);
+		return carMakeModels;
+	}
 }
