@@ -13,7 +13,13 @@
     <div class="container">
         <br />
         <p class="h2 text-center">Search car</p>
-        <th:block th:replace="car/fragments/forms::car-search-form"></th:block>
+        <div class="row">
+            <div class="col-sm-4">
+                <th:block th:replace="car/fragments/forms::car-search-form"></th:block>
+            </div>
+            <div class="col-sm-1" ></div>
+            <div class="col-sm-4" id="cars"></div>
+        </div>
     </div>
 </main>
 <script th:src="@{../jquery/jquery.min.js}"></script>

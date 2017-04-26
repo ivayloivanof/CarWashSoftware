@@ -18,4 +18,6 @@ public interface CarService {
 	void deleteCarById(Long id) throws CarNotFoundException;
 
 	Car findCarById(Long id) throws CarNotFoundException;
+
+	List<Car> findCarByRegistrationNumber(String carRegistrationNumber);
 }

@@ -62,4 +62,14 @@ public class CarServiceImpl implements CarService {
 
 		return car;
 	}
+
+	@Override
+	public List<Car> findCarByRegistrationNumber(String carRegistrationNumber) {
+		List<Car> cars = this.carRepository.findCarsByCarRegistrationNumberStartsWithOrderByCarRegistrationNumber(carRegistrationNumber);
+		if (cars.isEmpty()) {
+			throw new CarNotFoundException("Car not found in database!");
+		}
+
+		return cars;
+	}
 }
