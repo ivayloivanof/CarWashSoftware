@@ -1,7 +1,7 @@
 package bg.car_wash;
 
-import bg.car_wash.areas.car.entity.CarMakeModel;
-import bg.car_wash.areas.car.service.CarMakeModelService;
+import bg.car_wash.areas.car.entities.CarMakeModel;
+import bg.car_wash.areas.car.services.CarMakeModelService;
 import bg.car_wash.areas.role.entity.Role;
 import bg.car_wash.areas.role.service.RoleService;
 import bg.car_wash.areas.user.entity.User;

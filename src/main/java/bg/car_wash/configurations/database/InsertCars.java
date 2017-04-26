@@ -1,6 +1,6 @@
 package bg.car_wash.configurations.database;
 
-import bg.car_wash.areas.car.entity.CarMakeModel;
+import bg.car_wash.areas.car.entities.CarMakeModel;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 

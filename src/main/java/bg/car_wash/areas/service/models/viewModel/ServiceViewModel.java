@@ -1,6 +1,6 @@
 package bg.car_wash.areas.service.models.viewModel;
 
-import bg.car_wash.areas.car.entity.CarType;
+import bg.car_wash.areas.car.entities.CarType;
 import bg.car_wash.areas.user.entity.UserType;
 import com.google.gson.annotations.Expose;
 

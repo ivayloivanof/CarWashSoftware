@@ -1,6 +1,6 @@
 package bg.car_wash.areas.car.models.bindingModel;
 
-import bg.car_wash.areas.car.entity.CarType;
+import bg.car_wash.areas.car.entities.CarType;
 import bg.car_wash.areas.customer.models.viewModels.CustomerViewModel;
 
 import javax.validation.constraints.Size;

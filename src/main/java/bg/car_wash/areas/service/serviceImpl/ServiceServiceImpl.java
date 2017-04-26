@@ -1,10 +1,10 @@
 package bg.car_wash.areas.service.serviceImpl;
 
 import bg.car_wash.areas.service.entity.Service;
-import bg.car_wash.areas.service.exception.ServiceDBEmptyException;
-import bg.car_wash.areas.service.exception.ServiceNotCreateException;
-import bg.car_wash.areas.service.exception.ServiceNotFoundException;
-import bg.car_wash.areas.service.exception.ServiceNotUpdateException;
+import bg.car_wash.areas.service.exceptions.ServiceDBEmptyException;
+import bg.car_wash.areas.service.exceptions.ServiceNotCreateException;
+import bg.car_wash.areas.service.exceptions.ServiceNotFoundException;
+import bg.car_wash.areas.service.exceptions.ServiceNotUpdateException;
 import bg.car_wash.areas.service.repository.ServiceRepository;
 import bg.car_wash.areas.service.service.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;

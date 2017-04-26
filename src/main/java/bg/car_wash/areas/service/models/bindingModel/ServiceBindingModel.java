@@ -1,6 +1,6 @@
 package bg.car_wash.areas.service.models.bindingModel;
 
-import bg.car_wash.areas.car.entity.CarType;
+import bg.car_wash.areas.car.entities.CarType;
 import bg.car_wash.areas.user.entity.UserType;
 
 import javax.validation.constraints.DecimalMin;
@@ -15,13 +15,15 @@ public class ServiceBindingModel {
 	@Size(min = 3, max = 50, message = "Service name between 3 and 50 characters!")
 	private String serviceName;
 
-	@Digits(integer = 2, fraction = 2)
+	@Digits(integer = 3, fraction = 2)
 	@DecimalMin(value = "0.00", message = "Service price can not be negative number!")
 	private BigDecimal servicePrice;
 
 	private CarType carType;
 
 	private UserType userType;
+
+	private Long activityId;
 
 	public ServiceBindingModel() {
 	}
@@ -64,5 +66,13 @@ public class ServiceBindingModel {
 
 	public void setUserType(UserType userType) {
 		this.userType = userType;
+	}
+
+	public Long getActivityId() {
+		return activityId;
+	}
+
+	public void setActivityId(Long activityId) {
+		this.activityId = activityId;
 	}
 }

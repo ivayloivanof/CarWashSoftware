@@ -1,10 +1,10 @@
 package bg.car_wash.areas.customer.serviceImpl;
 
 import bg.car_wash.areas.customer.entity.Customer;
-import bg.car_wash.areas.customer.exception.CustomerDBEmptyException;
-import bg.car_wash.areas.customer.exception.CustomerNotCreateException;
-import bg.car_wash.areas.customer.exception.CustomerNotFoundException;
-import bg.car_wash.areas.customer.exception.CustomerNotUpdateException;
+import bg.car_wash.areas.customer.exceptions.CustomerDBEmptyException;
+import bg.car_wash.areas.customer.exceptions.CustomerNotCreateException;
+import bg.car_wash.areas.customer.exceptions.CustomerNotFoundException;
+import bg.car_wash.areas.customer.exceptions.CustomerNotUpdateException;
 import bg.car_wash.areas.customer.repository.CustomerRepository;
 import bg.car_wash.areas.customer.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;

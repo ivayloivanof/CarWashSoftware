@@ -15,6 +15,8 @@ public final class PageTitle {
 	public static final String CAR_ADD_PAGE = "Add car";
 	public static final String CAR_EDIT_PAGE = "Edit car";
 	public static final String CAR_DELETE_PAGE = "Delete car";
+	public static final String CAR_MAKE_ALL_PAGE = "All make cars";
+	public static final String CAR_MODEL_ALL_PAGE = "All model cars";
 
 	public static final String CUSTOMER_ALL_PAGE = "Customers";
 	public static final String CUSTOMER_INFO_PAGE = "Customer info";

@@ -1,6 +1,6 @@
 package bg.car_wash.areas.customer.entity;
 
-import bg.car_wash.areas.car.entity.Car;
+import bg.car_wash.areas.car.entities.Car;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;

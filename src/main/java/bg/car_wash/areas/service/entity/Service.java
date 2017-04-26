@@ -1,12 +1,14 @@
 package bg.car_wash.areas.service.entity;
 
-import bg.car_wash.areas.car.entity.CarType;
+import bg.car_wash.areas.activity.entity.Activity;
+import bg.car_wash.areas.car.entities.CarType;
 import bg.car_wash.areas.user.entity.UserType;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "services")
@@ -30,6 +32,9 @@ public class Service implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "user_type")
 	private UserType userType;
+
+	@ManyToMany(mappedBy = "services")
+	private List<Activity> activities;
 
 	public Service() {
 	}
@@ -72,5 +77,13 @@ public class Service implements Serializable {
 
 	public void setUserType(UserType userType) {
 		this.userType = userType;
+	}
+
+	public List<Activity> getActivities() {
+		return this.activities;
+	}
+
+	public void setActivities(List<Activity> activities) {
+		this.activities = activities;
 	}
 }
