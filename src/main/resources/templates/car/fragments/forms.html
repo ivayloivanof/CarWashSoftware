@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
 
-<form method="post" th:fragment="car-add-form" th:object="${carBindingModel}" class="col-5">
+<form method="post" th:fragment="car-add-form" th:object="${carBindingModel}">
     <div th:if="${error} != null" th:text="${error}"></div>
     <div class="form-group" th:classappend="${#fields.hasErrors('carRegistrationNumber')}? 'has-danger'">
         <label for="carRegistrationNumber">Car Registration Number</label>
@@ -18,20 +18,6 @@
                 class="form-control-feedback"
                 th:each="error : ${#fields.errors('carRegistrationNumber')}" th:text="${error}">Error</small>
     </div>
-    <div class="form-group" th:classappend="${#fields.hasErrors('carModel')}? 'has-danger'">
-        <label for="carModel">Car Model</label>
-        <input
-                type="text"
-                class="form-control"
-                id="carModel"
-                aria-describedby="carModelHelp"
-                name="carModel"
-                th:field="*{carModel}"/>
-        <small
-                id="carModelHelp"
-                class="form-control-feedback"
-                th:each="error : ${#fields.errors('carModel')}" th:text="${error}">Error</small>
-    </div>
     <div class="form-group" th:classappend="${#fields.hasErrors('carMake')}? 'has-danger'">
         <label for="carMake">Car Make</label>
         <input
@@ -45,6 +31,20 @@
                 id="carMakeHelp"
                 class="form-control-feedback"
                 th:each="error : ${#fields.errors('carMake')}" th:text="${error}">Error</small>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('carModel')}? 'has-danger'">
+        <label for="carModel">Car Model</label>
+        <input
+                type="text"
+                class="form-control"
+                id="carModel"
+                aria-describedby="carModelHelp"
+                name="carModel"
+                th:field="*{carModel}"/>
+        <small
+                id="carModelHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('carModel')}" th:text="${error}">Error</small>
     </div>
     <div class="form-group" th:classappend="${#fields.hasErrors('carType')}? 'has-danger'">
         <label for="carType">Car Type</label>
@@ -170,7 +170,7 @@
     <button type="submit" class="btn btn-secondary">Edit car</button>
 </form>
 
-<form method="post" th:fragment="car-search-form" th:object="${carSearchBindingModel}" class="col-5">
+<form method="post" th:fragment="car-search-form" th:object="${carSearchBindingModel}">
     <div th:if="${error} != null" th:text="${error}"></div>
     <div class="form-group" th:classappend="${#fields.hasErrors('carRegistrationNumber')}? 'has-danger'">
         <label for="carSearch">Search car</label>
