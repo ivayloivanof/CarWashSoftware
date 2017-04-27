@@ -37,7 +37,7 @@
                     <button type="button" class="btn btn-warning">
                         <a th:href="@{/service/edit/{id}(id=${service.getId()})}" th:text="Edit"></a>
                     </button>
-                    <button type="button" class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <button type="button" class="btn btn-danger" sec:authorize="hasAuthority('ADMIN')">
                         <a th:href="@{/service/delete/{id}(id=${service.getId()})}" th:text="Delete"></a>
                     </button>
                 </td>

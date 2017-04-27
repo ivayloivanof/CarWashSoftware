@@ -1,7 +1,6 @@
 package bg.car_wash.areas.user.serviceImpl;
 
 import bg.car_wash.areas.user.entity.User;
-import bg.car_wash.areas.user.exception.UserNotFoundException;
 import bg.car_wash.areas.user.repository.UserRepository;
 import bg.car_wash.areas.user.service.UserService;
 import bg.car_wash.configurations.error.Errors;

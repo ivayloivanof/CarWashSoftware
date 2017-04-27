@@ -39,7 +39,7 @@
                        <a th:text="${car.getCarRegistrationNumber()}" th:href="@{/car/edit/{id}(id=${car.getId()})}"></a>
                    </p>
                 </td>
-                <td sec:authorize="hasRole('ROLE_ADMIN')">
+                <td sec:authorize="hasAuthority('ADMIN')">
                     <button type="button" class="btn btn-warning">
                         <a th:href="@{/customer/edit/{id}(id=${customerViewModel.getId()})}" th:text="Edit"></a>
                     </button>

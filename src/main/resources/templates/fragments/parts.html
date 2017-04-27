@@ -29,7 +29,7 @@
                            th:href="${T(bg.car_wash.configurations.site.PageUrl).LOGOUT_PAGE}"
                            th:text="${T(bg.car_wash.configurations.site.PageTitle).LOGOUT_PAGE}"></a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" sec:authorize="hasRole('ROLE_ADMIN')"
+                        <a class="dropdown-item" sec:authorize="hasAuthority('ADMIN')"
                            th:href="${T(bg.car_wash.configurations.site.PageUrl).USER_STATUS_PAGE}"
                            th:text="${T(bg.car_wash.configurations.site.PageTitle).USER_STATUS_PAGE}"></a>
                     </div>

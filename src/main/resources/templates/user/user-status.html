@@ -35,7 +35,7 @@
                     <button type="button" class="btn btn-warning">
                         <a th:href="@{/user/edit/{id}(id=${userViewModel.getId()})}" th:text="Edit" class="card-link"></a>
                     </button>
-                    <button type="button" class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <button type="button" class="btn btn-danger" sec:authorize="hasAuthority('ADMIN')">
                         <a th:href="@{/user/delete/{id}(id=${userViewModel.getId()})}" th:text="Delete" class="card-link"></a>
                     </button>
                 </td>

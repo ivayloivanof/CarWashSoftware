@@ -168,18 +168,11 @@ public class UserController {
 		return "redirect:/user/login";
 	}
 
-
 	private UserEditViewModel getUserViewModel(Long id) {
 		User user = this.userService.findUserById(id);
 		UserEditViewModel userViewModel = this.modelMapper.map(user, UserEditViewModel.class);
 
 		return userViewModel;
-	}
-
-	@ExceptionHandler(UserNotFoundException.class)
-	public String catchUserNotFoundException() {
-		//TODO create and return error page from not found user
-		return "";
 	}
 
 }
