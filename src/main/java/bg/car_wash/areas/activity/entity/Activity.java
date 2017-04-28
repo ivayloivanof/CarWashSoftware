@@ -22,12 +22,6 @@ public class Activity implements Serializable {
 	@Column(name = "activity_price", nullable = false)
 	private BigDecimal activityPrice;
 
-	@ManyToMany(cascade = CascadeType.ALL, targetEntity = Service.class)
-	private List<Service> services;
-
-	@ManyToMany
-	private List<Car> cars;
-
 	public Activity() {
 	}
 
@@ -55,19 +49,4 @@ public class Activity implements Serializable {
 		this.activityPrice = activityPrice;
 	}
 
-	public List<Service> getServices() {
-		return services;
-	}
-
-	public void setServices(List<Service> services) {
-		this.services = services;
-	}
-
-	public List<Car> getCar() {
-		return cars;
-	}
-
-	public void setCar(List<Car> car) {
-		this.cars = car;
-	}
 }

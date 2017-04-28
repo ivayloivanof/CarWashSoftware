@@ -42,7 +42,7 @@ public class ServiceController {
 		List<Activity> activities = this.activityRepository.findAll(new Sort(Sort.Direction.ASC, "activityName"));
 		List<ActivityViewModel> activityViewModelList = new LinkedList<>();
 
-		if(!activities.isEmpty()) {
+		if (!activities.isEmpty()) {
 			for (Activity activity : activities) {
 				activityViewModelList.add(this.modelMapper.map(activity, ActivityViewModel.class));
 			}
@@ -63,7 +63,12 @@ public class ServiceController {
 		}
 
 		Activity activity = this.activityRepository.findActivityById(serviceBindingModel.getActivityId());
+		List<Activity> activities = new LinkedList<>();
+		activities.add(activity);
+//		TODO insert activity in db
 		Service service = this.modelMapper.map(serviceBindingModel, Service.class);
+		service.setActivities(activities);
+
 		this.serviceService.createService(service);
 
 		return "redirect:all";

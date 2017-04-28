@@ -1,6 +1,7 @@
 package bg.car_wash.areas.service.entity;
 
 import bg.car_wash.areas.activity.entity.Activity;
+import bg.car_wash.areas.car.entities.Car;
 import bg.car_wash.areas.car.entities.CarType;
 import bg.car_wash.areas.user.entity.UserType;
 
@@ -33,8 +34,11 @@ public class Service implements Serializable {
 	@Column(name = "user_type")
 	private UserType userType;
 
-	@ManyToMany(mappedBy = "services")
+	@ManyToMany(cascade = CascadeType.ALL, targetEntity = Activity.class)
 	private List<Activity> activities;
+
+	@ManyToMany
+	private List<Car> cars;
 
 	public Service() {
 	}
@@ -85,5 +89,13 @@ public class Service implements Serializable {
 
 	public void setActivities(List<Activity> activities) {
 		this.activities = activities;
+	}
+
+	public List<Car> getCars() {
+		return cars;
+	}
+
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
 	}
 }
