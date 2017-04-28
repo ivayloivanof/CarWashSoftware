@@ -1,5 +1,6 @@
 package bg.car_wash.areas.user.controllers;
 
+import bg.car_wash.areas.role.entity.Role;
 import bg.car_wash.areas.user.entity.User;
 import bg.car_wash.areas.user.entity.UserType;
 import bg.car_wash.areas.user.exception.UserNotFoundException;
@@ -28,6 +29,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/user")
@@ -90,6 +93,12 @@ public class UserController {
 		user.setAccountNonLocked(true);
 		user.setCredentialsNonExpired(true);
 		user.setEnabled(true);
+
+		Role role = new Role();
+		role.setAuthority("WORKER");
+		Set<Role> roleSet = new HashSet<>();
+		roleSet.add(role);
+		user.setAuthorities(roleSet);
 
 		this.userService.createUser(user);
 
