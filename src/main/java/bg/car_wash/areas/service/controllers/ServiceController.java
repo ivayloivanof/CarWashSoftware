@@ -3,6 +3,9 @@ package bg.car_wash.areas.service.controllers;
 import bg.car_wash.areas.activity.entity.Activity;
 import bg.car_wash.areas.activity.models.viewModel.ActivityViewModel;
 import bg.car_wash.areas.activity.repository.ActivityRepository;
+import bg.car_wash.areas.car.entities.Car;
+import bg.car_wash.areas.car.models.viewModel.CarViewModel;
+import bg.car_wash.areas.car.repositories.CarRepository;
 import bg.car_wash.areas.service.entity.Service;
 import bg.car_wash.areas.service.models.bindingModel.ServiceBindingModel;
 import bg.car_wash.areas.service.models.viewModel.ServiceViewModel;
@@ -28,12 +31,18 @@ public class ServiceController {
 	private ServiceService serviceService;
 	private ModelMapper modelMapper;
 	private ActivityRepository activityRepository;
+	private CarRepository carRepository;
 
 	@Autowired
-	public ServiceController(ServiceService serviceService, ModelMapper modelMapper, ActivityRepository activityRepository) {
+	public ServiceController(
+			ServiceService serviceService,
+			ModelMapper modelMapper,
+			ActivityRepository activityRepository,
+			CarRepository carRepository) {
 		this.serviceService = serviceService;
 		this.modelMapper = modelMapper;
 		this.activityRepository = activityRepository;
+		this.carRepository = carRepository;
 	}
 
 	@GetMapping("/add")
@@ -42,14 +51,24 @@ public class ServiceController {
 		List<Activity> activities = this.activityRepository.findAll(new Sort(Sort.Direction.ASC, "activityName"));
 		List<ActivityViewModel> activityViewModelList = new LinkedList<>();
 
+		List<Car> cars = this.carRepository.findAll(new Sort(Sort.Direction.ASC, "carRegistrationNumber"));
+		List<CarViewModel> carViewModels = new LinkedList<>();
+
 		if (!activities.isEmpty()) {
 			for (Activity activity : activities) {
 				activityViewModelList.add(this.modelMapper.map(activity, ActivityViewModel.class));
 			}
 		}
 
+		if(!cars.isEmpty()) {
+			for (Car car : cars) {
+				carViewModels.add(this.modelMapper.map(car, CarViewModel.class));
+			}
+		}
+
 		model.addAttribute("pageTitle", PageTitle.SERVICE_ADD_PAGE);
 		model.addAttribute("activityViewModel", activityViewModelList);
+		model.addAttribute("carViewModel", carViewModels);
 
 		return "service/service-add";
 	}
@@ -62,12 +81,19 @@ public class ServiceController {
 			return "service/service-add";
 		}
 
+		Service service = this.modelMapper.map(serviceBindingModel, Service.class);
+
 		Activity activity = this.activityRepository.findActivityById(serviceBindingModel.getActivityId());
 		List<Activity> activities = new LinkedList<>();
 		activities.add(activity);
-//		TODO insert activity in db
-		Service service = this.modelMapper.map(serviceBindingModel, Service.class);
 		service.setActivities(activities);
+
+		Car car = this.carRepository.findCarById(serviceBindingModel.getCarId());
+		List<Car> cars = new LinkedList<>();
+		cars.add(car);
+		service.setCars(cars);
+
+		service.setCarType(car.getCarType());
 
 		this.serviceService.createService(service);
 

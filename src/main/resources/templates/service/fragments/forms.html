@@ -34,7 +34,6 @@
     </div>
     <div class="form-group">
         <label for="activityId">Activity</label>
-        <!--TODO edit-->
         <select
                 id="activityId"
                 class="form-control"
@@ -44,34 +43,16 @@
                     th:text="${activityView.getActivityName()}"></option>
         </select>
     </div>
-    <div class="form-group" th:classappend="${#fields.hasErrors('carType')}? 'has-danger'">
-        <label for="carType">Car Type</label>
+    <div class="form-group">
+        <label for="carId">Car</label>
         <select
-                id="carType"
+                id="carId"
                 class="form-control"
-                aria-describedby="carTypeHelp"
-                name="carType"
-                th:field="*{carType}">
-            <option
-                    th:value="${T(bg.car_wash.areas.car.entities.CarType).BUS}"
-                    th:text="${T(bg.car_wash.areas.car.entities.CarType).BUS}"></option>
-            <option
-                    th:value="${T(bg.car_wash.areas.car.entities.CarType).CAR}"
-                    th:text="${T(bg.car_wash.areas.car.entities.CarType).CAR}"></option>
-            <option
-                    th:value="${T(bg.car_wash.areas.car.entities.CarType).JEEP}"
-                    th:text="${T(bg.car_wash.areas.car.entities.CarType).JEEP}"></option>
-            <option
-                    th:value="${T(bg.car_wash.areas.car.entities.CarType).PICAP}"
-                    th:text="${T(bg.car_wash.areas.car.entities.CarType).PICAP}"></option>
-            <option
-                    th:value="${T(bg.car_wash.areas.car.entities.CarType).VAN}"
-                    th:text="${T(bg.car_wash.areas.car.entities.CarType).VAN}"></option>
+                name="carId">
+            <option th:each="carView : ${carViewModel}"
+                    th:value="${carView.getId()}"
+                    th:text="${carView.getCarRegistrationNumber()}"></option>
         </select>
-        <small
-                id="carTypeHelp"
-                class="form-control-feedback"
-                th:each="error : ${#fields.errors('carType')}" th:text="${error}">Error</small>
     </div>
     <div class="form-group" th:classappend="${#fields.hasErrors('userType')}? 'has-danger'">
         <label for="userType">Worker Type</label>

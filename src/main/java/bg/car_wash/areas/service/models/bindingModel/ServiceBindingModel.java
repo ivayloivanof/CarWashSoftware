@@ -25,6 +25,8 @@ public class ServiceBindingModel {
 
 	private Long activityId;
 
+	private Long carId;
+
 	public ServiceBindingModel() {
 	}
 
@@ -74,5 +76,13 @@ public class ServiceBindingModel {
 
 	public void setActivityId(Long activityId) {
 		this.activityId = activityId;
+	}
+
+	public Long getCarId() {
+		return carId;
+	}
+
+	public void setCarId(Long carId) {
+		this.carId = carId;
 	}
 }
