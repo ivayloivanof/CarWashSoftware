@@ -1,15 +1,18 @@
 package bg.car_wash.areas.car.services;
 
 import bg.car_wash.areas.car.entities.CarMakeModel;
+import bg.car_wash.areas.car.models.viewModel.CarMakeModelViewModel;
+import bg.car_wash.areas.car.models.viewModel.CarMakeViewModel;
+import bg.car_wash.areas.car.models.viewModel.CarModelViewModel;
 
 import java.util.List;
 
 public interface CarMakeModelService {
 	void createCar(CarMakeModel car);
 
-	List<CarMakeModel> findAllCarMakeModel();
+	List<CarMakeModelViewModel> findAllCarMakeModel();
 
-	List<CarMakeModel> findAllCarMakeModelByModel(String model, String make);
+	List<CarModelViewModel> findAllCarMakeModelByModel(String model, String make);
 
-	List<CarMakeModel> findAllCarMakeModelByMake(String make);
+	List<CarMakeViewModel> findAllCarMakeModelByMake(String make);
 }
