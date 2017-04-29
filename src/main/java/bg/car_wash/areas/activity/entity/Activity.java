@@ -1,12 +1,8 @@
 package bg.car_wash.areas.activity.entity;
 
-import bg.car_wash.areas.car.entities.Car;
-import bg.car_wash.areas.service.entity.Service;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.List;
 
 @Entity
 @Table(name = "activities")
