@@ -38,7 +38,7 @@ public class CarServiceImpl implements CarService {
 			throw new CarNotCreateException("Car not create when Car object is null!");
 		}
 
-		Customer customer = this.customerService.findCustomerById(carBindingModel.getCustomerId());
+		Customer customer = this.customerService.findCustomerEntityById(carBindingModel.getCustomerId());
 		Car car = this.modelMapper.map(carBindingModel, Car.class);
 
 		car.setCarModelName(carBindingModel.getCarModel());
@@ -53,9 +53,9 @@ public class CarServiceImpl implements CarService {
 
 		Customer customer;
 		if (carBindingModel.getCustomerId() != null) {
-			customer = this.customerService.findCustomerById(carBindingModel.getCustomerId());
+			customer = this.customerService.findCustomerEntityById(carBindingModel.getCustomerId());
 		} else {
-			customer = this.customerService.findCustomerById(1L);
+			customer = this.customerService.findCustomerEntityById(1L);
 		}
 
 		carBindingModel.setOwner(this.modelMapper.map(customer, CustomerViewModel.class));
@@ -119,11 +119,7 @@ public class CarServiceImpl implements CarService {
 	}
 
 	public List<CustomerViewModel> getAllCustomers() {
-		List<Customer> customers = this.customerService.findAllCustomers();
-		List<CustomerViewModel> customerViewModels = new LinkedList<>();
-		for (Customer customer : customers) {
-			customerViewModels.add(this.modelMapper.map(customer, CustomerViewModel.class));
-		}
+		List<CustomerViewModel> customerViewModels = this.customerService.findAllCustomers();
 
 		return customerViewModels;
 	}
