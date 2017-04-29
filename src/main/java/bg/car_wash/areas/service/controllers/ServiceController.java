@@ -1,19 +1,14 @@
 package bg.car_wash.areas.service.controllers;
 
-import bg.car_wash.areas.activity.entity.Activity;
 import bg.car_wash.areas.activity.models.viewModel.ActivityViewModel;
-import bg.car_wash.areas.activity.repository.ActivityRepository;
-import bg.car_wash.areas.car.entities.Car;
+import bg.car_wash.areas.activity.service.ActivityService;
 import bg.car_wash.areas.car.models.viewModel.CarViewModel;
-import bg.car_wash.areas.car.repositories.CarRepository;
-import bg.car_wash.areas.service.entity.Service;
+import bg.car_wash.areas.car.services.CarService;
 import bg.car_wash.areas.service.models.bindingModel.ServiceBindingModel;
 import bg.car_wash.areas.service.models.viewModel.ServiceViewModel;
 import bg.car_wash.areas.service.service.ServiceService;
 import bg.car_wash.configurations.site.PageTitle;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +16,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.LinkedList;
 import java.util.List;
 
 @Controller
@@ -29,45 +23,26 @@ import java.util.List;
 public class ServiceController {
 
 	private ServiceService serviceService;
-	private ModelMapper modelMapper;
-	private ActivityRepository activityRepository;
-	private CarRepository carRepository;
+	private ActivityService activityService;
+	private CarService carService;
 
 	@Autowired
 	public ServiceController(
 			ServiceService serviceService,
-			ModelMapper modelMapper,
-			ActivityRepository activityRepository,
-			CarRepository carRepository) {
+			ActivityService activityService,
+			CarService carService) {
 		this.serviceService = serviceService;
-		this.modelMapper = modelMapper;
-		this.activityRepository = activityRepository;
-		this.carRepository = carRepository;
+		this.activityService = activityService;
+		this.carService = carService;
 	}
 
 	@GetMapping("/add")
 	public String getAddServicePage(Model model, @Valid @ModelAttribute ServiceBindingModel serviceBindingModel, BindingResult bindingResult) {
-
-		List<Activity> activities = this.activityRepository.findAll(new Sort(Sort.Direction.ASC, "activityName"));
-		List<ActivityViewModel> activityViewModelList = new LinkedList<>();
-
-		List<Car> cars = this.carRepository.findAll(new Sort(Sort.Direction.ASC, "carRegistrationNumber"));
-		List<CarViewModel> carViewModels = new LinkedList<>();
-
-		if (!activities.isEmpty()) {
-			for (Activity activity : activities) {
-				activityViewModelList.add(this.modelMapper.map(activity, ActivityViewModel.class));
-			}
-		}
-
-		if(!cars.isEmpty()) {
-			for (Car car : cars) {
-				carViewModels.add(this.modelMapper.map(car, CarViewModel.class));
-			}
-		}
+		List<ActivityViewModel> activityViewModel = this.activityService.findAllActivities();
+		List<CarViewModel> carViewModels = this.carService.findAllCars();
 
 		model.addAttribute("pageTitle", PageTitle.SERVICE_ADD_PAGE);
-		model.addAttribute("activityViewModel", activityViewModelList);
+		model.addAttribute("activityViewModel", activityViewModel);
 		model.addAttribute("carViewModel", carViewModels);
 
 		return "service/service-add";
@@ -75,39 +50,19 @@ public class ServiceController {
 
 	@PostMapping("/add")
 	public String addServicePage(Model model, @Valid @ModelAttribute ServiceBindingModel serviceBindingModel, BindingResult bindingResult) {
-
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("pageTitle", PageTitle.SERVICE_ADD_PAGE);
 			return "service/service-add";
 		}
 
-		Service service = this.modelMapper.map(serviceBindingModel, Service.class);
-
-		Activity activity = this.activityRepository.findActivityById(serviceBindingModel.getActivityId());
-		List<Activity> activities = new LinkedList<>();
-		activities.add(activity);
-		service.setActivities(activities);
-
-		Car car = this.carRepository.findCarById(serviceBindingModel.getCarId());
-		List<Car> cars = new LinkedList<>();
-		cars.add(car);
-		service.setCars(cars);
-
-		service.setCarType(car.getCarType());
-
-		this.serviceService.createService(service);
+		this.serviceService.createService(serviceBindingModel);
 
 		return "redirect:all";
 	}
 
 	@GetMapping("/all")
 	public String getAllServicesPage(Model model) {
-
-		List<ServiceViewModel> servicesViewModel = new LinkedList<>();
-		List<Service> services = this.serviceService.findAllServices();
-		for (Service service : services) {
-			servicesViewModel.add(this.modelMapper.map(service, ServiceViewModel.class));
-		}
+		List<ServiceViewModel> servicesViewModel = this.serviceService.findAllServices();
 
 		model.addAttribute("pageTitle", PageTitle.SERVICE_ALL_PAGE);
 		model.addAttribute("servicesViewModel", servicesViewModel);
@@ -119,23 +74,21 @@ public class ServiceController {
 	public String getEditServiceByIdPage(@PathVariable(value = "id") Long id, Model model, @Valid @ModelAttribute ServiceBindingModel serviceBindingModel, BindingResult bindingResult) {
 
 		model.addAttribute("pageTitle", PageTitle.SERVICE_EDIT_PAGE);
-		model.addAttribute("serviceViewModel", getServiceViewModel(id));
+		model.addAttribute("serviceViewModel", this.serviceService.getServiceViewModel(id));
 
 		return "service/service-edit";
 	}
 
 	@PostMapping("/edit/{id}")
 	public String editServiceByIdPage(@PathVariable(value = "id") Long id, Model model, @Valid @ModelAttribute ServiceBindingModel serviceBindingModel, BindingResult bindingResult) {
-
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("pageTitle", PageTitle.SERVICE_EDIT_PAGE);
-			model.addAttribute("serviceViewModel", getServiceViewModel(id));
+			model.addAttribute("serviceViewModel", this.serviceService.getServiceViewModel(id));
 
 			return "service/service-edit";
 		}
 
-		Service service = this.modelMapper.map(serviceBindingModel, Service.class);
-		this.serviceService.updateService(service);
+		this.serviceService.updateService(serviceBindingModel);
 
 		return "redirect:/service/all";
 	}
@@ -146,13 +99,6 @@ public class ServiceController {
 		this.serviceService.deleteServiceById(id);
 
 		return "redirect:/service/all";
-	}
-
-	private ServiceViewModel getServiceViewModel(Long id) {
-		Service service = this.serviceService.findServiceById(id);
-		ServiceViewModel serviceViewModel = this.modelMapper.map(service, ServiceViewModel.class);
-
-		return serviceViewModel;
 	}
 
 }
