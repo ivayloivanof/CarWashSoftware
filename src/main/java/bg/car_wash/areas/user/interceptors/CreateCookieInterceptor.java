@@ -17,7 +17,7 @@ public class CreateCookieInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		if(!auth.getPrincipal().equals("anonymousUser")) {
+		if (!auth.getPrincipal().equals("anonymousUser")) {
 			User user = (User) auth.getPrincipal();
 
 			UserViewModel userViewModel = new UserViewModel(user.getEmail(), user.getFullName().replace(" ", "_"), user.getUserType());

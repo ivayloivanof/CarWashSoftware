@@ -20,7 +20,7 @@ public class CustomerPhoneNumberValidator implements ConstraintValidator<ValidCu
 
 	@Override
 	public boolean isValid(String phoneNumber, ConstraintValidatorContext ctx) {
-		if(phoneNumber == null) {
+		if (phoneNumber == null) {
 			return true;
 		}
 

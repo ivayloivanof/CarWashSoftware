@@ -3,7 +3,6 @@ package bg.car_wash.areas.user.controllers;
 import bg.car_wash.areas.role.entity.Role;
 import bg.car_wash.areas.user.entity.User;
 import bg.car_wash.areas.user.entity.UserType;
-import bg.car_wash.areas.user.exception.UserNotFoundException;
 import bg.car_wash.areas.user.models.bindingModels.UserLoginBindingModel;
 import bg.car_wash.areas.user.models.bindingModels.UserRegisterBindingModel;
 import bg.car_wash.areas.user.models.viewModels.UserEditViewModel;
@@ -161,7 +160,6 @@ public class UserController {
 			Authentication authentication) {
 		Cookie[] cookies = httpServletRequest.getCookies();
 
-		//TODO session invalidate
 		authentication.setAuthenticated(false);
 
 		for (Cookie cookie : cookies) {

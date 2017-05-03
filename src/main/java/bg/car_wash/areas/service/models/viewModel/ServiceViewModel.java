@@ -1,6 +1,5 @@
 package bg.car_wash.areas.service.models.viewModel;
 
-import bg.car_wash.areas.activity.entity.Activity;
 import bg.car_wash.areas.activity.models.viewModel.ActivityViewModel;
 import bg.car_wash.areas.car.entities.CarType;
 import bg.car_wash.areas.user.entity.UserType;

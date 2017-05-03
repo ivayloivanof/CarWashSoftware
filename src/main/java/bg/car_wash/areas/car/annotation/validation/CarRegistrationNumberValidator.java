@@ -20,7 +20,7 @@ public class CarRegistrationNumberValidator implements ConstraintValidator<Valid
 
 	@Override
 	public boolean isValid(String registrationNumber, ConstraintValidatorContext ctx) {
-		if(registrationNumber == null) {
+		if (registrationNumber == null) {
 			return true;
 		}
 
