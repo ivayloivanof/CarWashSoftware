@@ -72,18 +72,27 @@ public class ServiceController {
 
 	@GetMapping("/edit/{id}")
 	public String getEditServiceByIdPage(@PathVariable(value = "id") Long id, Model model, @Valid @ModelAttribute ServiceBindingModel serviceBindingModel, BindingResult bindingResult) {
+		List<ActivityViewModel> activityViewModel = this.activityService.findAllActivities();
+		List<CarViewModel> carViewModels = this.carService.findAllCars();
 
 		model.addAttribute("pageTitle", PageTitle.SERVICE_EDIT_PAGE);
 		model.addAttribute("serviceViewModel", this.serviceService.getServiceViewModel(id));
+		model.addAttribute("activityViewModel", activityViewModel);
+		model.addAttribute("carViewModel", carViewModels);
 
 		return "service/service-edit";
 	}
 
 	@PostMapping("/edit/{id}")
 	public String editServiceByIdPage(@PathVariable(value = "id") Long id, Model model, @Valid @ModelAttribute ServiceBindingModel serviceBindingModel, BindingResult bindingResult) {
+		List<ActivityViewModel> activityViewModel = this.activityService.findAllActivities();
+		List<CarViewModel> carViewModels = this.carService.findAllCars();
+
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("pageTitle", PageTitle.SERVICE_EDIT_PAGE);
 			model.addAttribute("serviceViewModel", this.serviceService.getServiceViewModel(id));
+			model.addAttribute("activityViewModel", activityViewModel);
+			model.addAttribute("carViewModel", carViewModels);
 
 			return "service/service-edit";
 		}

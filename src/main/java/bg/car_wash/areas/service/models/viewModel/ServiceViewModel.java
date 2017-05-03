@@ -1,10 +1,13 @@
 package bg.car_wash.areas.service.models.viewModel;
 
+import bg.car_wash.areas.activity.entity.Activity;
+import bg.car_wash.areas.activity.models.viewModel.ActivityViewModel;
 import bg.car_wash.areas.car.entities.CarType;
 import bg.car_wash.areas.user.entity.UserType;
 import com.google.gson.annotations.Expose;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class ServiceViewModel {
 
@@ -22,6 +25,9 @@ public class ServiceViewModel {
 
 	@Expose
 	private UserType userType;
+
+	@Expose
+	private List<ActivityViewModel> activities;
 
 	public ServiceViewModel() {
 	}
@@ -64,5 +70,13 @@ public class ServiceViewModel {
 
 	public void setUserType(UserType userType) {
 		this.userType = userType;
+	}
+
+	public List<ActivityViewModel> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(List<ActivityViewModel> activities) {
+		this.activities = activities;
 	}
 }

@@ -103,6 +103,18 @@ public class ServiceServiceImpl implements ServiceService {
 
 		Service service = this.modelMapper.map(serviceBindingModel, Service.class);
 
+		Activity activity = this.activityRepository.findActivityById(serviceBindingModel.getActivityId());
+		List<Activity> activities = new LinkedList<>();
+		activities.add(activity);
+		service.setActivities(activities);
+
+		Car car = this.carRepository.findCarById(serviceBindingModel.getCarId());
+		List<Car> cars = new LinkedList<>();
+		cars.add(car);
+		service.setCars(cars);
+
+		service.setCarType(car.getCarType());
+
 		this.serviceRepository.save(service);
 	}
 
