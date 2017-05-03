@@ -15,15 +15,16 @@
     <div class="container">
         <br />
         <p class="h2 text-center">All services</p>
-        <table class="table table-striped">
+        <table class="table table-striped col-10">
             <thead>
             <tr>
                 <th>ID</th>
                 <th>Service name</th>
                 <th>Service price</th>
                 <th>Car type</th>
-                <th>User type</th>
+                <th>Worker type</th>
                 <th>Edit/Delete</th>
+                <th>Activities</th>
             </tr>
             </thead>
             <tbody>
@@ -40,6 +41,11 @@
                     <button type="button" class="btn btn-danger" sec:authorize="hasAuthority('ADMIN')">
                         <a th:href="@{/service/delete/{id}(id=${service.getId()})}" th:text="Delete"></a>
                     </button>
+                </td>
+                <td th:if="${service.getActivities() != null}">
+                    <p th:each="activity : ${service.getActivities()}">
+                        <a th:href="@{/activity/edit/{id}(id=${activity.getId()})}" th:text="${activity.getActivityName()}"></a>
+                    </p>
                 </td>
             </tr>
             </tbody>
