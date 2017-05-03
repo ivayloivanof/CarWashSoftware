@@ -1,5 +1,6 @@
 package bg.car_wash.areas.car.models.bindingModel;
 
+import bg.car_wash.areas.car.annotation.ValidCarRegistrationNumber;
 import bg.car_wash.areas.car.entities.CarType;
 import bg.car_wash.areas.customer.models.viewModels.CustomerViewModel;
 
@@ -9,7 +10,7 @@ public class CarBindingModel {
 
 	private Long id;
 
-	@Size(min = 7, max = 10, message = "Error Car registration Number")
+	@ValidCarRegistrationNumber
 	private String carRegistrationNumber;
 
 	@Size(min = 2, max = 25, message = "Error car model name")
