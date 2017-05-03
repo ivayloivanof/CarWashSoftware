@@ -98,20 +98,6 @@
                 class="form-control-feedback"
                 th:each="error : ${#fields.errors('carRegistrationNumber')}" th:text="${error}">Error</small>
     </div>
-    <div class="form-group" th:classappend="${#fields.hasErrors('carModel')}? 'has-danger'">
-        <label for="carModel">Car Model</label>
-        <input
-                type="text"
-                class="form-control"
-                id="carModel"
-                aria-describedby="carModelHelp"
-                name="carModel"
-                th:value="${car.getCarModel()}"/>
-        <small
-                id="carModelHelp"
-                class="form-control-feedback"
-                th:each="error : ${#fields.errors('carModel')}" th:text="${error}">Error</small>
-    </div>
     <div class="form-group" th:classappend="${#fields.hasErrors('carMake')}? 'has-danger'">
         <label for="carMake">Car Make</label>
         <input
@@ -125,6 +111,20 @@
                 id="carMakeHelp"
                 class="form-control-feedback"
                 th:each="error : ${#fields.errors('carMake')}" th:text="${error}">Error</small>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('carModel')}? 'has-danger'">
+        <label for="carModel">Car Model</label>
+        <input
+                type="text"
+                class="form-control"
+                id="carModel"
+                aria-describedby="carModelHelp"
+                name="carModel"
+                th:value="${car.getCarModel()}"/>
+        <small
+                id="carModelHelp"
+                class="form-control-feedback"
+                th:each="error : ${#fields.errors('carModel')}" th:text="${error}">Error</small>
     </div>
     <div class="form-group" th:classappend="${#fields.hasErrors('carType')}? 'has-danger'">
         <label for="carType">Car Type</label>
