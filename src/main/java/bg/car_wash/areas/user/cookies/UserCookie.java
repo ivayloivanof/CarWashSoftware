@@ -1,4 +1,4 @@
-package bg.car_wash.utils.user;
+package bg.car_wash.areas.user.cookies;
 
 import bg.car_wash.areas.user.models.viewModels.UserViewModel;
 
@@ -7,13 +7,13 @@ import java.security.MessageDigest;
 import java.util.LinkedList;
 import java.util.List;
 
-public class UserCreateCookie {
+public class UserCookie {
 
 	private List<Cookie> cookies;
 
 	private UserViewModel userSessionViewModel;
 
-	public UserCreateCookie(UserViewModel userSessionViewModel) {
+	public UserCookie(UserViewModel userSessionViewModel) {
 		this.cookies = new LinkedList<>();
 		this.userSessionViewModel = userSessionViewModel;
 		this.initCookies();
@@ -22,8 +22,10 @@ public class UserCreateCookie {
 	private void initCookies() {
 		Cookie name = new Cookie("user", this.userSessionViewModel.getFullName());
 		name.setMaxAge(3600);
+		name.setPath("/user");
 		Cookie email = new Cookie("email", this.userSessionViewModel.getEmail());
 		email.setMaxAge(3600);
+		email.setPath("/user");
 		Cookie userType = new Cookie("user-type", this.userSessionViewModel.getUserType().toString());
 		userType.setMaxAge(3600);
 		userType.setPath("/");
