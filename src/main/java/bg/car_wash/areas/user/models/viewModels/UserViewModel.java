@@ -20,6 +20,12 @@ public class UserViewModel {
 	public UserViewModel() {
 	}
 
+	public UserViewModel(String email, String fullName, UserType userType) {
+		this.setEmail(email);
+		this.setFullName(fullName);
+		this.setUserType(userType);
+	}
+
 	public Long getId() {
 		return id;
 	}
