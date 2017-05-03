@@ -19,13 +19,17 @@ public class CustomerPhoneNumberValidator implements ConstraintValidator<ValidCu
 	}
 
 	@Override
-	public boolean isValid(String phoneNumber, ConstraintValidatorContext context) {
-		return (validatePhoneNumber(phoneNumber));
+	public boolean isValid(String phoneNumber, ConstraintValidatorContext ctx) {
+		if(phoneNumber == null) {
+			return true;
+		}
+
+		return validatePhoneNumber(phoneNumber);
 	}
 
-	private boolean validatePhoneNumber(String email) {
+	private boolean validatePhoneNumber(String phoneNumber) {
 		pattern = Pattern.compile(PHONE_NUMBER_PATTERN);
-		matcher = pattern.matcher(email);
+		matcher = pattern.matcher(phoneNumber);
 		return matcher.matches();
 	}
 }

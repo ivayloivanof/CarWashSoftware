@@ -1,5 +1,7 @@
 package bg.car_wash.areas.customer.models.bindingModel;
 
+import bg.car_wash.areas.customer.annotation.ValidCustomerPhoneNumber;
+
 import javax.validation.constraints.Size;
 import java.util.Date;
 
@@ -10,7 +12,7 @@ public class CustomerBindingModel {
 	@Size(min = 2, max = 50, message = "This customer name is not valid!")
 	private String name;
 
-	@Size(min = 10, max = 16, message = "This phone number is not valid! Phone number like: '+359 111 222 333'!")
+	@ValidCustomerPhoneNumber
 	private String phoneNumber;
 
 	private Date date;

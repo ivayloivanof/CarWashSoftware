@@ -11,10 +11,10 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@Target({TYPE, FIELD, ANNOTATION_TYPE})
+@Documented
+@Target({TYPE, FIELD, METHOD})
 @Retention(RUNTIME)
 @Constraint(validatedBy = CustomerPhoneNumberValidator.class)
-@Documented
 public @interface ValidCustomerPhoneNumber {
 	String message() default "This phone number is not valid! Phone number like: '+359 111 222 333'!";
 
