@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      lang="en">
 <head>
     <meta charset="UTF-8"/>
     <title th:text="${pageTitle}"></title>
@@ -13,7 +13,7 @@
 </header>
 <main>
     <div class="container">
-        <br />
+        <br/>
         <p class="h2 text-center">User info</p>
         <table class="table table-striped">
             <thead>
@@ -33,10 +33,12 @@
                 <td th:text="${userViewModel.getUserType()}"></td>
                 <td>
                     <button type="button" class="btn btn-warning">
-                        <a th:href="@{/user/edit/{id}(id=${userViewModel.getId()})}" th:text="Edit" class="card-link"></a>
+                        <a th:href="@{/user/edit/{id}(id=${userViewModel.getId()})}" th:text="Edit"
+                           class="card-link"></a>
                     </button>
                     <button type="button" class="btn btn-danger" sec:authorize="hasAuthority('ADMIN')">
-                        <a th:href="@{/user/delete/{id}(id=${userViewModel.getId()})}" th:text="Delete" class="card-link"></a>
+                        <a th:href="@{/user/delete/{id}(id=${userViewModel.getId()})}" th:text="Delete"
+                           class="card-link"></a>
                     </button>
                 </td>
             </tr>

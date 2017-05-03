@@ -1,5 +1,5 @@
 function getAllCars() {
-    $.getJSON("/json/car/all").done(function(cars) {
+    $.getJSON("/json/car/all").done(function (cars) {
         console.log("cars: ", cars);
     });
 }
@@ -23,12 +23,12 @@ function getAllCarsMake() {
 }
 
 function getValueFromModelInputField() {
-    $("#carModel").keyup(function(){
+    $("#carModel").keyup(function () {
         let carModel = this.value;
         let make = $('#carMake').val();
         $.getJSON("/json/car/" + make + "/model/" + carModel).done(function (carModels) {
             $('#carModels').empty();
-            $.each(carModels, function( index, model ) {
+            $.each(carModels, function (index, model) {
                 $('#carModels').append('<p>' + model.model + '</p>');
             });
         })
@@ -36,11 +36,11 @@ function getValueFromModelInputField() {
 }
 
 function getValueFromMakeInputField() {
-    $("#carMake").keyup(function(){
+    $("#carMake").keyup(function () {
         let carMake = this.value;
         $.getJSON("/json/car/make/" + carMake).done(function (carMakes) {
             $('#carMakes').empty();
-            $.each(carMakes, function( index, make ) {
+            $.each(carMakes, function (index, make) {
                 $('#carMakes').append('<p>' + make.make + '</p>').unique('#carMakes');
             });
         })
@@ -48,33 +48,33 @@ function getValueFromMakeInputField() {
 }
 
 function getCarFromDbOnSearchPage() {
-    $("#carSearch").keyup(function(){
+    $("#carSearch").keyup(function () {
         let registrationNumber = this.value;
         $.getJSON("/json/car/search/" + registrationNumber).done(function (cars) {
             $('#cars').empty();
-            $.each(cars, function( index, car ) {
+            $.each(cars, function (index, car) {
                 console.log(car);
                 $('#cars')
                     .append($('<a></a>').attr("href", "/car/edit/" + car.id)
-                    .append($('<p>' + car.carRegistrationNumber + '</p>')));
+                        .append($('<p>' + car.carRegistrationNumber + '</p>')));
             });
         })
     });
 }
 
-$(function($) {
+$(function ($) {
     let url = window.location.pathname;
 
     if (url == "/car/all") {
         getAllCars();
     }
 
-    if(url == "/car/add") {
+    if (url == "/car/add") {
         getValueFromModelInputField();
         getValueFromMakeInputField();
     }
 
-    if(url == '/car/edit') {
+    if (url == '/car/edit') {
         getCarFromDbOnSearchPage();
     }
 

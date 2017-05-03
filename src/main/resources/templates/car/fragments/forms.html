@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <body>
 
 <form method="post" th:fragment="car-add-form" th:object="${carBindingModel}">
@@ -16,7 +16,8 @@
         <small
                 id="carRegistrationNumberHelp"
                 class="form-control-feedback"
-                th:each="error : ${#fields.errors('carRegistrationNumber')}" th:text="${error}">Error</small>
+                th:each="error : ${#fields.errors('carRegistrationNumber')}" th:text="${error}">Error
+        </small>
     </div>
     <div class="form-group" th:classappend="${#fields.hasErrors('carMake')}? 'has-danger'">
         <label for="carMake">Car Make</label>
@@ -30,7 +31,8 @@
         <small
                 id="carMakeHelp"
                 class="form-control-feedback"
-                th:each="error : ${#fields.errors('carMake')}" th:text="${error}">Error</small>
+                th:each="error : ${#fields.errors('carMake')}" th:text="${error}">Error
+        </small>
     </div>
     <div class="form-group" th:classappend="${#fields.hasErrors('carModel')}? 'has-danger'">
         <label for="carModel">Car Model</label>
@@ -44,7 +46,8 @@
         <small
                 id="carModelHelp"
                 class="form-control-feedback"
-                th:each="error : ${#fields.errors('carModel')}" th:text="${error}">Error</small>
+                th:each="error : ${#fields.errors('carModel')}" th:text="${error}">Error
+        </small>
     </div>
     <div class="form-group" th:classappend="${#fields.hasErrors('carType')}? 'has-danger'">
         <label for="carType">Car Type</label>
@@ -68,17 +71,18 @@
         <small
                 id="carTypeHelp"
                 class="form-control-feedback"
-                th:each="error : ${#fields.errors('carType')}" th:text="${error}">Error</small>
+                th:each="error : ${#fields.errors('carType')}" th:text="${error}">Error
+        </small>
     </div>
     <div class="form-group">
         <label for="customerId">Customer</label>
-        <select id="customerId" class="form-control" name="customerId" >
+        <select id="customerId" class="form-control" name="customerId">
             <option th:each="customerView : ${customersViewModel}"
                     th:value="${customerView.getId()}"
                     th:text="${customerView.getName() + ' (' + customerView.getPhoneNumber() +')'}"></option>
         </select>
     </div>
-
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
     <button type="submit" class="btn btn-secondary">Add car</button>
 </form>
 
@@ -92,11 +96,12 @@
                 id="carRegistrationNumber"
                 aria-describedby="carRegistrationNumberHelp"
                 name="carRegistrationNumber"
-                th:value="${car.getCarRegistrationNumber()}" />
+                th:value="${car.getCarRegistrationNumber()}"/>
         <small
                 id="carRegistrationNumberHelp"
                 class="form-control-feedback"
-                th:each="error : ${#fields.errors('carRegistrationNumber')}" th:text="${error}">Error</small>
+                th:each="error : ${#fields.errors('carRegistrationNumber')}" th:text="${error}">Error
+        </small>
     </div>
     <div class="form-group" th:classappend="${#fields.hasErrors('carMake')}? 'has-danger'">
         <label for="carMake">Car Make</label>
@@ -110,7 +115,8 @@
         <small
                 id="carMakeHelp"
                 class="form-control-feedback"
-                th:each="error : ${#fields.errors('carMake')}" th:text="${error}">Error</small>
+                th:each="error : ${#fields.errors('carMake')}" th:text="${error}">Error
+        </small>
     </div>
     <div class="form-group" th:classappend="${#fields.hasErrors('carModel')}? 'has-danger'">
         <label for="carModel">Car Model</label>
@@ -124,7 +130,8 @@
         <small
                 id="carModelHelp"
                 class="form-control-feedback"
-                th:each="error : ${#fields.errors('carModel')}" th:text="${error}">Error</small>
+                th:each="error : ${#fields.errors('carModel')}" th:text="${error}">Error
+        </small>
     </div>
     <div class="form-group" th:classappend="${#fields.hasErrors('carType')}? 'has-danger'">
         <label for="carType">Car Type</label>
@@ -152,21 +159,22 @@
         <small
                 id="carTypeHelp"
                 class="form-control-feedback"
-                th:each="error : ${#fields.errors('carType')}" th:text="${error}">Error</small>
+                th:each="error : ${#fields.errors('carType')}" th:text="${error}">Error
+        </small>
     </div>
     <input
-           type="hidden"
-           class="form-control"
-           id="id"
-           name="id"
-           th:value="${car.getId()}"/>
+            type="hidden"
+            class="form-control"
+            id="id"
+            name="id"
+            th:value="${car.getId()}"/>
     <input th:if="${car.getOwner() != null}"
            type="hidden"
            class="form-control"
            id="customerId"
            name="customerId"
-           th:value="${car.getOwner().getId()}" />
-
+           th:value="${car.getOwner().getId()}"/>
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
     <button type="submit" class="btn btn-secondary">Edit car</button>
 </form>
 
@@ -184,25 +192,24 @@
         <small
                 id="carSearchHelp"
                 class="form-control-feedback"
-                th:each="error : ${#fields.errors('carRegistrationNumber')}" th:text="${error}">Error</small>
+                th:each="error : ${#fields.errors('carRegistrationNumber')}" th:text="${error}">Error
+        </small>
     </div>
-
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
     <button type="submit" class="btn btn-secondary">Search car</button>
 </form>
-
-
 
 
 <form method="post" th:fragment="customer-add-form" th:object="${customerAddFormBindingModel}" class="col-8">
     <div class="form-group">
         <label for="id">Add customer</label>
-        <select id="id" class="form-control" name="id" >
+        <select id="id" class="form-control" name="id">
             <option th:each="customerView : ${customersViewModel}"
                     th:value="${customerView.getId()}"
                     th:text="${customerView.getName() + ' (' + customerView.getPhoneNumber() +')'}"></option>
         </select>
     </div>
-
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
     <button type="submit" class="btn btn-secondary">Add customer</button>
 </form>
 

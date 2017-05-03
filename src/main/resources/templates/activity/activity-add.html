@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
     <title th:text="${pageTitle}"></title>
@@ -11,7 +11,7 @@
 </header>
 <main>
     <div class="container">
-        <br />
+        <br/>
         <p class="h2 text-center">Activity add</p>
         <th:block th:replace="activity/fragments/forms::activity-add-form"></th:block>
     </div>

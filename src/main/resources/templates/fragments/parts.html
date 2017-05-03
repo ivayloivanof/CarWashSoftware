@@ -1,98 +1,106 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      lang="en">
 <body>
 
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded" th:fragment="menu">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="#">Car Wash</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav nav-tabs justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link"
-                       th:href="${T(bg.car_wash.configurations.site.PageUrl).HOME_PAGE}"
-                       th:text="${T(bg.car_wash.configurations.site.PageTitle).HOME_PAGE}"><span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">User</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" sec:authorize="isAnonymous()"
-                           th:href="${T(bg.car_wash.configurations.site.PageUrl).LOGIN_PAGE}"
-                           th:text="${T(bg.car_wash.configurations.site.PageTitle).LOGIN_PAGE}"></a>
-                        <a class="dropdown-item" sec:authorize="isAnonymous()"
-                           th:href="${T(bg.car_wash.configurations.site.PageUrl).REGISTER_PAGE}"
-                           th:text="${T(bg.car_wash.configurations.site.PageTitle).REGISTER_PAGE}"></a>
-                        <a class="dropdown-item" sec:authorize="isAuthenticated()"
-                           th:href="${T(bg.car_wash.configurations.site.PageUrl).LOGOUT_PAGE}"
-                           th:text="${T(bg.car_wash.configurations.site.PageTitle).LOGOUT_PAGE}"></a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" sec:authorize="hasAuthority('ADMIN')"
-                           th:href="${T(bg.car_wash.configurations.site.PageUrl).USER_STATUS_PAGE}"
-                           th:text="${T(bg.car_wash.configurations.site.PageTitle).USER_STATUS_PAGE}"></a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Car</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item"
-                           th:href="${T(bg.car_wash.configurations.site.PageUrl).CAR_ADD_PAGE}"
-                           th:text="${T(bg.car_wash.configurations.site.PageTitle).CAR_ADD_PAGE}"></a>
-                        <a class="dropdown-item"
-                           th:href="${T(bg.car_wash.configurations.site.PageUrl).CAR_EDIT_PAGE}"
-                           th:text="${T(bg.car_wash.configurations.site.PageTitle).CAR_EDIT_PAGE}"></a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item"
-                           th:href="${T(bg.car_wash.configurations.site.PageUrl).CAR_ALL_PAGE}"
-                           th:text="${T(bg.car_wash.configurations.site.PageTitle).CAR_ALL_PAGE}"></a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Customer</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item"
-                           th:href="${T(bg.car_wash.configurations.site.PageUrl).CUSTOMER_ADD_PAGE}"
-                           th:text="${T(bg.car_wash.configurations.site.PageTitle).CUSTOMER_ADD_PAGE}"></a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item"
-                           th:href="${T(bg.car_wash.configurations.site.PageUrl).CUSTOMER_ALL_PAGE}"
-                           th:text="${T(bg.car_wash.configurations.site.PageTitle).CUSTOMER_ALL_PAGE}"></a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Activity</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item"
-                           th:href="${T(bg.car_wash.configurations.site.PageUrl).ACTIVITY_ADD_PAGE}"
-                           th:text="${T(bg.car_wash.configurations.site.PageTitle).ACTIVITY_ADD_PAGE}"></a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item"
-                           th:href="${T(bg.car_wash.configurations.site.PageUrl).ACTIVITY_ALL_PAGE}"
-                           th:text="${T(bg.car_wash.configurations.site.PageTitle).ACTIVITY_ALL_PAGE}"></a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Service</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item"
-                           th:href="${T(bg.car_wash.configurations.site.PageUrl).SERVICE_ADD_PAGE}"
-                           th:text="${T(bg.car_wash.configurations.site.PageTitle).SERVICE_ADD_PAGE}"></a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item"
-                           th:href="${T(bg.car_wash.configurations.site.PageUrl).SERVICE_ALL_PAGE}"
-                           th:text="${T(bg.car_wash.configurations.site.PageTitle).SERVICE_ALL_PAGE}"></a>
-                    </div>
-                </li>
-            </ul>
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded" th:fragment="menu">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Car Wash</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav nav-tabs justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link"
+                   th:href="${T(bg.car_wash.configurations.site.PageUrl).HOME_PAGE}"
+                   th:text="${T(bg.car_wash.configurations.site.PageTitle).HOME_PAGE}"><span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                   aria-expanded="false">User</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" sec:authorize="isAnonymous()"
+                       th:href="${T(bg.car_wash.configurations.site.PageUrl).LOGIN_PAGE}"
+                       th:text="${T(bg.car_wash.configurations.site.PageTitle).LOGIN_PAGE}"></a>
+                    <a class="dropdown-item" sec:authorize="isAnonymous()"
+                       th:href="${T(bg.car_wash.configurations.site.PageUrl).REGISTER_PAGE}"
+                       th:text="${T(bg.car_wash.configurations.site.PageTitle).REGISTER_PAGE}"></a>
+                    <a class="dropdown-item" sec:authorize="isAuthenticated()"
+                       th:href="${T(bg.car_wash.configurations.site.PageUrl).LOGOUT_PAGE}"
+                       th:text="${T(bg.car_wash.configurations.site.PageTitle).LOGOUT_PAGE}"></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" sec:authorize="hasAuthority('ADMIN')"
+                       th:href="${T(bg.car_wash.configurations.site.PageUrl).USER_STATUS_PAGE}"
+                       th:text="${T(bg.car_wash.configurations.site.PageTitle).USER_STATUS_PAGE}"></a>
+                </div>
+            </li>
+            <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                   aria-expanded="false">Car</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item"
+                       th:href="${T(bg.car_wash.configurations.site.PageUrl).CAR_ADD_PAGE}"
+                       th:text="${T(bg.car_wash.configurations.site.PageTitle).CAR_ADD_PAGE}"></a>
+                    <a class="dropdown-item"
+                       th:href="${T(bg.car_wash.configurations.site.PageUrl).CAR_EDIT_PAGE}"
+                       th:text="${T(bg.car_wash.configurations.site.PageTitle).CAR_EDIT_PAGE}"></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item"
+                       th:href="${T(bg.car_wash.configurations.site.PageUrl).CAR_ALL_PAGE}"
+                       th:text="${T(bg.car_wash.configurations.site.PageTitle).CAR_ALL_PAGE}"></a>
+                </div>
+            </li>
+            <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                   aria-expanded="false">Customer</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item"
+                       th:href="${T(bg.car_wash.configurations.site.PageUrl).CUSTOMER_ADD_PAGE}"
+                       th:text="${T(bg.car_wash.configurations.site.PageTitle).CUSTOMER_ADD_PAGE}"></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item"
+                       th:href="${T(bg.car_wash.configurations.site.PageUrl).CUSTOMER_ALL_PAGE}"
+                       th:text="${T(bg.car_wash.configurations.site.PageTitle).CUSTOMER_ALL_PAGE}"></a>
+                </div>
+            </li>
+            <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                   aria-expanded="false">Activity</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item"
+                       th:href="${T(bg.car_wash.configurations.site.PageUrl).ACTIVITY_ADD_PAGE}"
+                       th:text="${T(bg.car_wash.configurations.site.PageTitle).ACTIVITY_ADD_PAGE}"></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item"
+                       th:href="${T(bg.car_wash.configurations.site.PageUrl).ACTIVITY_ALL_PAGE}"
+                       th:text="${T(bg.car_wash.configurations.site.PageTitle).ACTIVITY_ALL_PAGE}"></a>
+                </div>
+            </li>
+            <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                   aria-expanded="false">Service</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item"
+                       th:href="${T(bg.car_wash.configurations.site.PageUrl).SERVICE_ADD_PAGE}"
+                       th:text="${T(bg.car_wash.configurations.site.PageTitle).SERVICE_ADD_PAGE}"></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item"
+                       th:href="${T(bg.car_wash.configurations.site.PageUrl).SERVICE_ALL_PAGE}"
+                       th:text="${T(bg.car_wash.configurations.site.PageTitle).SERVICE_ALL_PAGE}"></a>
+                </div>
+            </li>
+        </ul>
 
-            <!--<form method="post" action="/search" class="form-inline my-2 my-lg-0">-->
-                <!--<input class="form-control mr-sm-2" type="text" id="searchText" placeholder="Search" />-->
-                <!--<button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>-->
-            <!--</form>-->
-        </div>
-    </nav>
+        <form method="post" action="/search" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" id="searchText" placeholder="Search"/>
+            <button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
 
 </body>
 </html>

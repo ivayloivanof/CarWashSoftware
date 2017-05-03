@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 
 @Configuration
 @EnableWebSecurity
@@ -28,7 +30,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 				.authorizeRequests()
-				.antMatchers("/", "/user/register", "/bootstrap/**", "/jquery/**", "/js/**").permitAll()
+				.antMatchers("/", "/user/register", "/bootstrap/**", "/jquery/**", "/js/**", "/connect/**").permitAll()
 				.antMatchers("/user/**", "/car/**", "/customer/**", "/json/**", "/activity/**", "/service/**").authenticated()
 				.antMatchers("/car/delete/**").access("hasRole('ADMIN') OR hasRole('PAYMASTER')")
 				.anyRequest().authenticated()
@@ -37,21 +39,29 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.usernameParameter("email")
 				.passwordParameter("password")
 //                .and()
-//                .rememberMe()
-//                .rememberMeCookieName("RememberMeFromLecture")
-//                .rememberMeParameter("rememberMe")
-//                .key("GolqmTaina")
-//                .tokenValiditySeconds(1000)
+//					.rememberMe()
+//					.rememberMeCookieName("RememberMeForLaptop")
+//					.rememberMeParameter("rememberMe")
+//					.key("SlonoMekoHurBestaMarahaKadumba")
+//					.tokenValiditySeconds(300)
 				.and()
 				.logout().logoutSuccessUrl("/user/logout").permitAll()
 				.and()
 				.exceptionHandling().accessDeniedPage("/unauthorized")
 				.and()
-				.csrf().disable();
+				.csrf().csrfTokenRepository(csrfTokenRepository());
 	}
 
 	@Bean
 	public BCryptPasswordEncoder getBCryptPasswordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+
+	@Bean
+	public CsrfTokenRepository csrfTokenRepository() {
+		HttpSessionCsrfTokenRepository httpSessionCsrfTokenRepository = new HttpSessionCsrfTokenRepository();
+		httpSessionCsrfTokenRepository.setSessionAttributeName("_csrf");
+
+		return httpSessionCsrfTokenRepository;
 	}
 }

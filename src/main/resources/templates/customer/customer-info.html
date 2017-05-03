@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      lang="en">
 <head>
     <meta charset="UTF-8"/>
     <title th:text="${pageTitle}"></title>
@@ -13,7 +13,7 @@
 </header>
 <main>
     <div class="container">
-        <br />
+        <br/>
         <p class="h2 text-center">Customer info</p>
         <table class="table table-striped">
             <thead>
@@ -35,9 +35,10 @@
                 <td th:text="${customerViewModel.getDate()}"></td>
                 <td th:text="${customerViewModel.getDiscount()}"></td>
                 <td>
-                   <p th:each="car : ${customerViewModel.getCars()}">
-                       <a th:text="${car.getCarRegistrationNumber()}" th:href="@{/car/edit/{id}(id=${car.getId()})}"></a>
-                   </p>
+                    <p th:each="car : ${customerViewModel.getCars()}">
+                        <a th:text="${car.getCarRegistrationNumber()}"
+                           th:href="@{/car/edit/{id}(id=${car.getId()})}"></a>
+                    </p>
                 </td>
                 <td sec:authorize="hasAuthority('ADMIN')">
                     <button type="button" class="btn btn-warning">

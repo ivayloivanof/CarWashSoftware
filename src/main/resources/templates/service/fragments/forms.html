@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <body>
 
 <form method="post" th:fragment="service-add-form" th:object="${serviceBindingModel}" class="col-5">
@@ -16,7 +16,8 @@
         <small
                 id="serviceNameHelp"
                 class="form-control-feedback"
-                th:each="error : ${#fields.errors('serviceName')}" th:text="${error}">Error</small>
+                th:each="error : ${#fields.errors('serviceName')}" th:text="${error}">Error
+        </small>
     </div>
     <div class="form-group" th:classappend="${#fields.hasErrors('servicePrice')}? 'has-danger'">
         <label for="servicePrice">Service Price</label>
@@ -30,7 +31,8 @@
         <small
                 id="servicePriceHelp"
                 class="form-control-feedback"
-                th:each="error : ${#fields.errors('servicePrice')}" th:text="${error}">Error</small>
+                th:each="error : ${#fields.errors('servicePrice')}" th:text="${error}">Error
+        </small>
     </div>
     <div class="form-group">
         <label for="activityId">Activity</label>
@@ -75,9 +77,10 @@
         <small
                 id="userTypeHelp"
                 class="form-control-feedback"
-                th:each="error : ${#fields.errors('userType')}" th:text="${error}">Error</small>
+                th:each="error : ${#fields.errors('userType')}" th:text="${error}">Error
+        </small>
     </div>
-
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
     <button type="submit" class="btn btn-secondary">Add service</button>
 </form>
 
@@ -95,7 +98,8 @@
         <small
                 id="serviceNameHelp"
                 class="form-control-feedback"
-                th:each="error : ${#fields.errors('serviceName')}" th:text="${error}">Error</small>
+                th:each="error : ${#fields.errors('serviceName')}" th:text="${error}">Error
+        </small>
     </div>
     <div class="form-group" th:classappend="${#fields.hasErrors('servicePrice')}? 'has-danger'">
         <label for="servicePrice">Service Price</label>
@@ -109,7 +113,8 @@
         <small
                 id="servicePriceHelp"
                 class="form-control-feedback"
-                th:each="error : ${#fields.errors('servicePrice')}" th:text="${error}">Error</small>
+                th:each="error : ${#fields.errors('servicePrice')}" th:text="${error}">Error
+        </small>
     </div>
     <div class="form-group">
         <label for="activityId">Activity</label>
@@ -154,7 +159,8 @@
         <small
                 id="userTypeHelp"
                 class="form-control-feedback"
-                th:each="error : ${#fields.errors('userType')}" th:text="${error}">Error</small>
+                th:each="error : ${#fields.errors('userType')}" th:text="${error}">Error
+        </small>
     </div>
     <input
             type="hidden"
@@ -162,7 +168,7 @@
             id="id"
             name="id"
             th:value="${serviceViewModel.getId()}"/>
-
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
     <button type="submit" class="btn btn-secondary">Edit service</button>
 </form>
 
