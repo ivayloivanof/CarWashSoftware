@@ -154,4 +154,6 @@ public class User implements UserDetails, Serializable {
 	public void setUserType(UserType userType) {
 		this.userType = userType;
 	}
+
+
 }

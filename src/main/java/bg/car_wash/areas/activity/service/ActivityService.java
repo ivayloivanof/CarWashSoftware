@@ -17,7 +17,7 @@ public interface ActivityService {
 
 	Activity findActivityByName(String name) throws ActivityNotFoundException;
 
-	Activity findActivityById(Long id) throws ActivityNotFoundException;
+	ActivityViewModel findActivityById(Long id) throws ActivityNotFoundException;
 
 	void updateActivity(ActivityBindingModel activityBindingModel) throws ActivityNotUpdateException;
 

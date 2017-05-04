@@ -66,13 +66,15 @@ public class ActivityServiceImpl implements ActivityService {
 	}
 
 	@Override
-	public Activity findActivityById(Long id) throws ActivityNotFoundException {
+	public ActivityViewModel findActivityById(Long id) throws ActivityNotFoundException {
 		Activity activity = this.activityRepository.findActivityById(id);
 		if (activity == null) {
 			throw new ActivityNotFoundException("This activity is not found in database by id!");
 		}
 
-		return activity;
+		ActivityViewModel activityViewModel = this.modelMapper.map(activity, ActivityViewModel.class);
+
+		return activityViewModel;
 	}
 
 	@Override
