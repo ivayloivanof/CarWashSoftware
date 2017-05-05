@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface UserService extends UserDetailsService {
 
-	void createUser(User userRegisterBindingModel);
+	void createUser(User user);
 
 	List<User> findAllUsers();
 

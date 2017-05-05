@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
 	@GetMapping("/")
-	public String getHomePage(Model model) {
-		model.addAttribute("pageTitle", PageTitle.HOME_PAGE);
+	public String getHomePage() {
+
+		return "redirect:/car/all";
+	}
+
+	@GetMapping("/*")
+	public String redirectAllInvalidPage() {
 
 		return "redirect:/car/all";
 	}

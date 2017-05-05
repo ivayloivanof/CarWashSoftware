@@ -41,6 +41,7 @@ public class GlobalExceptionHandler {
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public String handle404(Model model, CarWashErrorException exception) {
 		model.addAttribute("message", exception.getMessage());
+
 		return "error/404";
 	}
 
@@ -52,6 +53,7 @@ public class GlobalExceptionHandler {
 	@ResponseStatus(HttpStatus.CONFLICT)
 	public String handle409(Model model, CarWashErrorException exception) {
 		model.addAttribute("message", exception.getMessage());
+
 		return "error/409";
 	}
 }
