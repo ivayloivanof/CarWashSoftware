@@ -2,7 +2,6 @@ package bg.car_wash.areas.user.serviceImpl;
 
 import bg.car_wash.areas.user.entity.User;
 import bg.car_wash.areas.user.exception.UserNotFoundException;
-import bg.car_wash.areas.user.models.viewModels.UserViewModel;
 import bg.car_wash.areas.user.repository.UserRepository;
 import bg.car_wash.areas.user.service.UserService;
 import org.junit.Before;
@@ -15,7 +14,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

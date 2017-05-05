@@ -1,25 +1,11 @@
 package bg.car_wash;
 
-import bg.car_wash.areas.car.entities.CarMakeModel;
-import bg.car_wash.areas.car.services.CarMakeModelService;
-import bg.car_wash.areas.role.entity.Role;
-import bg.car_wash.areas.role.service.RoleService;
-import bg.car_wash.areas.user.entity.User;
-import bg.car_wash.areas.user.service.UserService;
-import bg.car_wash.configurations.database.InsertCars;
-import bg.car_wash.configurations.database.InsertRoles;
-import bg.car_wash.configurations.database.InsertUsers;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import javax.annotation.PostConstruct;
-import java.io.FileNotFoundException;
-import java.util.List;
 
 @SpringBootApplication
 public class CarWashApplication {

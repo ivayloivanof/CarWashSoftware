@@ -2,7 +2,6 @@ package bg.car_wash.areas.customer.serviceImpl;
 
 import bg.car_wash.areas.customer.entity.Customer;
 import bg.car_wash.areas.customer.exceptions.CustomerNotFoundException;
-import bg.car_wash.areas.customer.models.viewModels.CustomerViewModel;
 import bg.car_wash.areas.customer.models.viewModels.CustomerWithCarsViewModel;
 import bg.car_wash.areas.customer.repository.CustomerRepository;
 import bg.car_wash.areas.customer.service.CustomerService;
@@ -18,7 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
